@@ -1,0 +1,102 @@
+*{
+    margin: 50;
+    background-color: #FFFFFF;
+    color: black;
+    font-family:'Bricolage Grotesque';
+    font-size: large;
+}
+
+.mainContainer{
+    margin-top: 20px;
+    display: grid; 
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+    gap: 10px;
+
+}
+
+.mainContainer p{
+    grid-column-start: 1;
+    grid-column-end: -1;
+    font-size: xx-large;
+    font-weight:500;
+}
+
+.name{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.i1{
+    margin-top: 5px;
+    border-radius: 8px;
+    height: 33px;
+    width: 280px;
+    border: 1px solid ;
+}
+
+.email,.password, .Country, .company, .Industry, .phone{
+    margin-top: 10px;
+    place-items: left;
+    width: 600px;
+}
+
+#countries, #industry{
+    width: 100%;
+    height: 33px;
+    border: 1px solid ;
+    border-radius: 8px;
+    font-size: 18px;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+input{
+    width: 100%;
+    height: 33px;
+    border: 1px solid ;
+    border-radius: 8px;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.pass{
+    width: 100%;
+    height: 33px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+.password{
+    position: relative;
+}
+
+.eyeicon{
+    cursor: pointer;
+    /* padding-left: 822px; */
+    position: absolute;
+    transform: translate(570px, -35px);
+}
+
+button{
+    cursor: pointer;
+    width: 320px;
+    padding: 10px 0;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    margin-top: 5px;
+    background-color: #239c14;
+    /* background:linear-gradient(to right, #512B81, #3b2458);; */
+}
+
+.google-signin-btn{
+    background-color: white;
+    color: #239c14;
+    font-size: medium;
+    width:21%;
+    border-radius: 10px;
+    border: 2px solid #239c14;
+}

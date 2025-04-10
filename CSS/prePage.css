@@ -1,0 +1,87 @@
+*{
+    margin: 50;
+    background-color: #FFFFFF;
+    color: black;
+    font-family:'Bricolage Grotesque';
+    font-size:large;
+}
+
+.mainContainer{
+    margin-top: 80px;
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr);
+    place-items: center;
+    gap: 10px;
+
+}
+
+.mainContainer p{
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row: 1;
+    font-size: xx-large;
+
+}
+
+.FC{
+    margin: 10px;
+    padding: 15px 0px 0 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 250px;
+    width: 230px;
+    font-size: xx-large;
+}
+
+#FC1{
+    grid-column-start: 3;
+
+}
+
+.clarify{
+    font-size: xx-large;
+
+}
+
+
+.radioShape{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+input[type="radio"] {
+    grid-column-end: -1;
+    transform: scale(0.6);
+    accent-color: #1a8e0b;
+}
+
+
+
+.button{
+    margin: 30px;
+    display: grid; 
+    place-items: center;
+}
+
+button:disabled{
+    background: #ccc;
+    cursor: not-allowed;
+    font-weight: bold;
+}
+
+button{
+    cursor: pointer;
+    width: 190px;
+    padding: 10px;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    background-color: #239c14;
+    /* background:linear-gradient(to right, #512B81, #3b2458);; */
+}
+
+button:hover {
+    /* transform: translateY(-5px); تحريك الزر للأعلى */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);  /* إضافة ظل */
+}

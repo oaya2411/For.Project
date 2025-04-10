@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>For.freelance-Signup</title>
+        <link rel="shortcut icon" href="images\for.png" type="image/x-icon">
+        <link rel="stylesheet" href="CSS\clientSignup.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <p style="font-size: x-large; font-weight: bold;">For.freelance</p>
+        </header>
+        <form>
+            <div class="mainContainer">
+                <p>Sign up to hire talent</p>
+                <div class="name">
+                    <div class="fName">
+                        <label>First name</label><br><input class="i1" required type="text" placeholder="Aya">
+                    </div>
+                    <div class="lName">
+                        <label>Last name</label><br><input class="i1" required type="text" placeholder="Osama">
+                    </div>
+                </div>
+                <div class="email">
+                    <label>Email</label><br>
+                    <input required type="email" placeholder="oaya2411@gmail.com">
+                </div>
+                <div class="password">
+                    <label>Password</label><br>
+                    <input class="pass" required type="password" placeholder="Password (8 characters or more)">
+                    <img class="eyeicon" src="images/visibility.png" height="30px" width="30px">
+                </div>
+                <div class="password">
+                    <label>Enter Password again</label><br>
+                    <input class="pass" required type="password"  placeholder="Enter the same password above">
+                    <img class="eyeicon" src="images/visibility.png" height="30px" width="30px">
+                </div>
+                <div class="company">
+                    <label>Company Name</label><br>
+                    <input type="text" placeholder="write your company name">
+                </div>
+                <div class="Country">
+                    <label for="countries">Select Country</label>
+                    <select id="countries"></select>
+                </div>
+                <div class="Industry">
+                    <label for="industry">Sector/Industry</label>
+                    <select id="industry">
+                        <option>FinTech</option>
+                        <option>SportsTech</option>
+                        <option>EdTech</option>
+                        <option>HealthTech</option>
+                        <option>AggreTech</option>
+                        <option>Other</option>
+                    </select>
+                </div>                  
+                <div class="button">
+                    <button id="submitBtn_1" type="submit">Create Account</button>
+                </div>  
+                <button class="google-signin-btn">
+                    <img src="images\search.png" alt="Google logo" height="15px">
+                    Signup with Google
+                </button>
+                <span style="color: gray" >Already have account? <a href="login.html" style="color: #239c14">Login</a></span>       
+            </div>
+        </form>
+        <script src="JS/prePage.js"></script>
+        <script src="JS/showpassword.js"></script>
+    </body>
+</html>
