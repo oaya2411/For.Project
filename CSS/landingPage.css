@@ -1,0 +1,166 @@
+:root {
+    --main-color: #28be97;
+    --main-text-color: black;
+    --text-color: #777;
+    --bg-color: #e7f7f6;
+    --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+    --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
+    --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+    --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
+  }
+
+
+.aboutus{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* height: calc(100% - 100px); */
+    position: relative;
+    z-index: 100;
+}
+
+@media (max-width:767px) {
+    .aboutus{
+        flex-direction: column;
+    }
+}
+
+.aboutus .aboutusText , .aboutusImage{
+    flex-basis: 50%;
+}
+
+@media (max-width:767px) {
+    .aboutus .aboutusText , .aboutusImage{
+        flex-basis: 100%;
+    }
+}
+
+.aboutus .aboutusText{
+    padding: 30px;
+}
+
+.aboutus .aboutusText h1 {
+    font-size: 45px;
+    color: black;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+@media (max-width:767px) {
+    .aboutus .aboutusText h1 {
+        font-size: 30px;
+    }
+}
+
+.aboutus .aboutusText p{
+    color: var(--text-color);
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+    margin-bottom: 15px;
+}
+
+@media (max-width:991px) {
+    .aboutus .aboutusText p{
+        font-size: 15px;
+    }
+}
+
+.aboutus .aboutusImage{
+    position: relative;
+}
+
+.aboutus .aboutusImage .img {
+    width:100%;
+    border-radius: 0px 10px 10px 0 ;
+    height:500px;
+}
+
+.circle-effect {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+}
+@media (max-width: 551px) {
+    .circle-effect{
+        width: 280px;
+        height: 280px;
+    }
+}
+
+.aboutus .aboutusImage .img .labImage{
+    width: 100%;
+    height: 100%; 
+    object-fit: contain;
+    position: relative;
+    left: 2%;
+} 
+
+
+@media (max-width: 991px) { 
+    .aboutus .aboutusImage .img .labImage {
+        object-fit: cover;
+    }
+}
+.aboutus .aboutusImage .left-box{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    width: 170px;
+    height: 70px;
+    font-size: 14px;
+    box-shadow: 0px 6px 8px 0px rgb(0 0 0 / 20%);
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 100;
+    font-weight: 600;
+    color: var(--text-color)
+}
+
+.aboutus .aboutusImage .right-box{
+    position: absolute;
+    bottom: 15%;
+    right: 17%;
+    width: 170px;
+    height: 70px;
+    font-size: 14px;
+    box-shadow: 0px 6px 8px 0px rgb(0 0 0 / 20%);
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 100;
+    font-weight: 600;
+    color: var(--text-color)
+}
+
+@media (max-width:1200px) {
+    .aboutus .landing-img .left-box {
+        left: 5px;
+        top:30%;
+    }
+}
+
+@media (max-width:991px) {
+    .aboutus .landing-img .left-box {
+        left: 10px;
+        top: 60%;
+    }
+}
+
+@media (max-width:575px) {
+    .aboutus .landing-img .left-box {
+        left: 0px;
+        top: 36%;
+    }
+}
