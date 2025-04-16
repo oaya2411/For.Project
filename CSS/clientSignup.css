@@ -7,12 +7,25 @@
 }
 
 .mainContainer{
-    margin-top: 20px;
-    display: grid; 
+    margin: 20px 400px;
+    display: grid;
+    padding: 20px; 
+    box-shadow: 2px 6px 10px 0px rgb(0 0 0 / 20%);
+    align-items: center;
+    align-content: center;
     grid-template-columns: repeat(1, 1fr);
     place-items: center;
     gap: 10px;
+    border: 1px solid rgb(164, 158, 158);
+    border-radius: 30px;
 
+}
+
+@media (max-width:1172px) {
+    .mainContainer{
+        border-style: none;
+        box-shadow: none;
+    }
 }
 
 .mainContainer p{
@@ -37,19 +50,20 @@
 }
 
 .email,.password, .Country, .company, .Industry, .phone{
-    margin-top: 10px;
+    margin-top: 2px;
     place-items: left;
     width: 600px;
 }
 
 #countries, #industry{
-    width: 100%;
-    height: 33px;
-    border: 1px solid ;
+    position: relative;
+    width: 615px;
+    height: 38px;
+    border-style: 2px solid;
     border-radius: 8px;
     font-size: 18px;
     padding-left: 10px;
-    margin-top: 5px;
+    margin-top: 5px; 
 }
 
 input{
@@ -59,6 +73,7 @@ input{
     border-radius: 8px;
     font-size: 18px;
     padding-left: 10px;
+    margin-top: 5px;
 }
 
 .pass{
@@ -81,22 +96,104 @@ input{
 
 button{
     cursor: pointer;
-    width: 320px;
+    width: 300px;
     padding: 10px 0;
     border-style: none;
+    /* width: ; */
+    display: block;
     border-radius: 10px;
     color: white;
     font-weight: bold;
     margin-top: 5px;
-    background-color: #239c14;
+    background-color: #28be97;
     /* background:linear-gradient(to right, #512B81, #3b2458);; */
 }
 
 .google-signin-btn{
     background-color: white;
-    color: #239c14;
+    color: grey;
     font-size: medium;
-    width:21%;
+    width: 300px;
     border-radius: 10px;
-    border: 2px solid #239c14;
+    border: 2px solid #28be97;
+}
+
+.errormessage{
+    color: red;
+    text-align: left;
+    font-size: 15px;
+    padding-left: 3px;
+    margin-top:20px;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: none;
+    text-transform: capitalize;
+}
+
+.error-message.hidden {
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+/* Loading overlay */
+body.loading-active {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  body.loading-active::after {
+    content: '';
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  #loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    border-radius: 50%;
+    border-top-color: #4CAF50;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  .loading-text {
+    color: transparent;
+    font-size: 1.2rem;
+    background-color: transparent;
+    margin: 0;
+  }
+  
+  @keyframes spin {
+    to {
+        background-color: transparent;
+      transform: rotate(360deg);
+    }
+  }
+
+.messageContainer{
+    color: white; 
+    text-align: center; 
+    background-color: #9acb93;
+     border-radius: 30px;
 }

@@ -10,52 +10,45 @@
     </head>
     <body>
         <header>
-            <p style="font-size: x-large; font-weight: bold;">For.freelance</p>
+            <p style="font-size: x-large; font-weight: bold;">FreelanZe</p>
         </header>
-        <form>
+        <div id="messageContainer" style="color: green;"></div>
+        <form id="form" novalidate>
             <div class="mainContainer">
-                <p>Sign up to hire talent</p>
-                <div class="name">
-                    <div class="fName">
-                        <label>First name</label><br><input class="i1" required type="text" placeholder="Aya">
+                <p id="role">Sign up to hire talent</p>
+                <!-- fullName -->
+                <div>
+                    <div class="name">
+                        <div class="fName">
+                            <label>First name</label><br><input class="i1" required type="text" id="fName" placeholder="Aya">
+                        </div>
+                        <div class="lName">
+                            <label>Last name</label><br><input class="i1" required type="text" id="lName" placeholder="Osama">
+                        </div>
                     </div>
-                    <div class="lName">
-                        <label>Last name</label><br><input class="i1" required type="text" placeholder="Osama">
-                    </div>
+                        <span id="nameError" class="errormessage">Name must contain at least 5 letters</span>
                 </div>
+                <!-- email -->
                 <div class="email">
                     <label>Email</label><br>
-                    <input required type="email" placeholder="oaya2411@gmail.com">
+                    <input required type="email" id="email" placeholder="oaya2411@gmail.com">
+                    <span id="emailError" class="errormessage">Email must be like: oaya2411@gmail.com</span>
                 </div>
+                <!-- pass -->
                 <div class="password">
                     <label>Password</label><br>
-                    <input class="pass" required type="password" placeholder="Password (8 characters or more)">
+                    <input class="pass" required type="password" id="pass" placeholder="Password (8 characters or more)">
                     <img class="eyeicon" src="images/visibility.png" height="30px" width="30px">
+                    <span id="passError" class="errormessage"></span>
                 </div>
+                <!-- repass -->
                 <div class="password">
                     <label>Enter Password again</label><br>
-                    <input class="pass" required type="password"  placeholder="Enter the same password above">
+                    <input class="pass" required type="password" id="repass" placeholder="Enter the same password above">
                     <img class="eyeicon" src="images/visibility.png" height="30px" width="30px">
+                    <span id="repassError" class="errormessage">This password doesn't match the password above</span>
                 </div>
-                <div class="company">
-                    <label>Company Name</label><br>
-                    <input type="text" placeholder="write your company name">
-                </div>
-                <div class="Country">
-                    <label for="countries">Select Country</label>
-                    <select id="countries"></select>
-                </div>
-                <div class="Industry">
-                    <label for="industry">Sector/Industry</label>
-                    <select id="industry">
-                        <option>FinTech</option>
-                        <option>SportsTech</option>
-                        <option>EdTech</option>
-                        <option>HealthTech</option>
-                        <option>AggreTech</option>
-                        <option>Other</option>
-                    </select>
-                </div>                  
+
                 <div class="button">
                     <button id="submitBtn_1" type="submit">Create Account</button>
                 </div>  
@@ -63,10 +56,12 @@
                     <img src="images\search.png" alt="Google logo" height="15px">
                     Signup with Google
                 </button>
-                <span style="color: gray" >Already have account? <a href="login.html" style="color: #239c14">Login</a></span>       
+                <span style="color: gray" >Already have account? <a href="login.html" style="color: #28be97">Login</a></span>       
             </div>
+
         </form>
         <script src="JS/prePage.js"></script>
         <script src="JS/showpassword.js"></script>
+        <script src="JS/signUp.js"></script>
     </body>
 </html>
