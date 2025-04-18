@@ -34,9 +34,17 @@ img{
 ul li {
     list-style: none;
 }
+li:hover {
+
+    color:#777;
+}
 
 a {
     text-decoration: none;
+}
+
+a:hover {
+    color: red;
 }
 
 button {
@@ -95,7 +103,8 @@ button {
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
-    height: 200vh;
+    height: 400vh;
+    
 }
 
 .outer-shadow {
@@ -207,10 +216,29 @@ button {
     transition: all 0.4s ease;
 }
 
+
 .home-section .header .navbar a.register:hover{
     background-color: #777;
+    color: white
 }
 
+.home-section .header .navbar a:hover{
+    color: #777;
+}
+
+#profileIcon{
+    font-size: 45px;
+    color: black;
+    display: none;
+}
+
+#profileIcon:hover{
+    color: rgba(0, 0, 0, 0.695);
+    cursor:pointer;
+    transition: all 0.4s ease;
+    display: none;
+
+}
 
 .hamburger-btn {
     width: 40px;

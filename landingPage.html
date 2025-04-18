@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelanze - landing page</title>
+    <title>FreelanZ - landing page</title>
+    <link rel="shortcut icon" href="images\social.png" type="image/x-icon">
+
     <!-- Import Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Import fontawesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Import our CSS files -->
@@ -15,7 +18,7 @@
      <link rel="stylesheet" href="CSS\header.css">
 
 </head>
-<body>
+<body data-page="landing">
     <div class="home-section">
         <!-- Effects -->
          <div>
@@ -24,7 +27,7 @@
         <div class="container">
             <!-- Header -->
             <div class="header">
-                <a href="landingPage.html" class="logo" style="font-weight: bold; font-size: 22px; color: black">FreelanZe</a>
+                <a href="landingPage.html" class="logo" style="font-weight: bold; font-size: 22px; color: black">FreelanZ</a>
                 <diV class="links">
                     
                     <div class="hamburger-btn outer-shadow hover-in-shadow">
@@ -48,9 +51,12 @@
                             <a href="#">Post project</a>
                         </li>
                         <li>
-                            <a class="register" href="PrePage.html">Register Now</a>
+                            <a id="registerButton" class="register" href="PrePage.html">Register Now</a>
                         </li>
-                        <button class="close-navBar outer-shadow hover-in-shadow ">
+                        <li>
+                            <i class="fa-solid fa-circle-user" id="profileIcon"></i>
+                        </li>
+                        <button  class="close-navBar outer-shadow hover-in-shadow ">
                             X
                         </button>
                     </ul>
@@ -80,34 +86,76 @@
                 </div>
             </div>
             <!-- Challenges -->
-            <div class="challenge">
-                <div class="right_boxes">
+            <div id="challengesSection">
+                <div class="left_boxes">
                     <div class="C1">
-                        Communications Breakdowns 
-                        <span>Leading to frustrating delays and misunderstandings</span>
+                        <p class="challengeHeader">Communications Breakdowns </p>
+                        <span class="challenges">Leading to frustrating delays and misunderstandings</span>
                     </div>
                     <div class="C2">
-                        Quality concerns 
-                        <span>Inconsistent deliverables disrupt workflow and impact results</span>
+                        <p class="challengeHeader">Quality concerns</p>
+                        <span class="challenges">Inconsistent deliverables disrupt workflow and impact results</span>
                     </div>
                 </div>
-                <div class="img2">
-                    <img src="images\challenges.png" height="500px" width="" alt="challenge" class="I2">
+                <div class="img2" >
+                    <img src="images\confusedMan.png" height="500px" width="" alt="challenge" class="I2">
+                     <!-- <div class="oi"> <span>Our Challenges</span></div> -->
                 </div>
                 <div class="right_boxes">
                     <div class="C3">
-                        Missed deadlines  
-                        <span>Project outcomes suffer due to poor time management</span>
+                        <p class="challengeHeader">Missed deadlines</p> 
+                        <span class="challenges">Project outcomes suffer due to poor time management</span>
                     </div>
                     <div class="C4">
-                        Intellectual property protection 
-                        <span>unauthorized replication or theft for unique project ideas</span>
+                        <p class="challengeHeader">Intellectual property protection</p> 
+                        <span class="challenges">unauthorized replication or theft for unique project ideas</span>
                     </div>
                 </div>
             </div>
             <!-- Client Feautres -->
              <h1>Client Features</h1>
+             <div class="clientFeatures">
+                <div class="F1">
+                    <div>
+                        <p>
+                            <i></i>
+                            Managed delivery 
+                        </p>
+                    </div>
+
+                    <div>
+                        <p>
+                            <i></i>
+                            Quality checks  
+                        </p>
+                    </div>
+
+                    <div>
+                        <p>
+                            <i></i>
+                            Secure payments 
+                        </p>
+                    </div>
+
+                    <div>
+                        <p>
+                            <i></i>
+                            Project idea protection  
+                        </p>
+                    </div>
+                   <div>
+                    <p>
+                        <i></i>
+                        Free trial
+                    </p>
+                   </div>
+
+                </div>
+                
+             </div>
     </div>
     </div>
+    <script src="JS/landing.js"></script>
+
 </body>
 </html>

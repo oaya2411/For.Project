@@ -120,8 +120,9 @@ document.body.classList.add('loading-active');
         } else if (data.data?.token) { // Check nested token
           localStorage.setItem('authToken', data.data.token);
           showSuccessMessage('Registration successful!');
+
           setTimeout(() => {
-              window.location.href = "login.html";
+              window.location.href = "landingPage.html";
           }, 2000);
         } else {
           console.error('Token not found in response');
@@ -140,3 +141,5 @@ document.body.classList.add('loading-active');
     }
   }
 });
+
+

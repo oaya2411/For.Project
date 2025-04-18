@@ -52,7 +52,7 @@
 input[type="radio"] {
     grid-column-end: -1;
     transform: scale(0.6);
-    accent-color: #1a8e0b;
+    accent-color: #28be97;
 }
 
 
@@ -77,7 +77,7 @@ button{
     border-radius: 10px;
     color: white;
     font-weight: bold;
-    background-color: #239c14;
+    background-color: #28be97;
     /* background:linear-gradient(to right, #512B81, #3b2458);; */
 }
 
