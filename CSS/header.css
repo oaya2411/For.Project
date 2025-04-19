@@ -406,7 +406,7 @@ button {
 /* Post Project icon */
 
 .home-section .header .navbar a.postProject{
-    display: flex;
+    display: none;
     gap:5px;
     margin-left: 30px;
     width: 140px;
