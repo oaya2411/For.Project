@@ -1,4 +1,3 @@
-
 const inputs = document.querySelectorAll("input");
 const button = document.querySelector("button");
 const form = document.getElementById("form");

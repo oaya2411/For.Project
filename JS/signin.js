@@ -87,13 +87,13 @@ document.body.classList.add('loading-active');
   
       const data = await response.json();
       console.log('Full API response:', data); 
-  
       if (response.ok) { 
         if (data.token) {
           localStorage.setItem('authToken', data.token);
+          // localStorage.setItem('email', data.email);
           showSuccessMessage('You have Successfully LogIn!');
           setTimeout(() => {
-              window.location.href = "landingPage.html";
+              window.location.href = "../landingPage.html";
           }, 2000);
           // perform next steps
         } else if (data.data?.token) { // Check nested token
@@ -101,7 +101,7 @@ document.body.classList.add('loading-active');
           showSuccessMessage('You have Successfully LogIn!');
 
           setTimeout(() => {
-              window.location.href = "landingPage.html";
+              window.location.href = "../landingPage.html";
           }, 2000);
         } else {
           console.error('Token not found in response');

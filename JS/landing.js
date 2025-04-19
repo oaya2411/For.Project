@@ -4,10 +4,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const profileIcon = document.getElementById('profileIcon');
     const registerButton = document.getElementById('registerButton');
-    
-    if (!profileIcon || !registerButton) {
+    const postProject = document.getElementById('postProject');
+    if (!profileIcon || !registerButton || !postProject) {
         console.error('Could not find required elements in DOM');
         return;
+    }
+
+    function decodeJWT(token) {
+        try {
+            // Split the token into parts
+            const parts = token.split('.');
+            if (parts.length !== 3) {
+                throw new Error('Invalid JWT token');
+            }
+            
+            // Decode the payload (second part)
+            const payload = parts[1];
+            const decodedPayload = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+            
+            // Parse the JSON payload
+            let displayData = document.getElementById('data');
+            displayData.innerHTML = decodedPayload;
+            return decodedPayload;
+        } catch (error) {
+            console.error('Error decoding JWT:', error);
+            return null;
+        }
+    }
+
+    function storeInLocalStorage(key, data) {
+        try {
+            // Convert data to string if it's an object
+            const value = typeof data === 'string' ? data : JSON.stringify(data);
+            localStorage.setItem(key, value);
+        } catch (error) {
+            console.error('Error storing data in local storage:', error);
+        }
     }
 
     // Rest of your landing page auth code...
@@ -17,12 +49,29 @@ document.addEventListener('DOMContentLoaded', function() {
         if (token) {
             registerButton.style.display = 'none';
             profileIcon.style.display = 'inline-block';
+
+            postProject.style.display = 'inline-block';
         } else {
             registerButton.style.display = 'inline-block';
             profileIcon.style.display = 'none';
+            postProject.style.display = 'none';
         }
     }
     
+    const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  timelineItems.forEach(item => {
+    observer.observe(item);
+  });
+
     checkAuth();
 });
 function initAuthUI() {

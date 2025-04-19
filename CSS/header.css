@@ -44,7 +44,8 @@ a {
 }
 
 a:hover {
-    color: red;
+    color: grey;
+    cursor: pointer;
 }
 
 button {
@@ -103,7 +104,8 @@ button {
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
-    height: 400vh;
+    /* margin-bottom:10px; */
+    height: 285vh;
     
 }
 
@@ -202,7 +204,7 @@ button {
 .home-section .header .navbar a.register{
     display: block;
     margin-left: 30px;
-    width: 170px;
+    width: 150px;
     height: 43px;
     text-align: center;
     display: grid;
@@ -398,4 +400,30 @@ button {
     .aboutus{
         flex-direction: column;
     }
+
 } */
+
+/* Post Project icon */
+
+.home-section .header .navbar a.postProject{
+    display: flex;
+    gap:5px;
+    margin-left: 30px;
+    width: 140px;
+    height: 43px;
+    text-align: center;
+    align-items:center;
+    place-content: center;
+    background-color: var(--main-color);
+    color: white;
+    font-size: 14;
+    font-weight: 500;
+    border-radius: 7px;
+    text-transform: capitalize;
+    transition: all 0.4s ease;
+}
+
+.home-section .header .navbar a.postProject:hover{
+    background-color: rgb(185, 184, 184);
+    color: white
+}

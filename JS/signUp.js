@@ -112,6 +112,7 @@ document.body.classList.add('loading-active');
       if (response.ok) { 
         if (data.token) {
           localStorage.setItem('authToken', data.token);
+          localStorage.setItem('email', data.email);
           showSuccessMessage('Registration successful!');
           setTimeout(() => {
               window.location.href = "login.html";
@@ -122,7 +123,7 @@ document.body.classList.add('loading-active');
           showSuccessMessage('Registration successful!');
 
           setTimeout(() => {
-              window.location.href = "landingPage.html";
+              window.location.href = "../landingPage.html";
           }, 2000);
         } else {
           console.error('Token not found in response');

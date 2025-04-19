@@ -21,7 +21,7 @@
 <body data-page="landing">
     <div class="home-section">
         <!-- Effects -->
-         <div>
+         <div id="data">
 
          </div>
         <div class="container">
@@ -36,25 +36,28 @@
 
                     <ul class="navbar">
                         <li>
-                            <a href="landingPage.html" class="active">About us</a>
+                            <a href="landingPage.html">About us</a>
                         </li>
                         <li>
-                            <a href="#">Challenges</a>
+                            <a href="#challengesBegin">Challenges</a>
                         </li>
                         <li>
-                            <a href="#">Features</a>
+                            <a href="#featuresBegin">Features</a>
                         </li>
                         <li>
-                            <a href="#">Help</a>
+                            <a href="#helpSection">Help</a>
                         </li>
                         <li>
-                            <a href="#">Post project</a>
+                            <a href="#" class="postProject" id="postProject"><i class="fa-solid fa-plus"></i> Post project</a>
                         </li>
                         <li>
-                            <a id="registerButton" class="register" href="PrePage.html">Register Now</a>
+                            <a id="registerButton" class="register" href="Authentication\PrePage.html">Register</a>
                         </li>
                         <li>
-                            <i class="fa-solid fa-circle-user" id="profileIcon"></i>
+                            <a id="registerButton" class="register" href="Authentication\login.html">LogIn</a>
+                        </li>
+                        <li>
+                            <i style="font-size: 35px;" class="fa-solid fa-circle-user" id="profileIcon"></i>
                         </li>
                         <button  class="close-navBar outer-shadow hover-in-shadow ">
                             X
@@ -86,6 +89,7 @@
                 </div>
             </div>
             <!-- Challenges -->
+            <h1 id="challengesBegin">Challenges in Managing Freelance Projects</h1>
             <div id="challengesSection">
                 <div class="left_boxes">
                     <div class="C1">
@@ -112,50 +116,123 @@
                     </div>
                 </div>
             </div>
+            <br>
             <!-- Client Feautres -->
-             <h1>Client Features</h1>
+             <h1 id="featuresBegin">Key Features for Clients</h1>
              <div class="clientFeatures">
                 <div class="F1">
-                    <div>
-                        <p>
-                            <i></i>
+                    <div class="feature">
+                        <p class="paragraphHeader">
+                            <i class="fa-solid fa-bars-progress"></i>
                             Managed delivery 
                         </p>
+                        <span>End-to-end project management from selecting the best freelancer until project 
+                            delivery</span>
                     </div>
-
-                    <div>
-                        <p>
-                            <i></i>
+                    <div class="feature">
+                        <p class="paragraphHeader">
+                            <i class="fa-solid fa-ranking-star"></i>
                             Quality checks  
                         </p>
+                        <span>check deliverables quality to make sure that the deliverables meet your expectations</span>
                     </div>
-
-                    <div>
-                        <p>
-                            <i></i>
-                            Secure payments 
-                        </p>
-                    </div>
-
-                    <div>
-                        <p>
-                            <i></i>
+                    <div class="feature">
+                        <p class="paragraphHeader">
+                            <i class="fa-solid fa-shield-halved"></i>
                             Project idea protection  
                         </p>
+                        <span>through our abstraction process, we insure that your project idea is safe</span>
                     </div>
-                   <div>
-                    <p>
-                        <i></i>
-                        Free trial
-                    </p>
+                   <div class="feature">
+                        <p class="paragraphHeader">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            Free trial
+                        </p>
+                        <span>enjoy a 2 weeks free trial without and payment required if the result no satisfied you</span>
                    </div>
-
                 </div>
-                
              </div>
-    </div>
-    </div>
+             <br><br>
+             <!-- Freelancer Features -->
+             <h1>Key Features for Freelancers</h1>
+             <div class="clientFeatures">
+                <div class="F1">
+                    <div class="feature">
+                        <p class="paragraphHeader">
+                            <i class="fa-solid fa-sitemap"></i>
+                            Clear Project Specifications
+                        </p>
+                        <span>Receive well-defined project requirements and scope to deliver exactly what clients need.</span>
+                    </div>
+                    <div class="feature">
+                        <p class="paragraphHeader">
+                            <i class="fa-solid fa-wallet"></i>
+                            Secure Payments
+                        </p>
+                        <span>Protected payment through a reliable system that ensures you get paid for your work.</span>
+                    </div>
+                    <div class="feature">
+                        <p class="paragraphHeader">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            Fair Project Distribution  
+                        </p>
+                        <span>Equal opportunities for both new and experienced freelancers to access quality projects.</span>
+                    </div>
+                </div>
+             </div>
+             <!-- Help -->
+              <br><br>
+              <h1>How It Works</h1>
+              <div id="helpSection">
+                <!-- time line start -->
+                <div class="timeline">
+                    <!-- step 1 -->
+                    <div class="timeline-container">
+                      <div class="timeline-item">
+                        <div class="timeline-date">1</div>
+                        <div class="timeline-content">
+                          <h3><i></i> Submit requirements</h3>
+                          <p>Clearly define your project scope and expectations.</p>
+                        </div>
+                      </div>
+                      <!-- step 2 -->
+                      <div class="timeline-item">
+                        <div class="timeline-date">2</div>
+                        <div class="timeline-content">
+                          <h3>Match with Talent</h3>
+                          <p>Get connected with dedicated freelancers perfect for your project.</p>
+                        </div>
+                      </div>
+                      <!-- step3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">3</div>
+                            <div class="timeline-content">
+                                <h3>Track Milestones</h3>
+                                <p>Receive updates and ensure steady progress throughout.</p>
+                            </div>
+                        </div>
+                        <!-- step4 -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">4</div>
+                            <div class="timeline-content">
+                            <h3>Project Delivery</h3>
+                            <p>Get your project completed exactly as you imagined.</p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- end of time line -->
+                </div>
+                <div class="contactus">
+                    <p style="font-weight: bold; font-size: 20px; color:rgba(0, 0, 0, 0.8)">Follow Us </p>
+                    <a><i class="fa-solid fa-phone contactusIcon" ></i></a>
+                    <a><i class="contactusIcon fa-solid fa-paper-plane" class=""></i></a>
+                    <a><img height="40px" width="40px" src="images\twitter.png"></a>
+                </div>
+            </div>
+        </div>
+        <!-- container end -->
     <script src="JS/landing.js"></script>
-
+    
 </body>
 </html>
