@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const profileIcon = document.getElementById('profileIcon');
     const registerButton = document.getElementById('registerButton');
+    const loginButton = document.getElementById('LogInButton');
     const postProject = document.getElementById('postProject');
     if (!profileIcon || !registerButton || !postProject) {
         console.error('Could not find required elements in DOM');
@@ -48,11 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (token) {
             registerButton.style.display = 'none';
+            loginButton.style.display = 'none';
             profileIcon.style.display = 'inline-block';
-
             postProject.style.display = 'inline-block';
         } else {
             registerButton.style.display = 'inline-block';
+            loginButton.style.display = 'inline-block';
             profileIcon.style.display = 'none';
             postProject.style.display = 'none';
         }
