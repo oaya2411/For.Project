@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileIcon = document.getElementById('profileIcon');
     const registerButton = document.getElementById('registerButton');
     const loginButton = document.getElementById('LogInButton');
-    const postProject = document.getElementById('postProject');
     if (!profileIcon || !registerButton || !postProject) {
         console.error('Could not find required elements in DOM');
         return;
@@ -24,9 +23,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const decodedPayload = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
             
             // Parse the JSON payload
-            let displayData = document.getElementById('data');
-            displayData.innerHTML = decodedPayload;
-            return decodedPayload;
+            const payloadObj = JSON.parse(decodedPayload);
+            
+            // Display the complete payload
+            // let displayData = document.getElementById('data');
+            // displayData.innerHTML = decodedPayload;
+            const postProject = document.getElementById('postProject');
+            // let data2 = document.getElementById('data2');
+
+            // Extract the role
+            const role = payloadObj.role;  // Access the role property from the parsed object
+            if(role !== 'ServiceProvider'){
+                // data2.innerHTML += role;
+                postProject.style.display = 'inline-block';
+            }
+            // // Display the role
+            // data2.innerHTML = role;
+            
+            return payloadObj;  // Return the parsed object for further use
         } catch (error) {
             console.error('Error decoding JWT:', error);
             return null;
@@ -48,14 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkAuth() {
         const token = localStorage.getItem('authToken');
         userData = decodeJWT(token);
-        userData.get('')
         if (token) {
             registerButton.style.display = 'none';
             loginButton.style.display = 'none';
             profileIcon.style.display = 'inline-block';
-            if(userData['role'] !== 'ServiceProvider'){
-                postProject.style.display = 'inline-block';
-            }
         } else {
             registerButton.style.display = 'inline-block';
             loginButton.style.display = 'inline-block';

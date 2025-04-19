@@ -1,0 +1,21 @@
+:root {
+    --main-color: #28be97;
+    /* --main-color: rgb(54, 98, 173); */
+
+    --main-text-color: black;
+    --text-color: #777;
+    --bg-color: #e7f7f6;
+    /* --bg-color: rgb(220, 238, 255); */
+    --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+    --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
+    --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+    --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
+  }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: 'Poppins';
+}
