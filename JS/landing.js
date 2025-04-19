@@ -46,17 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return null;
         }
     }
-    
-
-    function storeInLocalStorage(key, data) {
-        try {
-            // Convert data to string if it's an object
-            const value = typeof data === 'string' ? data : JSON.stringify(data);
-            localStorage.setItem(key, value);
-        } catch (error) {
-            console.error('Error storing data in local storage:', error);
-        }
-    }
 
     // Rest of your landing page auth code...
     function checkAuth() {
@@ -77,16 +66,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const timelineItems = document.querySelectorAll('.timeline-item');
   
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+        });
+    }, { threshold: 0.1 });
+    
+    timelineItems.forEach(item => {
+        observer.observe(item);
     });
-  }, { threshold: 0.1 });
-  
-  timelineItems.forEach(item => {
-    observer.observe(item);
-  });
 
     checkAuth();
 });
@@ -122,6 +111,26 @@ function initAuthUI() {
         }
     }
     checkElements();
+
+    document.getElementById('profileIcon').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('.dropdown-content').classList.toggle('show');
+    });
+    
+    // Close the dropdown if clicked outside
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn') && !e.target.matches('.dropbtn *')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    
 }
 
 // Start the process when DOM is ready
