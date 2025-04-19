@@ -47,12 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Rest of your landing page auth code...
     function checkAuth() {
         const token = localStorage.getItem('authToken');
-        decodeJWT(token);
+        userData = decodeJWT(token);
+        userData.get('')
         if (token) {
             registerButton.style.display = 'none';
             loginButton.style.display = 'none';
             profileIcon.style.display = 'inline-block';
-            postProject.style.display = 'inline-block';
+            if(userData['role'] !== 'ServiceProvider'){
+                postProject.style.display = 'inline-block';
+            }
         } else {
             registerButton.style.display = 'inline-block';
             loginButton.style.display = 'inline-block';
