@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return null;
         }
     }
+    
 
     function storeInLocalStorage(key, data) {
         try {
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Rest of your landing page auth code...
     function checkAuth() {
         const token = localStorage.getItem('authToken');
-        
+        decodeJWT(token);
         if (token) {
             registerButton.style.display = 'none';
             loginButton.style.display = 'none';
