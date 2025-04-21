@@ -51,8 +51,8 @@ document.body.classList.add('loading-active');
       if (response.ok) { 
         alert('OTP Sent Succefully, check your mail please');
         localStorage.setItem("email", email);
-        window.location.href = "landingPage.html";
-        window.location.href = "verifyOTP.html"
+        // window.location.href = "landingPage.html";
+        window.location.href = "verifyOTP.html";
        }else{
             console.log('API error:', data.message || 'Unknown error');
             alert('Can not found the mail, ensre about it.');

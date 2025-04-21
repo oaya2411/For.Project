@@ -1,143 +1,178 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Only run this code on landing page
-    if (document.body.getAttribute('data-page') !== 'landing') return;
+    // Only run on landing page if data-page attribute matches
+    if (document.body.getAttribute('data-page') === 'landing') {
+        initializeLandingPage();
+    }
 
-    const profileIcon = document.getElementById('profileIcon');
-    const registerButton = document.getElementById('registerButton');
-    const loginButton = document.getElementById('LogInButton');
-    if (!profileIcon || !registerButton || !postProject) {
-        console.error('Could not find required elements in DOM');
-        return;
+    // Initialize dropdown functionality everywhere it exists
+    initializeDropdown();
+});
+
+function initializeLandingPage() {
+    // Configuration
+    const MAX_INIT_ATTEMPTS = 10;
+    const ATTEMPT_INTERVAL = 100;
+    
+    let attempts = 0;
+    const requiredElements = [
+        'profileIcon', 
+        'registerButton', 
+        'LogInButton',
+        'postProject'
+    ];
+
+    function checkElements() {
+        attempts++;
+        const elements = {};
+        let allFound = true;
+
+        // Check for all required elements
+        requiredElements.forEach(id => {
+            elements[id] = document.getElementById(id);
+            if (!elements[id]) allFound = false;
+        });
+
+        if (allFound) {
+            // All elements found, proceed with initialization
+            setupAuthLogic(elements);
+            setupTimelineAnimation();
+        } else if (attempts < MAX_INIT_ATTEMPTS) {
+            // Try again after delay
+            setTimeout(checkElements, ATTEMPT_INTERVAL);
+        } else {
+            console.error('Could not find all required elements after maximum attempts');
+        }
+    }
+
+    function setupAuthLogic(elements) {
+        const { profileIcon, registerButton, LogInButton, postProject } = elements;
+
+        function updateUI() {
+            const token = localStorage.getItem('authToken');
+            const userData = token ? decodeJWT(token) : null;
+
+            if (token && userData) {
+                // User is logged in
+                registerButton.style.display = 'none';
+                LogInButton.style.display = 'none';
+                profileIcon.style.display = 'inline-block';
+                
+                // Show post project only for specific roles
+                postProject.style.display = userData.role !== 'ServiceProvider' ? 'inline-block' : 'none';
+            } else {
+                // User is not logged in
+                registerButton.style.display = 'inline-block';
+                LogInButton.style.display = 'inline-block';
+                profileIcon.style.display = 'none';
+                postProject.style.display = 'none';
+            }
+        }
+
+        // Set up logout handler
+        const logoutButton = document.getElementById('logout');
+
+        function handleLogout(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation(); // Prevent other click handlers from interfering
+            
+            // Clear authentication data
+            localStorage.clear();
+            
+            // Show loading indicator
+            document.body.classList.add('loading-active');
+            
+            // Redirect after a brief delay to ensure UI updates
+            setTimeout(() => {
+                window.location.href = 'landingPage.html';
+            }, 100);
+        }
+
+        if (logoutButton) {
+            logoutButton.addEventListener('click', handleLogout);
+        }
+
+        // Initial UI update
+        updateUI();
+    }
+
+    function setupTimelineAnimation() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        if (timelineItems.length === 0) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
     }
 
     function decodeJWT(token) {
         try {
-            // Split the token into parts
             const parts = token.split('.');
-            if (parts.length !== 3) {
-                throw new Error('Invalid JWT token');
-            }
-            
-            // Decode the payload (second part)
-            const payload = parts[1];
-            const decodedPayload = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
-            
-            // Parse the JSON payload
-            const payloadObj = JSON.parse(decodedPayload);
-            
-            // Display the complete payload
-            // let displayData = document.getElementById('data');
-            // displayData.innerHTML = decodedPayload;
-            const postProject = document.getElementById('postProject');
-            // let data2 = document.getElementById('data2');
+            if (parts.length !== 3) throw new Error('Invalid JWT format');
 
-            // Extract the role
-            const role = payloadObj.role;  // Access the role property from the parsed object
-            if(role !== 'ServiceProvider'){
-                // data2.innerHTML += role;
-                postProject.style.display = 'inline-block';
-            }
-            // // Display the role
-            // data2.innerHTML = role;
-            
-            return payloadObj;  // Return the parsed object for further use
+            const payload = parts[1];
+            const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+            return JSON.parse(decoded);
         } catch (error) {
-            console.error('Error decoding JWT:', error);
+            console.error('JWT decoding failed:', error);
             return null;
         }
     }
 
-    // Rest of your landing page auth code...
-    function checkAuth() {
-        const token = localStorage.getItem('authToken');
-        userData = decodeJWT(token);
-        if (token) {
-            registerButton.style.display = 'none';
-            loginButton.style.display = 'none';
-            profileIcon.style.display = 'inline-block';
-        } else {
-            registerButton.style.display = 'inline-block';
-            loginButton.style.display = 'inline-block';
-            profileIcon.style.display = 'none';
-            postProject.style.display = 'none';
-        }
+    function showLoadingIndicator() {
+        document.body.classList.add('loading-active');
+        // Add your loader element logic here if needed
     }
-    
-    const timelineItems = document.querySelectorAll('.timeline-item');
-  
-  const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-        });
-    }, { threshold: 0.1 });
-    
-    timelineItems.forEach(item => {
-        observer.observe(item);
-    });
 
-    checkAuth();
-});
-function initAuthUI() {
-    const maxAttempts = 10;
-    let attempts = 0;
-    
-    function checkElements() {
-        attempts++;
-        const profileIcon = document.getElementById('profileIcon');
-        const registerButton = document.getElementById('registerButton');
-        
-        if (profileIcon && registerButton) {
-            // Elements found, proceed with logic
-            function checkAuth() {
-                const token = localStorage.getItem('authToken');
-                
-                if (token) {
-                    registerButton.style.display = 'none';
-                    profileIcon.style.display = 'inline-block';
-                } else {
-                    registerButton.style.display = 'inline-block';
-                    profileIcon.style.display = 'none';
-                }
-            }
-            
-            checkAuth();
-        } else if (attempts < maxAttempts) {
-            // Elements not found yet, try again
-            setTimeout(checkElements, 100);
-        } else {
-            console.error('Could not find required elements after maximum attempts');
-        }
-    }
+    // Start the initialization process
     checkElements();
-
-    document.getElementById('profileIcon').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector('.dropdown-content').classList.toggle('show');
-    });
-    
-    // Close the dropdown if clicked outside
-    window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn') && !e.target.matches('.dropbtn *')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-
-    
 }
 
-// Start the process when DOM is ready
-if (document.body.getAttribute('data-page') === 'landing') {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAuthUI);
-    } else {
-        initAuthUI();
+function initializeDropdown() {
+    const dropdown = document.querySelector('.dropdown');
+    if (!dropdown) return;
+
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
+    const profileIcon = dropdown.querySelector('#profileIcon');
+
+    if (!dropdownContent || !profileIcon) {
+        console.error('Dropdown elements not found');
+        return;
     }
+
+    const logoutLink = document.getElementById('logout');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.clear();
+            window.location.href = 'landingPage.html';
+        });
+    }
+
+    function toggleDropdown(e) {
+        e.preventDefault();
+        e.stopPropagation(); // Prevents window click handler from firing
+        dropdownContent.classList.toggle('show');
+    }
+
+    function closeDropdown(e) {
+        if (!dropdown.contains(e.target)) {
+            dropdownContent.classList.remove('show');
+        }
+    }
+
+    profileIcon.addEventListener('click', toggleDropdown);
+    
+    // This ensures clicks inside the dropdown don't close it
+    dropdownContent.addEventListener('click', e => e.stopPropagation());
+
+    // Clicking anywhere outside the dropdown closes it
+    window.addEventListener('click', closeDropdown);
 }
