@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanZ - Edit Profile</title>
+    <link rel="shortcut icon" href="../images/Social.png" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/clientSignup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 style="font-size: 26px;">FreelanZ</h1>
+    </header>
+    <div id="messageContainer"></div>
+    <form id="form" novalidate>
+        <div class="mainContainer">
+            <p id="role">Edit Your Profile</p>
+             <!-- Full Name -->
+             <div>
+                <div class="name">
+                    <div class="fName">
+                        <label>First name</label><br><input class="i1" required type="text" id="fName" placeholder="Aya">
+                    </div>
+                    <div class="lName">
+                        <label>Last name</label><br><input class="i1" required type="text" id="lName" placeholder="Osama">
+                    </div>
+                </div>
+                    <span id="nameError" class="errormessage">Name must contain at least 5 letters</span>
+            </div>
+            <!-- email -->
+            <div class="email">
+                <label>Edit Email</label><br>
+                <input required type="email" id="email" placeholder="oaya2411@gmail.com">
+                <span id="emailError" class="errormessage">Email must be like: oaya2411@gmail.com</span>
+            </div>
+            
+            <div class="button">
+                <button id="submitBtn_1" type="submit">Edit Profile</button>
+            </div>
+    </form>
+    <script src="../JS/editProfile.js"></script>
+</body>
+</html>

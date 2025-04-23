@@ -110,16 +110,9 @@ document.body.classList.add('loading-active');
       console.log('Full API response:', data); 
   
       if (response.ok) { 
-        if (data.token) {
-          localStorage.setItem('authToken', data.token);
-          localStorage.setItem('email', data.email);
-          showSuccessMessage('Registration successful!');
-          setTimeout(() => {
-              window.location.href = "login.html";
-          }, 2000);
-          // perform next steps
-        } else if (data.data?.token) { // Check nested token
+        if (data.data?.token) { // Check nested token
           localStorage.setItem('authToken', data.data.token);
+          localStorage.setItem('email', email);
           showSuccessMessage('Registration successful!');
 
           setTimeout(() => {
