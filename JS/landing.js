@@ -50,13 +50,13 @@ function initializeLandingPage() {
         function updateUI() {
             const token = localStorage.getItem('authToken');
             const userData = token ? decodeJWT(token) : null;
-
-            if (token && userData) {
+            console.log("----",token);
+            // console.log(userData);
+            if (token) {
                 // User is logged in
                 registerButton.style.display = 'none';
                 LogInButton.style.display = 'none';
                 profileIcon.style.display = 'inline-block';
-                
                 // Show post project only for specific roles
                 postProject.style.display = userData.role !== 'ServiceProvider' ? 'inline-block' : 'none';
             } else {
