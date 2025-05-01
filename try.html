@@ -7,139 +7,168 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- Import Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- Import fontawesome for Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+             .select_btn{
+                display: flex;
+                height: 40px;
+                align-items: center;
+                padding: 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                background-color:#fff;
+                box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.304);
+                margin:30px;
+                justify-content: space-between;
+            }
+
+            .select_btn .btn_text{
+                font-size: 17px;
+                font-weight: 400;
+                color: grey;
+            }
+            .select_btn .arrow_dwn{
+                display: flex;
+                height: 21px;
+                width:21px;
+                color:#fff;
+                font-size: 14px;
+                border-radius: 50%;
+                background-color: #28be97;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s;	
+            }
+
+            .select_btn.open .arrow_dwn i{
+                transform: rotate(-180deg);
+            }
+
+            .list-items{
+                position: relative;
+                margin-left:30px;
+                margin-top:15px;
+                width:85%;
+                border-radius: 8px;
+                padding: 16px;
+                background-color: #fff;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.323);
+                display: none;
+            }
+
+            .select_btn.open ~ .list-items{
+                display: block;
+            }
+
+            .list-items .item{
+                display: flex;
+                align-items: center;
+                list-style: none;
+                height: 50px;
+                cursor:pointer;
+                transition: 0.3s;
+                padding: 0 15px;
+                border-radius: 8px;
+            }
+            .list-items .item:hover{
+                background-color: #28be9620;
+            }
+            .item .checkbox{
+               display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 16px;
+                width: 16px;
+                border-radius: 4px;
+                margin-right: 12px;
+                border: 1.5px solid #c0c0c0;
+                transition: all 0.3s ease-in-out;
+                
+            }
+            .item.checked .checkbox{
+                background-color: #28be968b;
+                border-color: #28be9675;
+            }
+            .checkbox .check-icon{
+                color: #fff;
+                background-color: transparent;
+                font-size: 11px;
+                transform: scale(0);
+                transition: all 0.2s ease-in-out;
+            }
+            .item.checked .check-icon{
+                transform: scale(1);
+            }
+
+            .item-text{
+                background-color: transparent;
+            }
+        </style>
     </head>
     <body>
         <header>
             <p style="font-size: x-large; font-weight: bold;">FreelanZ</p>
         </header>
-        <div id="messageContainer" style="color: rgb(15, 175, 15); align-items: center; text-align: center;"></div>
+        <div id="messageContainer" style="color: rgb(15, 175, 15); align-items: center; text-align: center; "></div>
         <form id="form" novalidate>
             <div class="mainContainer">
                 <p id="role">Post project ^^</p>                
-                <!-- Name -->
-                <div class="Name">
-                    <label>Project Name</label><br>
-                    <input required type="email" id="email">
-                    <span id="emailError" class="errormessage"></span>
-                </div>
-                <!-- Description -->
-                <div class="desc">
-                    <label>Description</label><br>
-                    <input class="AIField" required type="text" id="pass">
-                    <img class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
-                    <!-- <span id="descError" class="errormessage"></span> -->
-                </div>
-                <!-- Target Audience -->
-                <div class="Audience">
-                    <label>Target Audience</label><br>
-                    <input class="AIField" required type="text" >
-                    <img class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
-                    <span id="descError" class="errormessage"></span>
-                </div>
-                <!-- problem statement -->
-                <div class="challengeMotivation">
-                    <label>Challenge Overview</label><br>
-                    <input class="AIField" required type="text" >
-                    <img class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
-                    <span id="descError" class="errormessage"></span>
-                </div>
-                <!-- Payment Prefernces -->
-                <div class="challengeMotivation">
-                    <label>Duartion and your budget</label><br>
-                    <div class="payment" style="display: flex;">
-                        <div > 
-                            <input id="ex" type="number" placeholder="Expected Duration (in months)">
-                        </div>
-                        <div>
-                            <input type="number" placeholder="Min-Budget">
-                        </div>
-                        <div>
-                            <input type="number" placeholder="Max-Budget">
-                        </div>
-                </div>
-                </div>
-                
-                <!-- Industry -->
-                <div class="Industry">
-                    <label for="industry">Sector/Industry</label>
-                    <select id="industry">
-                        <option>FinTech</option>
-                        <option>HealthTech</option>
-                        <option>E-commerce</option>
-                        <option>Retail Tech</option>
-                        <option>AI & Machine Learning</option>
-                        <option>Cybersecurity Tech</option>
-                        <option>EdTech</option>
-                        <option>GamingTech</option>
-                        <option>CloudTech</option>
-                        <option>Blockchain & Web3</option>
-                        <option>Big Data & Analytics</option>
-                        <option>Mobility & Transport Tech</option>
-                        <option>Logistics & Supply Chain Tech</option>
-                        <option>Entertainment & Media Tech</option>
-                        <option>InsurTech</option>
-                        <option>PropTech</option>
-                        <option>AgriTech</option>
-                        <option>EnergyTech & CleanTech</option>
-                        <option>SportsTech</option>
-                        <option>Industry 4.0 & Manufacturing Tech</option>
-                        <option>GovTech</option>
-                    </select>
-                </div>  
-                <!-- level of experience -->
-                <div class="exper">
-                    <label for="experience">Level Of Experience</label>
-                    <select id="experience">
-                        <option>Entry Level</option>
-                        <option>Junior</option>
-                        <option>Mid Level</option>
-                        <option>Senior Level</option>
-                    </select>
-                </div> 
-                <!-- Project Type -->
-                <div class="proType">
-                    <label for="projectType">Type of project</label>
-                    <select id="projectType">
-                        <option>Web Development</option>
-                        <option>Mobile Development ios</option>
-                        <option>Mobile Development android</option>
-                        <option>Mobile Development flutter</option>
-                        <option>UI/UX Design</option>
-                    </select>
-                </div> 
                 <!-- Tech Stack -->
                 <div class="techStack">
-                    <label for="tech_stack">Tech Stack</label>
-                    <select id="tech_stack">
-                        <option value="javascript">JavaScript</option>
-                        <option value="python">Python</option>
-                        <option value="flutter">Flutter</option>
-                        <option value="reactjs">React</option>
-                        <option value="android">Android</option>
-                    </select>
-                </div> 
-                <!--  -->
+                    <div class="select_btn">
+                        <span class="btn_text">Select Language</span>
+                        <span class="arrow_dwn">
+                            <i class="fa-solid fa-angle-down" style="background-color: transparent; color:white"> </i>
+                        </span>
+                    </div>
+                    <ul class="list-items">
+                        <!-- first item -->
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">HTML & CSS</span>
 
-                <!--  -->
-                <!-- <label for="tags">Choose tags:</label>
-                <select id="tags" multiple>
-                    <option value="javascript" selected>JavaScript</option>
-                    <option value="python" selected>Python</option>
-                    <option value="flutter">Flutter</option>
-                    <option value="reactjs">React</option>
-                    <option value="android">Android</option>
-                </select> -->
-                <!--  -->
+                        </li>
+                        <!-- second item -->
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">Bootstrap</span>
+                        </li>
+                    </ul>
+                </div> 
                 <div class="button">
                     <button id="submitBtn_1" type="submit">Post Project</button>
                 </div>  
             </div>
         </form>
-        <script src="../JS/prePage.js"></script>
-        <!-- <script src="../JS/showpassword.js"></script> -->
-        <!-- <script src="../JS/signUp.js"></script> -->
-        <script src="../JS/landing.js"></script>
-       
-            
+        <script>
+            const selectBtn = document.querySelector(".select_btn"),
+                items = document.querySelectorAll(".item");
+            selectBtn.addEventListener("click", () => {
+                selectBtn.classList.toggle("open");
+            });
+            items.forEach(item => {
+                item.addEventListener("click", () => {
+                    item.classList.toggle("checked");
+                    let checked = document.querySelectorAll(".checked"),
+                        btnText = document.querySelector(".btn_text");
+                        if(checked && checked.length > 0){
+                            btnText.innerText = `${checked.length} Selected`;
+                        }else{
+                            btnText.innerText = "Select Language";
+                        }
+                });
+            })
+        </script>
+        <!-- <script src="../JS/dropDownList.js"></script>     -->
     </body>
 </html>

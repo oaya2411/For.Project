@@ -113,6 +113,7 @@ document.body.classList.add('loading-active');
         if (data.data?.token) { // Check nested token
           localStorage.setItem('authToken', data.data.token);
           localStorage.setItem('email', email);
+          localStorage.setItem('status', false);
           showSuccessMessage('Registration successful!');
 
           setTimeout(() => {

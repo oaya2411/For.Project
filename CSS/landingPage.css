@@ -493,7 +493,6 @@ h1{
     position: relative; /* This ensures the absolute positioning inside works correctly */
 }
 
-
 .dropdown-content.show {
     display: block;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.673);
@@ -516,4 +515,13 @@ h1{
     font-size: 22px;
 }
 
+#createProfile{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    padding:20px;
+    width:200px;
+    /* justify-items: ; */
+}
 

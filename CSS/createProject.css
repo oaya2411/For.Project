@@ -198,3 +198,7 @@ body.loading-active {
     background-color: #9acb93;
      border-radius: 30px;
 }
+
+.firstItem{
+    color:grey;
+}

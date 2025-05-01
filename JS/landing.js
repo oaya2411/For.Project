@@ -18,7 +18,9 @@ function initializeLandingPage() {
         'profileIcon', 
         'registerButton', 
         'LogInButton',
-        'postProject'
+        'postProject',
+        'createProfile',
+        'profileLink'
     ];
 
     function checkElements() {
@@ -29,66 +31,116 @@ function initializeLandingPage() {
         // Check for all required elements
         requiredElements.forEach(id => {
             elements[id] = document.getElementById(id);
-            if (!elements[id]) allFound = false;
+            if (!elements[id] && id !== 'profileItem') { // Make profileItem optional
+                console.warn(`Element with ID ${id} not found`);
+                allFound = false;
+            }
         });
 
-        if (allFound) {
-            // All elements found, proceed with initialization
+        if (allFound || attempts >= MAX_INIT_ATTEMPTS) {
+            // Proceed with initialization even if not all elements are found
             setupAuthLogic(elements);
             setupTimelineAnimation();
-        } else if (attempts < MAX_INIT_ATTEMPTS) {
+        } else {
             // Try again after delay
             setTimeout(checkElements, ATTEMPT_INTERVAL);
-        } else {
-            console.error('Could not find all required elements after maximum attempts');
         }
     }
 
     function setupAuthLogic(elements) {
-        const { profileIcon, registerButton, LogInButton, postProject } = elements;
+        const {
+            profileIcon, 
+            registerButton, 
+            LogInButton, 
+            postProject, 
+            createProfile, 
+            profileLink
+        } = elements;
 
+        // Ensure elements exist before trying to modify them
+        function safeDisplay(element, display) {
+            if (element) element.style.display = display;
+        }
         function updateUI() {
             const token = localStorage.getItem('authToken');
             const userData = token ? decodeJWT(token) : null;
-            console.log("----",token);
-            // console.log(userData);
-            if (token) {
+            const status = localStorage.getItem('status');
+            console.log(userData);
+            console.log("Auth token:", token);
+            console.log("Userdata:", userData);
+
+            if (token && userData) {
                 // User is logged in
-                registerButton.style.display = 'none';
-                LogInButton.style.display = 'none';
-                profileIcon.style.display = 'inline-block';
+                safeDisplay(registerButton, 'none');
+                safeDisplay(LogInButton, 'none');
+                safeDisplay(profileIcon, 'inline-block');
+                
                 // Show post project only for specific roles
-                postProject.style.display = userData.role !== 'ServiceProvider' ? 'inline-block' : 'none';
+                const shouldShowPostProject = userData.role && userData.role !== 'ServiceProvider';
+                
+                // Handle profile completion status
+                if (status === true || status === 'true') {
+                    safeDisplay(createProfile, 'none');
+                    safeDisplay(profileLink, 'inline-block');
+                    safeDisplay(postProject, shouldShowPostProject ? 'inline-block' : 'none');
+                } else {
+                    safeDisplay(createProfile, 'flex');
+                    safeDisplay(profileLink, 'none');
+                    safeDisplay(postProject, 'none');
+                }
             } else {
                 // User is not logged in
-                registerButton.style.display = 'inline-block';
-                LogInButton.style.display = 'inline-block';
-                profileIcon.style.display = 'none';
-                postProject.style.display = 'none';
+                safeDisplay(registerButton, 'inline-block');
+                safeDisplay(LogInButton, 'inline-block');
+                safeDisplay(profileIcon, 'none');
+                safeDisplay(postProject, 'none');
+                safeDisplay(createProfile, 'none');
+                safeDisplay(profileLink, 'none');
             }
+        }
+
+        // Add click handler for createProfile
+        if (createProfile) {
+            createProfile.addEventListener('click', function(e) {
+                e.preventDefault();
+                const token = localStorage.getItem('authToken');
+                const userData = token ? decodeJWT(token) : null;
+                // Show loading indicator
+                document.body.classList.add('loading-active');
+                
+                // Redirect to profile creation page
+                // You can change this path to whatever your profile creation page is
+                setTimeout(() => {
+                    if(userData.role === "client"){
+                        window.location.href = 'createClientAccount.html';
+                    }else{
+                        window.location.href = 'createFreelancerAccount.html'; // Update this path
+                    }
+                }, 100);
+            });
         }
 
         // Set up logout handler
         const logoutButton = document.getElementById('logout');
-
-        function handleLogout(e) {
-            e.preventDefault();
-            e.stopImmediatePropagation(); // Prevent other click handlers from interfering
+        if (logoutButton && !logoutButton.hasListener) {
+            function handleLogout(e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                
+                // Clear authentication data
+                localStorage.clear();
+                
+                // Show loading indicator
+                document.body.classList.add('loading-active');
+                
+                // Redirect after a brief delay
+                setTimeout(() => {
+                    window.location.href = 'landingPage.html';
+                }, 100);
+            }
             
-            // Clear authentication data
-            localStorage.clear();
-            
-            // Show loading indicator
-            document.body.classList.add('loading-active');
-            
-            // Redirect after a brief delay to ensure UI updates
-            setTimeout(() => {
-                window.location.href = 'landingPage.html';
-            }, 100);
-        }
-
-        if (logoutButton) {
             logoutButton.addEventListener('click', handleLogout);
+            logoutButton.hasListener = true; // Mark as having listener
         }
 
         // Initial UI update
@@ -114,8 +166,9 @@ function initializeLandingPage() {
 
     function decodeJWT(token) {
         try {
+            if (!token) return null;
             const parts = token.split('.');
-            if (parts.length !== 3) throw new Error('Invalid JWT format');
+            if (parts.length !== 3) return null;
 
             const payload = parts[1];
             const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
@@ -124,11 +177,6 @@ function initializeLandingPage() {
             console.error('JWT decoding failed:', error);
             return null;
         }
-    }
-
-    function showLoadingIndicator() {
-        document.body.classList.add('loading-active');
-        // Add your loader element logic here if needed
     }
 
     // Start the initialization process
@@ -147,18 +195,11 @@ function initializeDropdown() {
         return;
     }
 
-    const logoutLink = document.getElementById('logout');
-    if (logoutLink) {
-        logoutLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            localStorage.clear();
-            window.location.href = 'landingPage.html';
-        });
-    }
+    // Don't duplicate logout handler here - it's handled in setupAuthLogic
 
     function toggleDropdown(e) {
         e.preventDefault();
-        e.stopPropagation(); // Prevents window click handler from firing
+        e.stopPropagation();
         dropdownContent.classList.toggle('show');
     }
 
@@ -170,9 +211,6 @@ function initializeDropdown() {
 
     profileIcon.addEventListener('click', toggleDropdown);
     
-    // This ensures clicks inside the dropdown don't close it
     dropdownContent.addEventListener('click', e => e.stopPropagation());
-
-    // Clicking anywhere outside the dropdown closes it
     window.addEventListener('click', closeDropdown);
 }

@@ -1,39 +1,128 @@
-const nameRegex = /^(?=(?:.*[a-zA-Z]){5,})[a-zA-Z0-9_ ]+$/;
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[._%+-/!#@$^&*])[A-Za-z\d._%+-/!#@$^&*]{8,}$/;
-
 const form = document.getElementById('form');
 const errorMessages = {
   name: document.getElementById('nameError'),
-  email: document.getElementById('emailError'),
-  pass: document.getElementById('passError'),
-  repass: document.getElementById('repassError')
+  overview: document.getElementById('overviewError'),
+  description: document.getElementById('descError'),
+  audience: document.getElementById('targetAudienceError'),
+  problem: document.getElementById('problemError'),
+  detaitls: document.getElementById('detailsError'),
+  industry: document.getElementById('industryError'),
+  // exp: document.getElementById('experError'),
+  proType: document.getElementById('proType'),
+  tech: document.getElementById('techStackError'),
 };
+
+// variables
+const selectBtn = document.querySelector(".select_btn"),
+      btnText = document.querySelector(".btn_text"),
+      techStackContainer = document.querySelector(".list-items"); // Fixed selector (was .list_items)
+
+let selectedTechs = [];
+
+function createTechItem(tech) {
+    const li = document.createElement('li');
+    li.className = 'item';
+
+    li.innerHTML = `
+      <span class="checkbox">
+        <i class="fa-solid fa-check check-icon"></i>
+      </span>
+      <span class="item-text">${tech.name}</span>
+    `;
+
+    li.addEventListener("click", () => toggleTechSelection(li, tech.name));
+    return li;
+}
+
+function toggleTechSelection(li, techName) {
+    li.classList.toggle("checked");
+
+    if (li.classList.contains("checked")) {
+        selectedTechs.push(techName);
+    } else {
+        selectedTechs = selectedTechs.filter(item => item !== techName);
+    }
+
+    updateButtonText();
+}
+
+function updateButtonText() {
+    if (selectedTechs.length > 0) {
+        btnText.innerText = `${selectedTechs.length} Selected`;
+    } else {
+        btnText.innerText = "Select Language";
+    }
+}
+
+function loadTechStacks() {
+    fetch('https://api.stackexchange.com/2.3/tags?site=stackoverflow&sort=popular&order=desc&pagesize=100&page=1')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Clear existing items
+            techStackContainer.innerHTML = '';
+            
+            // Add new items
+            data.items.forEach(tag => {
+                const tech = { name: tag.name }; // Format to match your createTechItem function
+                const techItem = createTechItem(tech);
+                techStackContainer.appendChild(techItem);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching tech stacks:', error);
+            // Optionally show error message to user
+            techStackContainer.innerHTML = '<li class="error">Failed to load tech stacks</li>';
+        });
+}
+
+// Toggle dropdown
+selectBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent immediate closing
+    selectBtn.classList.toggle("open");
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", () => {
+    selectBtn.classList.remove("open");
+});
+
+// Prevent dropdown from closing when clicking inside it
+techStackContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
+
+// Load tech stacks when page loads
+loadTechStacks();
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
   let isValid = true;
+  const experienceField = document.getElementById('experience').value;
 
   // Get form values
-  let role = document.getElementById('role').innerHTML;
-  const fName = document.getElementById('fName').value.trim();
-  const lName = document.getElementById('lName').value.trim();
-  const name = `${fName} ${lName}`;
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('pass').value;
-  const repassword = document.getElementById('repass').value;
-
-  if(role.includes('hire')){
-    role = 'client';
-  }else{
-    role = 'ServiceProvider';
-  }
+  const name = document.getElementById('email').value.trim();
+  const overview = document.getElementById('pass').value;
+  const description = document.getElementById('desc').value;
+  const audience = document.getElementById('audience').value;
+  const problem = document.getElementById('problem').value;
+  const expected = document.getElementById('ex').value;
+  const min = document.getElementById('min-budget').value;
+  const max = document.getElementById('max-budget').value;
+  const industry = document.getElementById('industry').value;
+  const experience = experienceField !== "" ? experienceField : 'Not Selected any one';
+  const projectType = document.getElementById('projectType').value;
+  const techStacks = document.getElementsByClassName('item checked').value;
 
   // Reset all error messages
   Object.values(errorMessages).forEach(el => el.style.display = 'none');
 
   // Validation functions
-  const showError = (field, message, duration = 5000) => {
+  const showError = (field, message, duration = 20000) => {
     errorMessages[field].textContent = message;
     errorMessages[field].style.display = 'block';
     if (duration) setTimeout(() => errorMessages[field].style.display = 'none', duration);
@@ -41,22 +130,23 @@ form.addEventListener("submit", async function(e) {
   };
 
   // Field validations
-  if (!fName || !lName) showError('name', 'Both first and last names are required');
-  else if (!nameRegex.test(name)) showError('name', 'Name must contain at least 5 letters', 5000);
+  if (!name) showError('name', 'name of the project is required');
+  // else if (!nameRegex.test(name)) showError('name', 'Name must contain at least 5 letters', 5000);
 
-  if (!email) showError('email', 'Email is required');
-  else if (!emailRegex.test(email)) showError('email', 'Email must be like: example@gmail.com', 5000);
+  if (!overview) showError('overview', 'overview is required');
+  // else if (!emailRegex.test(email)) showError('email', 'Email must be like: example@gmail.com', 5000);
 
-  if (!password) showError('pass', 'Password is required');
-  else if (!passwordRegex.test(password)) {
-    errorMessages.pass.innerHTML = 'Password must contain at least 8 characters <br> Including Upper and lower case letters <br>Numbers and special characters,too';
-    errorMessages.pass.style.display = 'block';
-    setTimeout(() => errorMessages.pass.style.display = 'none', 5000);
-    isValid = false;
-  }
-
-  if (!repassword) showError('repass', 'Please re-enter your password');
-  else if (repassword !== password) showError('repass', "Passwords don't match", 5000);
+  if (!description) showError('description', 'description is required');
+  if (!audience) showError('audience', 'Target Audience is required');
+  if (!problem) showError('problem', 'Challenge overview is required');
+  if (!industry) showError('industry', 'Industry is required');
+  if(!min || !max || !expected) showError('detaitls', 'Those 3 fields are required')
+  // if (!min) showError('detaitls', 'Min budget is required');
+  // if (!max) showError('detaitls', 'max budget is required');
+  // if (!expected) showError('detaitls', 'Expected duration is required');
+  // if (!experience) showError('audience', 'Audience is required');
+  if (!projectType) showError('proType', 'Project Type is required');
+  // if (!techStacks) showError('tech', 'TechStacks are required');
 
   function showSuccessMessage(messageText) {
     const container = document.getElementById('messageContainer');
@@ -79,8 +169,8 @@ form.addEventListener("submit", async function(e) {
 
   // Form submission
   if (isValid) {
-    let url = 'https://for-developers.vercel.app/api/v1/auth/signup';
-  
+    let url = 'https://for-developers.vercel.app/api/v1/project';
+    const token = localStorage.getItem("authToken");
     const loader = document.createElement('div');
     loader.id = 'loader';
     loader.innerHTML = `
@@ -95,14 +185,22 @@ document.body.classList.add('loading-active');
       const response = await fetch(url, {
         method: 'POST',
         headers: {  
-          'Content-Type': 'application/json' 
+          'Content-Type': 'application/json' ,
+          'token': token,
         },
         body: JSON.stringify({
-          "fullName": name,
-          "email": email,
-          "password": password,
-          "rePassword": repassword,
-          "role": role,
+            "name": name,
+            "description": description,
+            "duration": expected,
+            "industry": industry,
+            "minBudget": min,
+            "maxBudget": max,
+            // "currency": "EGP",
+            "levelOfExperience": experience , // Optional, but included here
+            "projectType": projectType,
+            "techStack": selectedTechs,
+            "targetAudience":audience,
+            "problemStatement": problem,
         })
       });
   
@@ -110,20 +208,15 @@ document.body.classList.add('loading-active');
       console.log('Full API response:', data); 
   
       if (response.ok) { 
-        if (data.data?.token) { // Check nested token
-          localStorage.setItem('authToken', data.data.token);
-          localStorage.setItem('email', email);
-          showSuccessMessage('Registration successful!');
-
-          setTimeout(() => {
-              window.location.href = "../landingPage.html";
-          }, 2000);
-        } else {
-          console.error('Token not found in response');
-        }
+          showSuccessMessage('Success process');
+          const m = document.createElement('p');
+          m.innerHTML = data.data;
+          // setTimeout(() => {
+          //     window.location.href = "../landingPage.html";
+          // }, 2000);
       } else {
-        console.error('API error:', data.message || 'Unknown error');
-        alert('Registration failed as this mail used before try to log-in');
+        console.log('API error:', data.message || 'Unknown error');
+        alert('Ensure that you have completed your profile first please!');
       }
         // When loading is complete
         document.body.removeChild(loader);
