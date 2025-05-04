@@ -12,6 +12,9 @@ const errorMessages = {
   tech: document.getElementById('techStackError'),
 };
 
+
+
+
 // variables
 const selectBtn = document.querySelector(".select_btn"),
       btnText = document.querySelector(".btn_text"),
@@ -195,7 +198,6 @@ document.body.classList.add('loading-active');
             "industry": industry,
             "minBudget": min,
             "maxBudget": max,
-            // "currency": "EGP",
             "levelOfExperience": experience , // Optional, but included here
             "projectType": projectType,
             "techStack": selectedTechs,

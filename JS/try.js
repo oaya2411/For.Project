@@ -403,156 +403,371 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// validate data function
+
+
+
 async function validateData(e) {
-    e.preventDefault();
-    let isValid = true;
-    const DEFAULT_SELECT_VALUE = 'firstItem';
+  e.preventDefault();
+  let isValid = true;
+  const DEFAULT_SELECT_VALUE = 'firstItem';
 
-    // Get data values with corrected IDs
-    const title = document.getElementById('titleInput').value.trim();
-    const portfolio = document.getElementById('portfolioInput').value.trim();
-    const phone = document.getElementById('phonenumber').value.trim();
-    const country = document.getElementById('countries').value;
-    const city = document.getElementById('cities').value;
-    const experience = document.getElementById('experienceInput')?.value;
-    const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
-    
-    // // Get dropdown selections
-    const techStack = dropdowns.techStack.getSelectedItems();
-    const payment = dropdowns.payment.getSelectedItems();
-    const primaryField = dropdowns.primaryField.getSelectedItems();
-    const industry = dropdowns.industry.getSelectedItems();
-    const projectsPrefered = dropdowns.projectsPrefered.getSelectedItems();
-    const projectSize = dropdowns.projectSize.getSelectedItems();
-
-    // Reset all error messages
-    Object.values(errorMessages).forEach(el => {
-        if (el) el.style.display = 'none';
-    });
-    console.log(techStack);
-    // Validation functions
-    const showError = (field, message, duration = 5000) => {
-        if (errorMessages[field]) {
-            errorMessages[field].textContent = message;
-            errorMessages[field].style.display = 'block';
-            if (duration) setTimeout(() => {
-                if (errorMessages[field]) errorMessages[field].style.display = 'none';
-            }, duration);
-        }
-        isValid = false;
-    };
-
-      // Required field validation
-    if (!phone) showError('phone', 'Phone number is required');
-    else if (!phoneRegex.test(phone)) showError('phone', 'Phone number must be 11-14 digits');
-
-    if (!title) showError('title', 'Title is required');
-    if (!portfolio) showError('portfolio', 'portfolio is required');
-    else if(!urlRegex.test(portfolio)) showError('portfolio', 'portfolio url is not correct');
-    
-    if (!country || country === 'firstItem') 
-      showError('countries', 'Country is required');
-    
-    if (!city || city === 'firstItem') 
-      showError('cities', 'City is required');
-    
-    if (!experience) showError('experience', 'Experience is required');
-    else if (isNaN(experience) || experience < 0) 
-      showError('experience', 'Experience must be a positive number');
-
-    if (!selectedRole) showError('role', 'Please select your service provider role');
-      
-    // Dropdown validations
-    if (techStack.length === 0) 
-      showError('techStack', 'Please select at least one tech stack');
-    
-    if (payment.length === 0) 
-      showError('payment', 'Please select at least one payment preference');
-    
-    if (primaryField.length === 0) 
-      showError('primaryField', 'Please select at least one primary field');
-    
-    if (industry.length === 0) 
-      showError('industry', 'Please select at least one industry');
-    if (projectsPrefered.length === 0) 
-      showError('projectTypePrefered', 'Please select at least one choice');
-    if (projectSize.length === 0) 
-      showError('projectSizePrefered', 'Please select at least one choice');
-
-    // Submit if valid
-  if (isValid) {
-      
-  let url = "https://for-developers.vercel.app/api/v1/ServiceProvider/edit-profile";
+  // Get original values from display
+  const originalPhone = document.getElementById('phoneNumber').textContent.trim();
+  const originalTitle = document.getElementById('title').textContent.trim();
+  const originalPortfolio = document.getElementById('portfolio').textContent.trim();
+  const originalCountry = document.getElementById('Country').textContent.trim();
+  const originalCity = document.getElementById('City').textContent.trim();
+  const originalExperience = document.getElementById('experience').textContent.trim();
+  const originalRole = document.getElementById('role').textContent.trim();
   
+  // Get original dropdown values (these would need to be stored or retrieved differently)
+  // For simplicity, we'll assume they're stored in data attributes or similar
   
-  // get token and loader
-  const token = localStorage.getItem('authToken');
-  const loader = document.createElement('div');
-  console.log("phone", phone);
-  loader.id = 'loader';
-  loader.innerHTML = `
-      <div class="spinner"></div>
-      <p class="loading-text">Loading...</p>
-  `;
-  document.body.appendChild(loader);
-  document.body.classList.add('loading-active');
-
-  try {
-      const response = await fetch(url, {
-        method: 'PUT',
-        headers: {  
-          'Content-Type': 'application/json',
-          'token': token,
-        },
-        body: JSON.stringify({
-          phoneNumber: phone,
-          title: title,
-          portfolio: portfolio,
-          country: country,
-          city: city,
-          experience: parseInt(experience),
-          industry: industry,
-          paymentPreference: payment,
-          typeOfServiceProvider: document.querySelector('input[name="role"]:checked')?.value || "freelancer",
-          keySkills: techStack,
-          primaryField: primaryField,
-          typesOfProjectsPreferred: projectsPrefered,
-          projectSizePreferred: projectSize,
-        })
-      });
+  // Get form values
+  const phone = document.getElementById('phonenumber')?.value.trim();
+  const title = document.getElementById('titleInput')?.value.trim();
+  const portfolio = document.getElementById('portfolioInput')?.value.trim();
+  const country = document.getElementById('countries')?.value;
+  const city = document.getElementById('cities')?.value;
+  const experience = document.getElementById('experienceInput')?.value;
+  const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
   
-      const responseData = await response.json();
-      console.log('Full API response:', responseData); 
-      
-      if (response.ok) { 
-          alert("Profile updated successfully!");
-          localStorage.setItem('status', true);
-          infoSection.style.display = 'block';
-          editSection.style.display = 'none';
-          setTimeout(() => {
-              window.location.href = "../landingPage.html";
-          }, 3000);
+  // Get dropdown selections
+  const techStack = dropdowns.techStack.getSelectedItems();
+  const payment = dropdowns.payment.getSelectedItems();
+  const primaryField = dropdowns.primaryField.getSelectedItems();
+  const industry = dropdowns.industry.getSelectedItems();
+  const projectsPrefered = dropdowns.projectsPrefered.getSelectedItems();
+  const projectSize = dropdowns.projectSize.getSelectedItems();
 
-      } else {
-        console.error('API error:', responseData.message || 'Unknown error');
-        alert(responseData.message || 'Failed to update profile');
+  // Reset all error messages
+  Object.values(errorMessages).forEach(el => {
+      if (el) el.style.display = 'none';
+  });
+
+  // Create payload with only changed fields
+  const payload = {};
+
+  // Validation functions
+  const showError = (field, message, duration = 7000) => {
+      if (errorMessages[field]) {
+          errorMessages[field].textContent = message;
+          errorMessages[field].style.display = 'block';
+          if (duration) setTimeout(() => {
+              if (errorMessages[field]) errorMessages[field].style.display = 'none';
+          }, duration);
       }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      alert('Something went wrong. Please try again!');
-    } finally {
-      document.body.removeChild(loader);
-      document.body.classList.remove('loading-active');
-    }
+      isValid = false;
+  };
 
+  // Phone validation (only if changed)
+  if (phone && phone !== originalPhone) {
+      if (!phoneRegex.test(phone)) {
+          showError('phone', 'Phone number must be 11-14 digits');
+      } else {
+          payload.phoneNumber = phone;
+      }
+  }
+
+  // Title validation (only if changed)
+  if (title && title !== originalTitle) {
+      if (!title) {
+          showError('title', 'Title is required');
+      } else {
+          payload.title = title;
+      }
+  }
+
+  // Portfolio validation (only if changed)
+  if (portfolio && portfolio !== originalPortfolio) {
+    console.log('entered')
+      if (!portfolio) {
+        console.log('entered 1')
+          showError('portfolio', 'portfolio is required');
+      } else if (!urlRegex.test(portfolio)) {
+        console.log('entered q');
+        console.log("Does errorMessages.portfolio exist?", !!errorMessages.portfolio);
+        console.log("Error element:", errorMessages.portfolio);
+          showError('portfolio', 'portfolio url is not correct');
+      } else {
+          payload.portfolio = portfolio;
+      }
+  }
+  // console.log(payload);
+
+  // Country validation (only if changed)
+  if (country && country !== 'firstItem' && country !== originalCountry) {
+      payload.country = country;
+  } else if (!country || country === 'firstItem') {
+      // Only validate if field was touched but not properly selected
+      if (document.getElementById('countries').classList.contains('touched')) {
+          showError('countries', 'Country is required');
+      }
+  }
+
+  // City validation (only if changed)
+  if (city && city !== 'firstItem' && city !== originalCity) {
+      payload.city = city;
+  } else if (!city || city === 'firstItem') {
+      // Only validate if field was touched but not properly selected
+      if (document.getElementById('cities').classList.contains('touched')) {
+          showError('cities', 'City is required');
+      }
+  }
+
+  // Experience validation (only if changed)
+  if (experience && experience !== originalExperience) {
+      if (!experience) {
+          showError('experience', 'Experience is required');
+      } else if (isNaN(experience) || experience < 0) {
+          showError('experience', 'Experience must be a positive number');
+      }else if (isNaN(experience) || experience >= 40) {
+        showError('experience', 'Experience is between 0 to 40');
+    } else {
+          payload.experience = parseInt(experience);
+      }
+  }
+
+  // Role validation (only if changed)
+  if (selectedRole && selectedRole !== originalRole) {
+      payload.typeOfServiceProvider = selectedRole;
+  }
+
+  // Dropdown validations (only validate if selections were made)
+  if (techStack.length > 0) {
+      payload.keySkills = techStack;
+  }
+  if (payment.length > 0) {
+      payload.paymentPreference = payment;
+  }
+  if (primaryField.length > 0) {
+      payload.primaryField = primaryField;
+  }
+  if (industry.length > 0) {
+      payload.industry = industry;
+  }
+  if (projectsPrefered.length > 0) {
+      payload.typesOfProjectsPreferred = projectsPrefered;
+  }
+  if (projectSize.length > 0) {
+      payload.projectSizePreferred = projectSize;
+  }
+
+  // Check if any fields were actually changed
+  if (Object.keys(payload).length === 0 && isValid) {
+      alert("No changes were made to update.");
+      infoSection.style.display = 'block';
+      editSection.style.display = 'none';
+      return;
+  }
+
+  // If validations passed, submit the data
+  if (isValid) {
+      const loader = document.createElement('div');
+      loader.id = 'loader';
+      loader.innerHTML = `
+          <div class="spinner"></div>
+          <p class="loading-text">Loading...</p>
+      `;
+      document.body.appendChild(loader);
+      document.body.classList.add('loading-active');
+
+      try {
+          const token = localStorage.getItem('authToken');
+          const response = await fetch("https://for-developers.vercel.app/api/v1/ServiceProvider/edit-profile", {
+              method: 'PUT',
+              headers: {  
+                  'Content-Type': 'application/json',
+                  'token': token,
+              },
+              body: JSON.stringify(payload)
+          });
+
+          const responseData = await response.json();
+          
+          if (response.ok) { 
+              alert("Profile updated successfully!");
+              localStorage.setItem('status', true);
+              infoSection.style.display = 'block';
+              editSection.style.display = 'none';
+              setTimeout(() => {
+                  window.location.href = "../landingPage.html";
+              }, 3000);
+          } else {
+              console.error('API error:', responseData.message || 'Unknown error');
+              alert(responseData.message || 'Failed to update profile');
+          }
+      } catch (error) {
+          console.error('Fetch error:', error);
+          alert('Something went wrong. Please try again!');
+      } finally {
+          document.body.removeChild(loader);
+          document.body.classList.remove('loading-active');
+      }
+  }
 }
-}
+
+// Add event listeners to track touched fields
+document.getElementById('countries').addEventListener('change', function() {
+  this.classList.add('touched');
+});
+document.getElementById('cities').addEventListener('change', function() {
+  this.classList.add('touched');
+});
 
 const submitButton = document.getElementById('submit');
-submitButton.addEventListener("click", (e)=>{
-    if(validateData(e)){
-        // submitData();
-        console.log('validateSuccessfully');
-    }
-})
+submitButton.addEventListener("click", validateData);
+
+// validate data function
+// async function validateData(e) {
+//     e.preventDefault();
+//     let isValid = true;
+//     const DEFAULT_SELECT_VALUE = 'firstItem';
+
+//     // Get data values with corrected IDs
+//     const title = document.getElementById('titleInput').value.trim();
+//     const portfolio = document.getElementById('portfolioInput').value.trim();
+//     const phone = document.getElementById('phonenumber').value.trim();
+//     const country = document.getElementById('countries').value;
+//     const city = document.getElementById('cities').value;
+//     const experience = document.getElementById('experienceInput')?.value;
+//     const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+    
+//     // // Get dropdown selections
+//     const techStack = dropdowns.techStack.getSelectedItems();
+//     const payment = dropdowns.payment.getSelectedItems();
+//     const primaryField = dropdowns.primaryField.getSelectedItems();
+//     const industry = dropdowns.industry.getSelectedItems();
+//     const projectsPrefered = dropdowns.projectsPrefered.getSelectedItems();
+//     const projectSize = dropdowns.projectSize.getSelectedItems();
+
+//     // Reset all error messages
+//     Object.values(errorMessages).forEach(el => {
+//         if (el) el.style.display = 'none';
+//     });
+//     console.log(techStack);
+//     // Validation functions
+//     const showError = (field, message, duration = 5000) => {
+//         if (errorMessages[field]) {
+//             errorMessages[field].textContent = message;
+//             errorMessages[field].style.display = 'block';
+//             if (duration) setTimeout(() => {
+//                 if (errorMessages[field]) errorMessages[field].style.display = 'none';
+//             }, duration);
+//         }
+//         isValid = false;
+//     };
+
+//       // Required field validation
+//     if (!phone) showError('phone', 'Phone number is required');
+//     else if (!phoneRegex.test(phone)) showError('phone', 'Phone number must be 11-14 digits');
+
+//     if (!title) showError('title', 'Title is required');
+//     if (!portfolio) showError('portfolio', 'portfolio is required');
+//     else if(!urlRegex.test(portfolio)) showError('portfolio', 'portfolio url is not correct');
+    
+//     if (!country || country === 'firstItem') 
+//       showError('countries', 'Country is required');
+    
+//     if (!city || city === 'firstItem') 
+//       showError('cities', 'City is required');
+    
+//     if (!experience) showError('experience', 'Experience is required');
+//     else if (isNaN(experience) || experience < 0) 
+//       showError('experience', 'Experience must be a positive number');
+
+//     if (!selectedRole) showError('role', 'Please select your service provider role');
+      
+//     // Dropdown validations
+//     if (techStack.length === 0) 
+//       showError('techStack', 'Please select at least one tech stack');
+    
+//     if (payment.length === 0) 
+//       showError('payment', 'Please select at least one payment preference');
+    
+//     if (primaryField.length === 0) 
+//       showError('primaryField', 'Please select at least one primary field');
+    
+//     if (industry.length === 0) 
+//       showError('industry', 'Please select at least one industry');
+//     if (projectsPrefered.length === 0) 
+//       showError('projectTypePrefered', 'Please select at least one choice');
+//     if (projectSize.length === 0) 
+//       showError('projectSizePrefered', 'Please select at least one choice');
+
+//     // Submit if valid
+//   if (isValid) {
+      
+//   let url = "https://for-developers.vercel.app/api/v1/ServiceProvider/edit-profile";
+  
+  
+//   // get token and loader
+//   const token = localStorage.getItem('authToken');
+//   const loader = document.createElement('div');
+//   console.log("phone", phone);
+//   loader.id = 'loader';
+//   loader.innerHTML = `
+//       <div class="spinner"></div>
+//       <p class="loading-text">Loading...</p>
+//   `;
+//   document.body.appendChild(loader);
+//   document.body.classList.add('loading-active');
+
+//   try {
+//       const response = await fetch(url, {
+//         method: 'PUT',
+//         headers: {  
+//           'Content-Type': 'application/json',
+//           'token': token,
+//         },
+//         body: JSON.stringify({
+//           phoneNumber: phone,
+//           title: title,
+//           portfolio: portfolio,
+//           country: country,
+//           city: city,
+//           experience: parseInt(experience),
+//           industry: industry,
+//           paymentPreference: payment,
+//           typeOfServiceProvider: document.querySelector('input[name="role"]:checked')?.value || "freelancer",
+//           keySkills: techStack,
+//           primaryField: primaryField,
+//           typesOfProjectsPreferred: projectsPrefered,
+//           projectSizePreferred: projectSize,
+//         })
+//       });
+  
+//       const responseData = await response.json();
+//       console.log('Full API response:', responseData); 
+      
+//       if (response.ok) { 
+//           alert("Profile updated successfully!");
+//           localStorage.setItem('status', true);
+//           infoSection.style.display = 'block';
+//           editSection.style.display = 'none';
+//           setTimeout(() => {
+//               window.location.href = "../landingPage.html";
+//           }, 3000);
+
+//       } else {
+//         console.error('API error:', responseData.message || 'Unknown error');
+//         alert(responseData.message || 'Failed to update profile');
+//       }
+//     } catch (error) {
+//       console.error('Fetch error:', error);
+//       alert('Something went wrong. Please try again!');
+//     } finally {
+//       document.body.removeChild(loader);
+//       document.body.classList.remove('loading-active');
+//     }
+
+// }
+// }
+
+// const submitButton = document.getElementById('submit');
+// submitButton.addEventListener("click", (e)=>{
+//     if(validateData(e)){
+//         // submitData();
+//         console.log('validateSuccessfully');
+//     }
+// })
