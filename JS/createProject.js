@@ -211,9 +211,9 @@ document.body.classList.add('loading-active');
           showSuccessMessage('Success process');
           const m = document.createElement('p');
           m.innerHTML = data.data;
-          // setTimeout(() => {
-          //     window.location.href = "../landingPage.html";
-          // }, 2000);
+          setTimeout(() => {
+              window.location.href = "../landingPage.html";
+          }, 2000);
       } else {
         console.log('API error:', data.message || 'Unknown error');
         alert('Ensure that you have completed your profile first please!');

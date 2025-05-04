@@ -3,44 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreelanZ - Edit Profile</title>
-    <link rel="shortcut icon" href="../images/Social.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/clientSignup.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Freelanz</title>
+     <!-- Import Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <!-- Import fontawesome for Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- Import our CSS files -->
+      <!-- <link rel="stylesheet" href="CSS\landingPage.css"> -->
+      <link rel="stylesheet" href="CSS\profile.css">
+    <style>
+        
+
+
+    </style>
 </head>
 <body>
-    <header>
-        <h1 style="font-size: 26px;">FreelanZ</h1>
-    </header>
-    <div id="messageContainer"></div>
-    <form id="form" novalidate>
-        <div class="mainContainer">
-            <p id="role">Edit Your Profile</p>
-             <!-- Full Name -->
-             <div>
-                <div class="name">
-                    <div class="fName">
-                        <label>First name</label><br><input class="i1" required type="text" id="fName" placeholder="Aya">
+    <div class="header">
+        <h1 class="logo">
+            <a href="landingPage.html">Freelanz</a>
+        </h1>
+        <div>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li class="dropdown">
+                    <a href="#"><i style="font-size: 35px;" class="fa-solid fa-circle-user" id="profileIcon"></i></a>
+                    <div class="dropdown-content">
+                        <a href="EditProfile.html" class="profileItem" id="editProfile">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit Basic Info
+                        </a>
+                        <a href="#" class="profileItem" id="changePass">
+                            <i class="fa-solid fa-user-lock"></i> Change Password
+                        </a>
+                        <a href="#" class="profileItem" id="deleteAccount">
+                            <i class="fa-solid fa-trash"></i> Delete Account
+                        </a>
                     </div>
-                    <div class="lName">
-                        <label>Last name</label><br><input class="i1" required type="text" id="lName" placeholder="Osama">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Basic Info -->
+     <div id="messageContainer"></div>
+
+     <div class="content">
+        <div class="dashboard">
+            <div class="section1">
+                Dashboard
+                
+                <p style="font-weight: 600; font-size: 18px;padding-left: 20px; color:rgba(0, 0, 0, 0.751)">
+                    Number of Total Projects is <span id="totalProjects"></span></p>
+            </div>
+            <div class="rawDashboard">
+                <div class="dashboardItem">
+                    <span id="completed"></span>
+                    <div id="colDashboard">
+                        <img src="images/task.png" height="30" width="30">
+                        <span>Completed Projects</span>
                     </div>
                 </div>
-                    <span id="nameError" class="errormessage">Name must contain at least 5 letters</span>
+                <div class="dashboardItem">
+                    <span id="inProgress"></span>
+                    <div id="colDashboard">
+                        <img src="images\planning.png" height="30" width="30">
+                        <span>In Progress Projects</span>
+                    </div>
+                </div>
+                <div class="dashboardItem">
+                    <span id="notstarted"></span>
+                    <div id="colDashboard">
+                        <img src="images/incompleted.png" height="20" width="20">
+                        <span>Not Started Yet</span>
+                    </div>
+                </div>
             </div>
-            <!-- email -->
-            <div class="email">
-                <label>Edit Email</label><br>
-                <input required type="email" id="email" placeholder="oaya2411@gmail.com">
-                <span id="emailError" class="errormessage">Email must be like: oaya2411@gmail.com</span>
+        </div>
+        <div class="section1"> 
+            My Info
+            <p>This is client Account</p>
+        </div>
+        <div class="mainInfo">
+            <span id="account">Account</span>
+            <div class="profilePic">
+                <i style="font-size: 90px; color:lightgray" class="fa-solid fa-circle-user" id="profileIcon"></i>
             </div>
-            
-            <div class="button">
-                <button id="submitBtn_1" type="submit">Edit Profile</button>
+            <div class="info">
+                <span id="fullName"></span>
+                <div id=""><span class="title">Email</span><span id="email"></span></div> 
+                <!-- <div id=""><span class="title">Phone</span><span id="phoneNumber"></span></div> -->
             </div>
-    </form>
-    <script src="../JS/profilePage.js"></script>
+            <div></div>
+        </div>
+        <div id="secondaryInfo" >
+            <div>
+                <span id="AdditionalInfo">Client Info</span>
+                <span id="edit"><i class="fa-solid fa-pen"></i></span>
+            </div>
+            <div id="userData">
+                <div id="">
+                    <span class="title">Company Name</span>
+                    <span id="companyName"></span>
+                </div>
+                <div id="">
+                    <span class="title">Indusrty</span>
+                    <span id="IndusrtyField"></span>
+                </div>
+                <div id="">
+                    <span class="title">Phone</span>
+                    <span id="phoneNumber"></span>
+                </div>
+                <div id="">
+                    <span class="title">Country</span>
+                    <span id="Country">Egypt</span>
+                </div>
+                <div id="">
+                    <span class="title">City</span>
+                    <span id="City">Cairo</span>
+                </div>
+            </div>
+        </div>
+        <div id="EditSecondaryInfo">
+            <span id="editForm">Edit Form</span>
+            <span id="submit"><i class="fa-solid fa-check"></i></span>
+            <span id="cancel"><i class="fa-solid fa-xmark"></i></span>
+            <div id="editData">
+                <form id="form">
+                    <!-- company Name -->
+                     <div class="company">
+                        <label>Company Name</label>
+                        <input id="company" type="text">
+                        <span id="companyNameError" class="errormessage"></span>
+                     </div>
+                     <!-- phoneNumber -->
+                    <div class="phone">
+                        <label for="phoneNumber">Phone</label>
+                        <input id="phonenumber" type="number">
+                        <span id="phoneError" class="errormessage"></span>
+                    </div>
+                    <!-- Country -->
+                    <div class="country">
+                        <label for="countries">Select Country</label>
+                        <select id="countries">
+                            <option value="firstItem" class="firstItem">Select Your Country</option>
+                        </select>
+                        <span id="countriesError" class="errormessage"></span>
+                    </div>
+                    
+                    <!-- Cities -->
+                    <div class="city">
+                        <label for="cities">Select City</label>
+                        <select id="cities">
+                            <option value="firstItem" class="firstItem" >Select City</option>
+                        </select>
+                        <span id="citiesError" class="errormessage"></span>
+                    </div>
+                    <!-- Industry -->
+                    <div class="Industry">
+                        <label for="industry">Sector/Industry</label>
+                        <select id="industry">
+                            <option value="firstItem">Select Industry</option>
+                            <option>FinTech</option>
+                            <option>FinTech</option>
+                            <option>HealthTech</option>
+                            <option>E-commerce</option>
+                            <option>Retail Tech</option>
+                            <option>AI & Machine Learning</option>
+                            <option>Cybersecurity Tech</option>
+                            <option>EdTech</option>
+                            <option>GamingTech</option>
+                            <option>CloudTech</option>
+                            <option>Blockchain & Web3</option>
+                            <option>Big Data & Analytics</option>
+                            <option>Mobility & Transport Tech</option>
+                            <option>Logistics & Supply Chain Tech</option>
+                            <option>Entertainment & Media Tech</option>
+                            <option>InsurTech</option>
+                            <option>PropTech</option>
+                            <option>AgriTech</option>
+                            <option>EnergyTech & CleanTech</option>
+                            <option>SportsTech</option>
+                            <option>Industry 4.0 & Manufacturing Tech</option>
+                            <option>GovTech</option>
+                        </select>
+                        <span id="industryError" class="errormessage"></span>
+                    </div> 
+                </form>
+            </div>
+        </div>
+     </div>
+     <!-- Scripts -->
+     <script src="JS/clientProfile.js"></script>
 </body>
 </html>

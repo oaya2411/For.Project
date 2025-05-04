@@ -1,51 +1,199 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>FreelanZ - Complete your profile</title>
-        <link rel="shortcut icon" href="../images/social.png" type="image/x-icon">
-        <link rel="stylesheet" href="../CSS/createProfile.css">
-        <!-- <link rel="stylesheet" href="../CSS/postProject.css"> -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <!-- Import fontawesome for Icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    <body>
-        <header>
-            <p style="font-size: x-large; font-weight: bold;">FreelanZ</p>
-        </header>
-        <div id="messageContainer"></div>
-        <form id="form" novalidate>
-            <div class="mainContainer">
-                <p id="role">
-                            <i style="display: block; text-align: center; margin:10px; font-size: 100px; color:rgba(0, 0, 0, 0.766)" class="fa-solid fa-circle-user"></i>
-               </p>
-               <!-- title -->
-                <div class="title">
-                    <label>Your Title</label><br>
-                    <input required type="text" id="title">
-                    <span id="titleError" class="errormessage"></span>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelanz - Your Profile</title>
+    <link rel="shortcut icon" href="../images/social.png" type="image/x-icon">
+    <!-- Import Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <!-- Import fontawesome for Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- Import our CSS files -->
+      <!-- <link rel="stylesheet" href="CSS\landingPage.css"> -->
+      <link rel="stylesheet" href="CSS\freelancerProfile.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo"><a href="landingPage.html">Freelanz</a></h1>
+        <div>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li class="dropdown">
+                    <a href="#"><i style="font-size: 35px;" class="fa-solid fa-circle-user" id="profileIcon"></i></a>
+                    <div class="dropdown-content">
+                        <a href="EditProfile.html" class="profileItem" id="editProfile">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit Basic Info
+                        </a>
+                        <a href="#" class="profileItem" id="changePass">
+                            <i class="fa-solid fa-user-lock"></i> Change Password
+                        </a>
+                        <a href="#" class="profileItem" id="deleteAccount">
+                            <i class="fa-solid fa-trash"></i> Delete Account
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Basic Info -->
+     <div id="messageContainer"></div>
+    
+     <div class="content">
+        <div class="dashboard">
+            <div class="section1">
+                Dashboard
+                
+                <p style="font-weight: 600; font-size: 18px;padding-left: 20px; color:rgba(0, 0, 0, 0.751)">
+                    Number of Total Projects is <span id="totalProjects"></span></p>
+            </div>
+            <div class="rawDashboard">
+                <div class="dashboardItem">
+                    <span id="completed"></span>
+                    <div id="colDashboard">
+                        <img src="images/task.png" height="30" width="30">
+                        <span>Completed Projects</span>
+                    </div>
                 </div>
-                <!-- portfolio -->
-                <div class="portfolio">
-                    <label>Portfolio</label><br>
-                    <input id="portfolio" type="text">
-                    <span id="portfolioError" class="errormessage"></span>
+                <div class="dashboardItem">
+                    <span id="inProgress"></span>
+                    <div id="colDashboard">
+                        <img src="images\planning.png" height="30" width="30">
+                        <span>In Progress Projects</span>
+                    </div>
                 </div>
-                <!-- phone number -->
-                <div class="phonenumber">
-                    <label>Phone Number</label><br>
-                    <input required type="number" id="phonenumber">
-                    <span id="phoneError" class="errormessage"></span>
+            </div>
+        </div>
+     <div class="content">
+        <div class="section1"> 
+            My Info
+            <p>This is Service Provider Account</p>
+        </div>
+        <div class="mainInfo">
+            <span id="account">Account</span>
+            <div class="profilePic">
+                <i style="font-size: 90px; color:lightgray" class="fa-solid fa-circle-user" id="profileIcon"></i>
+            </div>
+            <div class="info">
+                <span id="fullName"></span>
+                <div id=""><span class="title">Email</span><span id="email"></span></div> 
+                <!-- <div id=""><span class="title">Phone</span><span id="phoneNumber"></span></div> -->
+            </div>
+            <div></div>
+        </div>
+        <div id="secondaryInfo" >
+            <div>
+                <span id="AdditionalInfo">ServiceProvider Info</span>
+                <span id="edit"><i class="fa-solid fa-pen"></i></span>
+            </div>
+            <div id="userData">
+                <div id="firstcol">
+                    <div id="">
+                        <span class="title">Title</span>
+                        <span id="title"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">Portfolio</span>
+                        <span id="portfolio"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">Experience</span>
+                        <span id="experience"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">Your role</span>
+                        <span id="role"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">Phone</span>
+                        <span id="phoneNumber"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">Country</span>
+                        <span id="Country">Egypt</span>
+                    </div>
+                    <div id="">
+                        <span class="title">City</span>
+                        <span id="City">Cairo</span>
+                    </div>
+
                 </div>
-                <!-- Experience -->
-                <div class="experience">
-                    <label>Experience (in months)</label><br>
-                    <input required type="number" id="experience">
-                    <span id="exError" class="errormessage"></span>
+
+                <div id="secondcol">
+                    <div id="PF">
+                        <span class="title">Primary Field</span>
+                    </div>
+                    <div id="KS">
+                        <span class="title">Key Skills</span>
+                    </div>
+                    <div id="PP">
+                        <span class="title">Payment Preferences</span>
+                    </div>
+                    <div id="TOPP">
+                        <span class="title">Types Of Projects Prefered</span>
+                    </div>
+                    <div id="PSP">
+                        <span class="title">Prjects Size Prefered</span>
+                    </div>
+                    <div id="I">
+                        <span class="title">Indusrty</span>
+                    </div>
+                   
                 </div>
-                <!-- role  -->
+            </div>
+        </div>
+        <!-- Part Of Form Submission -->
+        <div id="EditSecondaryInfo">
+            <span id="editForm">Edit Form</span>
+            <span id="submit"><i class="fa-solid fa-check"></i></span>
+            <span id="cancel"><i class="fa-solid fa-xmark"></i></span>
+            <div id="editData">
+                <form id="form">
+                    <!-- title Name -->
+                    <div class="title" style="color:black; font-size: 16px;">
+                        <label>Title</label>
+                        <input id="titleInput" type="text">
+                        <span id="titleError" class="errormessage"></span>
+                     </div>
+                    <!-- portfolio  -->
+                     <div class="portfolio">
+                        <label>Portfolio</label>
+                        <input id="portfolioInput" type="text">
+                        <span id="portfolioError" class="errormessage"></span>
+                     </div>
+                     <!-- expericence  -->
+                     <div class="experience">
+                        <label>Experience</label>
+                        <input id="experienceInput" type="number">
+                        <span id="exError" class="errormessage"></span>
+                     </div>
+                     <!-- phoneNumber -->
+                    <div class="phone">
+                        <label for="phoneNumber">Phone</label>
+                        <input id="phonenumber" type="number">
+                        <span id="phoneError" class="errormessage"></span>
+                    </div>
+                    <!-- Country -->
+                    <div class="country">
+                        <label for="countries">Select Country</label>
+                        <select id="countries">
+                            <option value="firstItem" class="firstItem">Select Your Country</option>
+                        </select>
+                        <span id="countriesError" class="errormessage"></span>
+                    </div>
+                    <!-- Cities -->
+                    <div class="city">
+                        <label for="cities">Select City</label>
+                        <select id="cities">
+                            <option value="firstItem" class="firstItem" >Select City</option>
+                        </select>
+                        <span id="citiesError" class="errormessage"></span>
+                    </div>
+
+                    <!-- role  -->
                 <div class="role">
                     <!-- service provider roles -->
                     <label>Service Provider Role </label>
@@ -55,32 +203,16 @@
                             <label for="freelancer">Freelancer</label>
                         </div>
                         <div class="radio-group">
-                            <input id="swHouse" type="radio" name="role" value="Software house">
+                            <input id="swHouse" type="radio" name="role" value="softwareHouse">
                             <label for="swHouse">Software House</label>
                         </div>
                     </div>
                     <span id="roleError" class="errormessage"></span>
                 </div>
-                <!-- Country -->
-                <div class="country">
-                    <label for="countries">Select Country</label>
-                    <select id="countries">
-                        <option class="firstItem">Select Your Country</option>
-                    </select>
-                    <span id="countriesError" class="errormessage"></span>
-                </div>
-                <!-- Cities -->
-                <div class="city">
-                    <label for="cities">Select City</label>
-                    <select id="cities">
-                        <option class="firstItem" >Select City</option>
-                    </select>
-                    <span id="citiesError" class="errormessage"></span>
-                </div>
-                <!-- keySkills -->
+                    <!-- keySkills -->
                 <div id="techStack">
                     <label for="techStack">key Skills</label>
-                    <div class="select_btn">
+                    <div id="techStackButton" class="select_btn">
                         <span class="btn_text">Select Your TechStacks</span>
                         <span class="arrow_dwn">
                             <i class="fa-solid fa-angle-down" style="background-color: transparent; color:#fff"> </i>
@@ -444,58 +576,11 @@
                     </ul>
                     <span id="projectSizeError" class="errormessage"></span>
                 </div>
-                    <div class="button">
-                        <button id="submitBtn_1" type="submit">Get Started ^^</button>
-                    </div>  
-                </div>
+                </form>
             </div>
-        </form>
-        <script src="JS/freelancerProfileSubmit.js"></script>
-        <script>
-            const apiKey = "RVVNT0ZmWDRJVXBKSDJVWnJiWnd6b3NOSVV0NnlhZ0lGS2ZLbEdOcQ==";
-        
-            var headers = new Headers();
-            headers.append("X-CSCAPI-KEY", apiKey);
-        
-            var requestOptions = {
-                method: 'GET',
-                headers: headers,
-                redirect: 'follow'
-            };
-    
-            fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
-                .then(response => response.json())
-                .then(countries => {
-                    const countrySelect = document.getElementById("countries");
-                    countries.forEach(country => {
-                        if(country.name !== 'Israel') {
-                            const option = document.createElement("option");
-                            option.value = country.iso2;
-                            option.text = country.name;
-                            countrySelect.appendChild(option);
-                        }
-                    });
-                });
-        
-            document.getElementById("countries").addEventListener("change", function () {
-                const selectedCountryCode = this.value;
-                const citySelect = document.getElementById("cities");
-        
-                citySelect.innerHTML = '<option class="firstItem">Select City</option>';
-        
-                fetch(`https://api.countrystatecity.in/v1/countries/${selectedCountryCode}/cities`, requestOptions)
-                    .then(response => response.json())
-                    .then(cities => {
-                        cities.forEach(city => {
-                            const option = document.createElement("option");
-                            option.value = city.name;
-                            option.text = city.name;
-                            citySelect.appendChild(option);
-                        });
-                    });
-            });
-        </script>
-    </body>
+        </div>
+     </div>
+     <!-- Scripts -->
+     <script src="JS/try.js"></script>
+</body>
 </html>
-
-

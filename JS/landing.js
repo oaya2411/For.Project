@@ -57,14 +57,26 @@ function initializeLandingPage() {
             profileLink
         } = elements;
 
+        function pathToProfile(role, ButtonClass){
+            ButtonClass.addEventListener("click", (e)=>{
+                if(role === 'client'){
+                    window.location.href = 'clientProfile.html';
+                }else{
+                    window.location.href = 'freelancerProfile.html';
+                }
+            })
+        }
+
         // Ensure elements exist before trying to modify them
         function safeDisplay(element, display) {
             if (element) element.style.display = display;
         }
+
         function updateUI() {
             const token = localStorage.getItem('authToken');
             const userData = token ? decodeJWT(token) : null;
             const status = localStorage.getItem('status');
+            // let role = '';
             console.log(userData);
             console.log("Auth token:", token);
             console.log("Userdata:", userData);
@@ -79,10 +91,15 @@ function initializeLandingPage() {
                 const shouldShowPostProject = userData.role && userData.role !== 'ServiceProvider';
                 
                 // Handle profile completion status
-                if (status === true || status === 'true') {
+                if (status === true || status === 'true' || userData.profileCompleted == true) {
                     safeDisplay(createProfile, 'none');
-                    safeDisplay(profileLink, 'inline-block');
-                    safeDisplay(postProject, shouldShowPostProject ? 'inline-block' : 'none');
+                    safeDisplay(profileLink, 'flex');
+                    safeDisplay(postProject, shouldShowPostProject ? 'flex' : 'none');
+                    if(shouldShowPostProject){
+                        pathToProfile('client', profileLink);
+                    }else{
+                        pathToProfile('freelancer', profileLink);
+                    }
                 } else {
                     safeDisplay(createProfile, 'flex');
                     safeDisplay(profileLink, 'none');
@@ -119,7 +136,6 @@ function initializeLandingPage() {
                 }, 100);
             });
         }
-
         // Set up logout handler
         const logoutButton = document.getElementById('logout');
         if (logoutButton && !logoutButton.hasListener) {
@@ -142,6 +158,7 @@ function initializeLandingPage() {
             logoutButton.addEventListener('click', handleLogout);
             logoutButton.hasListener = true; // Mark as having listener
         }
+
 
         // Initial UI update
         updateUI();
@@ -183,6 +200,8 @@ function initializeLandingPage() {
     checkElements();
 }
 
+
+
 function initializeDropdown() {
     const dropdown = document.querySelector('.dropdown');
     if (!dropdown) return;
@@ -194,9 +213,7 @@ function initializeDropdown() {
         console.error('Dropdown elements not found');
         return;
     }
-
     // Don't duplicate logout handler here - it's handled in setupAuthLogic
-
     function toggleDropdown(e) {
         e.preventDefault();
         e.stopPropagation();

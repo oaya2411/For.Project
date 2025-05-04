@@ -7,22 +7,6 @@ const errorMessages = {
   pass: document.getElementById('passError'),
 };
 
-function decodeJWT(token) {
-  try {
-      const parts = token.split('.');
-      if (parts.length !== 3) throw new Error('Invalid JWT format');
-      
-      const payload = parts[1];
-      const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
-      let data = document.getElementById('data');
-      data.innerHTML = decoded('profileCompleted');
-      localStorage.setItem('staues', data('profileCompleted'));
-      return JSON.parse(decoded);
-  } catch (error) {
-      console.error('JWT decoding failed:', error);
-      return null;
-  }
-}
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
@@ -30,7 +14,7 @@ form.addEventListener("submit", async function(e) {
 
   // Get form value
   const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('pass').value;
+  const password = document.getElementById('pass').value.trim();
 
 
   // Reset all error messages
@@ -108,8 +92,7 @@ document.body.classList.add('loading-active');
         if (data.data?.token) { // Check nested token
           localStorage.setItem('authToken', data.data.token);
           localStorage.setItem('email', email);
-          // data = decodeJWT(token);
-          // localStorage.setItem('staues', data('CompletedProfile'));
+          // localStorage.setItem('status', data.data.profileCompleted);
           showSuccessMessage('You have Successfully LogIn!');
           setTimeout(() => {
               window.location.href = "../landingPage.html";

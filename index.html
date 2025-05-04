@@ -1,230 +1,162 @@
- <!-- <!-- <div class="company">
-                    <label>Company Name</label><br>
-                    <input type="text" placeholder="write your company name">
-                </div>
-                <div class="Country">
-                    <label for="countries">Select Country</label>
-                    <select id="countries"></select>
-                </div>
-                <div class="Industry">
-                    <label for="industry">Sector/Industry</label>
-                    <select id="industry">
-                        <option>FinTech</option>
-                        <option>SportsTech</option>
-                        <option>EdTech</option>
-                        <option>HealthTech</option>
-                        <option>AggreTech</option>
-                        <option>Other</option>
-                    </select>
-                </div>                   -->
-
-        <!-- Industry -->
-        <!-- <div class="Industry">
-            <label for="industry">Sector/Industry</label>
-            <select id="industry">
-                <option>FinTech</option>
-                <option>HealthTech</option>
-                <option>E-commerce</option>
-                <option>Retail Tech</option>
-                <option>AI & Machine Learning</option>
-                <option>Cybersecurity Tech</option>
-                <option>EdTech</option>
-                <option>GamingTech</option>
-                <option>CloudTech</option>
-                <option>Blockchain & Web3</option>
-                <option>Big Data & Analytics</option>
-                <option>Mobility & Transport Tech</option>
-                <option>Logistics & Supply Chain Tech</option>
-                <option>Entertainment & Media Tech</option>
-                <option>InsurTech</option>
-                <option>PropTech</option>
-                <option>AgriTech</option>
-                <option>EnergyTech & CleanTech</option> -->
-                <!-- <option>SportsTech</option>
-                <option>Industry 4.0 & Manufacturing Tech</option>
-                <option>GovTech</option>
-            </select>
-        </div>          -->
-
-<!-- profile using line steps -->
- 
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FreelanZ - Post Project page</title>
-        <link rel="shortcut icon" href="images\social.png" type="image/x-icon">
-        
+        <title>FreelanZ - Complete your profile</title>
+        <link rel="shortcut icon" href="../images/social.png" type="image/x-icon">
+        <link rel="stylesheet" href="../CSS/createProfile.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-         <link rel="stylesheet" href="CSS\landingPage.css">
-         <link rel="stylesheet" href="CSS\header.css">
-         <link rel="stylesheet" href="CSS\createProject.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     </head>
-<body>
-    <div class="multi-step-form">
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-            <div class="step active" data-step="1">
-                <span>1</span>
-                <span class="step-label">Project Name</span>
-            </div>
-            <div class="step" data-step="2">
-                <span>2</span>
-                <span class="step-label">Description</span>
-            </div>
-            <div class="step" data-step="3">
-                <span>3</span>
-                <span class="step-label">Duration</span>
-            </div>
-            <div class="step" data-step="4">
-                <span>4</span>
-                <span class="step-label">Review</span>
-            </div>
-            <div class="step" data-step="4">
-                <span>5</span>
-                <span class="step-label">Review</span>
-            </div>
-            <div class="step" data-step="4">
-                <span>6</span>
-                <span class="step-label">Review</span>
-            </div>
-            <div class="step" data-step="4">
-                <span>7</span>
-                <span class="step-label">Review</span>
-            </div>
-            <div class="step" data-step="4">
-                <span>8</span>
-                <span class="step-label">Review</span>
-            </div>
-        </div>
-        
-        <div class="step-content">
-            Step 1
-            <div class="step-pane active" data-step="1">
-                <div style="align-content: center; align-items: center; display: block; justify-content: center; min-width:100%">Enter your project name</div>
-                <div class="form-group">
-                    <label for="fullname">Project Name</label>
-                    <input type="text" id="fullname" placeholder="Enter your full name">
+    <body>
+        <header>
+            <p style="font-size: x-large; font-weight: bold;">FreelanZ</p>
+        </header>
+        <div id="messageContainer"></div>
+        <form id="form" novalidate>
+            <div class="mainContainer">
+                <p id="role">
+                    <i style="display: block; text-align: center; margin:10px; font-size: 100px; color:rgba(0, 0, 0, 0.766)" class="fa-solid fa-circle-user"></i>
+                </p>     
+                <!-- title -->
+                <div class="title">
+                    <label>Your Title</label><br>
+                    <input required type="text" id="title">
+                    <span id="titleError" class="errormessage"></span>
                 </div>
-            </div>
-            
-            Step 2
-            <div class="step-pane" data-step="2">
-                <div class="form-group">
-                    <label for="education">Education Level</label>
-                    <select id="education">
-                        <option value="">Select your education level</option>
-                        <option value="high_school">High School</option>
-                        <option value="diploma">Diploma</option>
-                        <option value="bachelor">Bachelor's Degree</option>
-                        <option value="master">Master's Degree</option>
-                        <option value="phd">PhD</option>
+                <!-- portfolio -->
+                <div class="portfolio">
+                    <label>Portfolio</label><br>
+                    <input id="portfolio" type="text">
+                    <span id="portfolioError" class="errormessage"></span>
+                </div>                
+                <!-- phone number -->
+                <div class="phonenumber">
+                    <label>Phone Number</label><br>
+                    <input required type="number" id="phonenumber">
+                    <span id="phoneError" class="errormessage"></span>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience">
+                    <label>Experience (in months)</label><br>
+                    <input required type="number" id="experience">
+                    <span id="experienceError" class="errormessage"></span>
+                </div>
+                
+                <!-- role -->
+                <div class="role">
+                    <label>Service Provider Role</label>
+                    <div class="radios">
+                        <div class="radio-group">
+                            <input id="freelancer" type="radio" name="role" value="freelancer">
+                            <label for="freelancer">Freelancer</label>
+                        </div>
+                        <div class="radio-group">
+                            <input id="swHouse" type="radio" name="role" value="softwareHouse">
+                            <label for="swHouse">Software House</label>
+                        </div>
+                    </div>
+                    <span id="roleError" class="errormessage"></span>
+                </div>
+                
+                <!-- Country -->
+                <div class="country">
+                    <label for="countries">Select Country</label>
+                    <select id="countries">
+                        <option value="">Select Your Country</option>
                     </select>
+                    <span id="countriesError" class="errormessage"></span>
                 </div>
-                <div class="form-group">
-                    <label for="university">University/Institution</label>
-                    <input type="text" id="university" placeholder="Name of university or institution">
-                </div>
-                <div class="form-group">
-                    <label for="major">Major/Field</label>
-                    <input type="text" id="major" placeholder="Your field of study">
-                </div>
-            </div>
-            
-            Step 3
-            <div class="step-pane" data-step="3">
-                <div class="form-group">
-                    <label for="experience">Years of Experience</label>
-                    <select id="experience">
-                        <option value="">Select years of experience</option>
-                        <option value="0">Less than 1 year</option>
-                        <option value="1-3">1-3 years</option>
-                        <option value="3-5">3-5 years</option>
-                        <option value="5+">More than 5 years</option>
+                
+                <!-- Cities -->
+                <div class="city">
+                    <label for="cities">Select City</label>
+                    <select id="cities">
+                        <option value="">Select City</option>
                     </select>
+                    <span id="citiesError" class="errormessage"></span>
                 </div>
-                <div class="form-group">
-                    <label for="skills">Skills</label>
-                    <textarea id="skills" rows="3" placeholder="List your skills (separate with commas)"></textarea>
+                
+                <!-- Sector Dropdown -->
+                <div class="dropdown-container">
+                    <label>Sector</label>
+                    <div class="dropdown">
+                        <div class="select-btn" id="sectorBtn">
+                            <span class="btn-text">Select Sectors</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <ul class="list-items" id="sectorList">
+                            <!-- Options will be added by JavaScript -->
+                        </ul>
+                    </div>
+                    <span id="sectorError" class="errormessage"></span>
                 </div>
-                <div class="form-group">
-                    <label for="cv">Upload CV</label>
-                    <input type="file" id="cv">
+                
+                <!-- Payment Preferences Dropdown -->
+                <div class="dropdown-container">
+                    <label>Payment Preference</label>
+                    <div class="dropdown">
+                        <div class="select-btn" id="paymentBtn">
+                            <span class="btn-text">Select Payment Preferences</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <ul class="list-items" id="paymentList">
+                            <li class="item">hourly payment</li>
+                            <li class="item">milestone-based payment</li>
+                            <li class="item">upon project delivery payment</li>
+                        </ul>
+                    </div>
+                    <span id="paymentError" class="errormessage"></span>
+                </div>
+                
+                <!-- Primary Field Dropdown -->
+                <div class="dropdown-container">
+                    <label>Primary Field</label>
+                    <div class="dropdown">
+                        <div class="select-btn" id="primaryFieldBtn">
+                            <span class="btn-text">Select Primary Fields</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <ul class="list-items" id="primaryFieldList">
+                            <li class="item">Web Development</li>
+                            <li class="item">Mobile Development ios</li>
+                            <li class="item">Mobile Development android</li>
+                            <li class="item">Mobile Development flutter</li>
+                            <li class="item">UI/UX Design</li>
+                            <li><span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                              </span>
+                              <span class="item-text">UI/UX Design</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <span id="primaryFieldError" class="errormessage"></span>
+                </div>
+                
+                <!-- Tech Stack Dropdown -->
+                <div class="dropdown-container">
+                    <label>Key Skills</label>
+                    <div class="dropdown">
+                        <div class="select-btn" id="techStackBtn">
+                            <span class="btn-text">Select Tech Stacks</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <ul class="list-items" id="techStackList">
+                            <!-- Options will be added by JavaScript -->
+                        </ul>
+                    </div>
+                    <span id="techStackError" class="errormessage"></span>
+                </div>
+                
+                <div class="button">
+                    <button id="submitBtn" type="submit">Get Started ^^</button>
                 </div>
             </div>
-            
-            Step 4
-            <div class="step-pane" data-step="4">
-                <h3>Final Review</h3>
-                <div id="review-content">
-                    Will be filled dynamically with entered data
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" id="agree-terms"> I agree to the terms and conditions
-                    </label>
-                </div>
-            </div>
-        </div>
+        </form>
         
-        <div class="form-actions">
-            <button class="btn btn-prev btn-hidden" id="prev-btn">Previous</button>
-            <button class="btn btn-next" id="next-btn">Next</button>
-        </div>
-    </div>
-    <script src="JS/createProject.js"></script>
-</body>
+        <script src="../JS/freelancerProfileSubmit.js"></script>
+    </body>
 </html>
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>StackOverflow API Fetch</title>
-</head>
-<body>
-  <h2>Selected Tags:</h2>
-  <select id="tags" multiple>
-    <option value="javascript" selected>JavaScript</option>
-    <option value="python" selected>Python</option>
-    <option value="flutter">Flutter</option>
-    <option value="reactjs">React</option>
-    <option value="android">Android</option>
-  </select>
-
-  <h2>Fetched Questions:</h2>
-  <ul id="results"></ul>
-
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const select = document.getElementById("tags");
-      const resultsList = document.getElementById("results");
-
-      const selectedTags = Array.from(select.selectedOptions).map(option => option.value);
-      const url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=${selectedTags.join(';')}&site=stackoverflow`;
-
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          console.log("API Data:", data);
-          resultsList.innerHTML = ""; // تفريغ أي نتائج قديمة
-
-          data.items.forEach(question => {
-            const li = document.createElement("li");
-            li.innerHTML = `<a href="${question.link}" target="_blank">${question.title}</a>`;
-            resultsList.appendChild(li);
-          });
-        })
-        .catch(error => {
-          console.error("Error fetching data:", error);
-        });
-    });
-  </script>
-</body>
-</html> -->
