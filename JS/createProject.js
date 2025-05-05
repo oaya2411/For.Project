@@ -13,6 +13,103 @@ const errorMessages = {
 };
 
 
+// AI geenration
+async function useAI(fieldID, question) {
+  // get the field we want 
+  let field = document.getElementById(fieldID);
+  let description = field.value.trim();
+  // get overview and its elements 
+  let overview = document.getElementById('pass').value.trim();
+  let errorContainer = document.getElementById('overview');
+  let errorMessage = document.getElementById('overviewError');
+  
+  if (!overview || overview === '') {
+    errorMessage.style.display = 'block'; // Show error
+    errorMessage.textContent = 'This Field is required to use AI';
+    
+    // Optional: Add a stronger red background class
+    errorContainer.classList.add('strong');
+    
+    // Hide after 3 seconds
+    setTimeout(() => {
+      errorMessage.style.display = 'none';
+      errorContainer.classList.remove('strong'); // Remove if added
+    }, 3000);
+    return false;
+  }
+  
+  // AI generation logic here
+  const url = `https://freelanz-questions-model.vercel.app/generate`;
+  let loader = document.createElement('div');
+  loader.id = 'loader';
+  loader.innerHTML = `
+    <div class="spinner"></div>
+    <p class="loading-text">Loading...</p>
+  `;
+  document.body.appendChild(loader);
+  document.body.classList.add('loading-active');
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {  
+        'Content-Type': 'application/json' ,
+      },
+      body: JSON.stringify({
+          "description": overview,
+          "question": question ,
+      })
+    });
+    const data = await response.json();
+    console.log('Full API response:', data); 
+
+    if (response.ok) { 
+      field.value = data.generated_text;
+      field.style.height = 'auto';
+      field.style.height = field.scrollHeight + 'px';
+      console.log(data.generated_text);
+    } else {
+      console.log('API error:', data.message || 'Unknown error');
+      alert('Ensure that you have completed your profile first please!');
+    }
+      
+  } catch (error) {
+    document.body.removeChild(loader);
+    console.error('Fetch error:', error);
+    alert('Something went wrong. Please try again!');
+  }finally {
+    // Cleanup: Ensure loader is removed even if success/error
+    if (document.body.contains(loader)) {
+      document.body.removeChild(loader);
+    }
+    document.body.classList.remove('loading-active');
+  }
+  
+}
+
+let descAI = document.getElementById('descAI');
+descAI.addEventListener("click", (e)=>{
+  useAI('desc', 'Give me an detailed description depending on this overview message, please do not ask me for more details give me all the data i may need in about only 3 line or least');
+});
+
+let audience = document.getElementById('audienceAI');
+audience.addEventListener("click", (e)=>{
+  useAI('audeince', 'Give me target audience depending on this overview message, please do not ask me for more details give me all the data i may need in about only 3 line or least'); 
+});
+
+let problemStatement =document.getElementById('problem');
+problemStatement.addEventListener("click", (e)=>{
+  useAI('problem', 'Give me an detailed problem statement depending on this overview message, please do not ask me for more details give me all the data i may need in about only 3 line or least');
+});
+
+const textareas = document.querySelectorAll('textarea');
+
+textareas.forEach(textarea => {
+  textarea.addEventListener('input', () => {
+    textarea.style.height = 'auto'; // ترجع الارتفاع للوضع الطبيعي
+    textarea.style.height = textarea.scrollHeight + 'px'; // تعدّله حسب المحتوى
+  });
+});
 
 
 // variables
@@ -81,6 +178,8 @@ function loadTechStacks() {
             // Optionally show error message to user
             techStackContainer.innerHTML = '<li class="error">Failed to load tech stacks</li>';
         });
+
+
 }
 
 // Toggle dropdown
@@ -100,7 +199,7 @@ techStackContainer.addEventListener("click", (e) => {
 });
 
 // Load tech stacks when page loads
-loadTechStacks();
+// loadTechStacks();
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();

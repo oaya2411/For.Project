@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>FreelanZ - Try</title>
+        <title>FreelanZ - Post Project</title>
         <link rel="shortcut icon" href="../images/social.png" type="image/x-icon">
         <link rel="stylesheet" href="../CSS/postProject.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
         <div id="messageContainer" style="color: rgb(15, 175, 15); align-items: center; text-align: center;"></div>
         <form id="form" novalidate>
             <div class="mainContainer">
-                <p id="role">Post project ^^</p>                
+                <p id="role">Post Project ^^</p>                
                 <!-- Name -->
                 <div class="Name">
                     <label>Project Name</label><br>
@@ -26,52 +26,33 @@
                     <span id="nameError" class="errormessage"></span>
                 </div>
                 <!-- overview -->
-                <div class="desc">
+                <div class="overview" id="overview">
                     <label>Give us an overview for the project</label><br>
                     <input class="AIField" required type="text" id="pass">
+
                     <span id="overviewError" class="errormessage"></span>
                 </div>
                 <!-- Description -->
                 <div class="desc">
                     <label>Description</label><br>
-                    <input class="AIField" required type="text" id="desc">
-                    <img class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
+                    <textarea class="AIField" required type="text" id="desc"></textarea>
+                    <img id="descAI" class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
                     <span id="descError" class="errormessage"></span>
                 </div>
                 <!-- Target Audience -->
                 <div class="Audience">
                     <label>Target Audience</label><br>
-                    <input class="AIField" required type="text" id="audience">
-                    <img class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
+                    <textarea class="AIField" required type="text" id="audience"></textarea>
+                    <img id="audienceAI" class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
                     <span id="targetAudienceError" class="errormessage"></span>
                 </div>
                 <!-- problem statement -->
                 <div class="challengeMotivation">
                     <label>Challenge Overview</label><br>
-                    <input class="AIField" required type="text" id="problem">
-                    <img class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
+                    <textarea class="AIField" required type="text" id="problem"></textarea>
+                    <img id="problemAI" class="eyeicon" src="../images/magic.png" name="Answer using AI?" alt="Answer using AI?" height="23px" width="23px">
                     <span id="problemError" class="errormessage"></span>
                 </div>
-                <!-- Payment Prefernces -->
-                <!-- <div class="challengeMotivation">
-                    <label>Duartion and your budget</label><br>
-                    <div class="payment" style="display: flex;">
-                        duration
-                        <div > 
-                            <input id="ex" type="number" placeholder="Expected Duration(in months)">
-                        </div>
-                        min-budget
-                        <div>
-                            <input id="min-budget" type="number" placeholder="Min-Budget">
-                        </div>
-                        max budget
-                        <div>
-                            <input id="max-budget" type="number" placeholder="Max-Budget">
-                        </div>
-                    </div>
-                <span id="detailsError" class="errormessage"></span>
-                </div> -->
-                
                 <!-- Industry -->
                 <div class="Industry">
                     <label for="industry">Sector/Industry</label>
