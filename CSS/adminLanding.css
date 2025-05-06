@@ -1,0 +1,242 @@
+
+.rawDashboard {
+    display: flex;
+    gap: 0px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dashboardItem {
+    /* padding: 30px 0px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 18px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+
+#colDashboard {
+
+    justify-content: center;
+    font-size: 16px;
+    align-items: center;
+    justify-items: center;
+    color: rgba(0, 0, 0, 0.493);
+    /* font-weight:800; */
+}
+
+#completed,
+#notstarted,
+#inProgress,
+#clients,
+#Avilable,
+#Busy,
+#softwareHouses,
+#Freelancers {
+    font-size: 38px;
+    font-weight: 500;
+
+}
+
+#totalProjects {
+    font-size: 20px;
+    color: black;
+    font-weight: 700;
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    outline: none;
+    font-family: 'Poppins';
+}
+
+.mainContainer-clients {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container-clients{
+    display: grid;
+    text-align: center;
+    gap: 15px;
+    height: auto;
+    min-height: 300px;
+    width: 300px;
+    padding: 15px;
+    margin: 20px;
+            /* border:2px solid rgba(0, 0, 0, 0.016); */
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.477);
+    align-items: center;
+    position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+        
+    cursor: pointer;
+}
+
+.container-clients:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease-in-out;
+}
+
+.clientType {
+    background-color: #28be9676;
+    width: fit-content;
+    padding: 7px;
+    border-radius: 18px;
+    color: white;
+    font-weight: 500;
+}
+
+.clientName {
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.clientDescContainer {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.additionalInfo {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.location{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.location p {
+
+    background-color: #28be963d;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 22px;
+    color: #777;
+}
+
+.serviceProvidersSection{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container-serviceProviders{
+        display: grid;
+            text-align: center;
+            gap: 15px;
+            height: auto;
+            min-height: 300px;
+            width: 300px;
+            padding: 15px;
+            margin: 20px;
+            /* border:2px solid rgba(0, 0, 0, 0.016); */
+            border-radius: 18px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.477);
+            align-items: center;
+            position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        
+            cursor: pointer;
+}
+
+
+.ServiceProvider {
+    background-color: #28be9676;
+    width: fit-content;
+    padding: 7px;
+    border-radius: 18px;
+    color: white;
+    font-weight: 500;
+}
+
+
+  
+  /* Loading overlay */
+  body.loading-active {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  body.loading-active::after {
+    content: '';
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  #loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    border-radius: 50%;
+    border-top-color: #4CAF50;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  .loading-text {
+    color: transparent;
+    font-size: 1.2rem;
+    background-color: transparent;
+    margin: 0;
+  }
+  
+  @keyframes spin {
+    to {
+        background-color: transparent;
+      transform: rotate(360deg);
+    }
+  }
+ 
+  

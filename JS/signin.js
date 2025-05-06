@@ -60,6 +60,21 @@ form.addEventListener("submit", async function(e) {
     }, 5000);
   }
 
+  function decodeJWT(token) {
+    try {
+        if (!token) return null;
+        const parts = token.split('.');
+        if (parts.length !== 3) return null;
+
+        const payload = parts[1];
+        const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+        return JSON.parse(decoded);
+    } catch (error) {
+        console.error('JWT decoding failed:', error);
+        return null;
+    }
+}
+
   // Form submission
   if (isValid) {
     let url = 'https://for-developers.vercel.app/api/v1/auth/login';
@@ -89,22 +104,28 @@ document.body.classList.add('loading-active');
       const data = await response.json();
       console.log('Full API response:', data); 
       if (response.ok) { 
-        if (data.data?.token) { // Check nested token
-          localStorage.setItem('authToken', data.data.token);
+        if (data.data?.token) {
+          const token = data.data.token; // Store the token first
+          localStorage.setItem('authToken', token);
           localStorage.setItem('email', email);
-          // localStorage.setItem('status', data.data.profileCompleted);
-          showSuccessMessage('You have Successfully LogIn!');
-          setTimeout(() => {
-              window.location.href = "../landingPage.html";
-          }, 5000);
-        } else {
-          console.error('Token not found in response');
+          
+          // Decode the token
+          const decoded = decodeJWT(token);
+          console.log('Decoded JWT:', decoded);
+          showSuccessMessage('You have Successfully Logged In!');
+
+          // path to the correct Admin screen
+          if (decoded?.role !== 'admin') {
+            setTimeout(() => {
+              window.location.href = "../landingPage.html" ;
+            }, 3000);
+          } else {
+            setTimeout(() => {
+              window.location.href = "../adminLanding.html" ;
+            }, 3000);
+          }
         }
-      } else {
-        console.error('API error:', data.message || 'Unknown error');
-        alert('Incorrect mail or password, ensure about them please');
       }
-       
     } catch (error) {
       document.body.removeChild(loader);
       document.body.classList.remove('loading-active');

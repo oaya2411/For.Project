@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanZ - landing page</title>
+    <link rel="shortcut icon" href="images\social.png" type="image/x-icon">
+
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Import fontawesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Import our CSS files -->
+    <link rel="stylesheet" href="CSS\adminLanding.css">
+    <link rel="stylesheet" href="CSS\header.css">
+
+</head>
+
+<body data-page="landing">
+    <div class="home-section">
+        <!-- Effects -->
+        <div id="data"></div>
+        <div id="data2"></div>
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <a href="landingPage.html" class="logo"
+                    style="font-weight: bold; font-size: 22px; color: black">FreelanZ</a>
+                <diV class="links">
+
+                    <div class="hamburger-btn outer-shadow hover-in-shadow">
+                        <span></span>
+                    </div>
+
+                    <ul class="navbar">
+                        <li>
+                            <a href="landing-admin.html">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#clientsBegin">Clients</a>
+                        </li>
+                        <li>
+                            <a href="#serviceProvidersBegin">ServiceProviders</a>
+                        </li>
+                        <li>
+                            <a href="displayAllProjects.html">Projects</a>
+                        </li>
+                       <li>
+                        <a href="#" class="profileItem" id="logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                        </a>
+                       </li>
+                    </ul>
+                </diV>
+            </div>
+
+            <!-- Section 1 dashboardAbout us) -->
+             <div id="dashboardSection">
+                <div id="projectsStats" class="rawDashboard">
+                            <div class="dashboardItem">
+                                    <span id="notstarted"></span>
+                                    <div id="colDashboard">
+                                        <img src="images/task.png" height="30" width="30">
+                                        <span>Not started</span>
+                                    </div>
+                            </div>
+                            <div class="dashboardItem">
+                                    <span id="completed"></span>
+                                    <div id="colDashboard">
+                                        <img src="images/task.png" height="30" width="30">
+                                        <span>Completed Projects</span>
+                                    </div>
+                            </div>
+                            <div class="dashboardItem">
+                                    <span id="inProgress"></span>
+                                    <div id="colDashboard">
+                                        <img src="images\planning.png" height="30" width="30">
+                                        <span>In Progress Projects</span>
+                                    </div>
+                            </div>
+                </div>
+                <div id="clientsStats" class="rawDashboard">
+                            <div class="dashboardItem">
+                                    <span id="clients"></span>
+                                    <div id="colDashboard">
+                                        <img src="images/task.png" height="30" width="30">
+                                        <p>clients</p>
+                                    </div>
+                            </div>
+                </div>
+                <div id="ServiceProvidersStats" class="rawDashboard">
+                            <div class="dashboardItem">
+                                    <span id="softwareHouses"></span>
+                                    <div id="colDashboard">
+                                        <img src="images/task.png" height="30" width="30">
+                                        <span>softwareHouses</span>
+                                    </div>
+                            </div>
+                            <div class="dashboardItem">
+                                    <span id="Freelancers"></span>
+                                    <div id="colDashboard">
+                                        <img src="images/task.png" height="30" width="30">
+                                        <span>Freelancers</span>
+                                    </div>
+                            </div>
+                            
+                            <div class="dashboardItem">
+                                    <span id="Avilable"></span>
+                                    <div id="colDashboard">
+                                        <img src="images\planning.png" height="30" width="30">
+                                        <span>Avilable</span>
+                                    </div>
+                            </div>
+                            <div class="dashboardItem">
+                                    <span id="Busy"></span>
+                                    <div id="colDashboard">
+                                        <img src="images\planning.png" height="30" width="30">
+                                        <span>Busy</span>
+                                    </div>
+                            </div>
+                </div>
+             </div>
+
+             <!-- section 2 clients -->
+
+    <h2 id="clientsBegin">Clients</h2>
+        <div id="clientsSection">
+            <div id="mainContainer-clients" class="mainContainer-clients">
+               
+            </div>
+        </div>
+
+        <!-- section 3 serviceProviders -->
+         <h2 id="serviceProvidersBegin">Service Providers</h2>
+         <div id="serviceProvidersSection" class="serviceProvidersSection">                
+               
+        </div>
+    </div>
+    <!-- container end -->
+    <script src="JS/adminlanding.js"></script>
+
+</body>
+
+</html>

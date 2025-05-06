@@ -20,7 +20,8 @@ function initializeLandingPage() {
         'LogInButton',
         'postProject',
         'createProfile',
-        'profileLink'
+        'profileLink',
+        'projectsLink'
     ];
 
     function checkElements() {
@@ -54,7 +55,8 @@ function initializeLandingPage() {
             LogInButton, 
             postProject, 
             createProfile, 
-            profileLink
+            profileLink,
+            projectsLink
         } = elements;
 
         function pathToProfile(role, ButtonClass){
@@ -89,10 +91,17 @@ function initializeLandingPage() {
                 
                 // Show post project only for specific roles
                 const shouldShowPostProject = userData.role && userData.role !== 'ServiceProvider';
-                
+                // projects page nav
+                if(shouldShowPostProject){
+                    safeDisplay(projectsLink, 'flex');
+                    
+                }else{
+                    safeDisplay(projectsLink, 'none');
+                }
                 // Handle profile completion status
                 if (status === true || status === 'true' || userData.profileCompleted == true) {
                     safeDisplay(createProfile, 'none');
+                    safeDisplay(profileLink, 'flex');
                     safeDisplay(profileLink, 'flex');
                     safeDisplay(postProject, shouldShowPostProject ? 'flex' : 'none');
                     if(shouldShowPostProject){
@@ -104,6 +113,7 @@ function initializeLandingPage() {
                     safeDisplay(createProfile, 'flex');
                     safeDisplay(profileLink, 'none');
                     safeDisplay(postProject, 'none');
+
                 }
             } else {
                 // User is not logged in
@@ -113,6 +123,8 @@ function initializeLandingPage() {
                 safeDisplay(postProject, 'none');
                 safeDisplay(createProfile, 'none');
                 safeDisplay(profileLink, 'none');
+                safeDisplay(projectsLink, 'none');
+
             }
         }
 
@@ -159,6 +171,9 @@ function initializeLandingPage() {
             logoutButton.hasListener = true; // Mark as having listener
         }
 
+        projectsLink.addEventListener("click", (e)=>{
+            window.location.href = 'displayAllProjects.html';
+        })
 
         // Initial UI update
         updateUI();

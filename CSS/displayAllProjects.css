@@ -25,6 +25,50 @@
     min-height: 100vh;
    }
 
+   
+  .header{
+    display: flex;
+    position: sticky;
+    margin:20px;
+    justify-content: space-between;
+  }
+  ul{
+    list-style: none;
+    font-size: 20px;
+    /* margin: 0; */
+    /* gap: 100px; */
+  }
+  ul li{
+    display: inline-block;
+    margin: 0 40px;
+  }
+  
+  a:hover{
+    color:rgba(0, 0, 0, 0.716);
+    
+  }
+  ul li p{
+    font-size: 40px;
+  }
+  
+  ul li, a{
+    color: rgba(0, 0, 0, 0.836);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .h2{
+    width:fit-content;
+    padding:10px;
+    border:0px solid lightgray;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    position: relative;
+    left:-8px;
+    color: white;
+    background-color: #28be96a7;
+  }
+  
 
 
 .mainContainer{

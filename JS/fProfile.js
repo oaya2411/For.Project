@@ -5,7 +5,7 @@ const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$
 // DOM Elements
 const form = document.getElementById('form');
 const errorMessages = {
-  phone: document.getElementById('phoneError'),
+  phonenumber: document.getElementById('phoneError'),
   title: document.getElementById('titleError'),
   portfolio: document.getElementById('portfolioError'),
   experience: document.getElementById('exError'),
@@ -18,7 +18,7 @@ const errorMessages = {
   industry: document.getElementById('industryError'),
   projectTypePrefered: document.getElementById('projectsPreferedError'),
   projectSizePrefered: document.getElementById('projectSizeError'),
-  
+
 };
 
 // Global variables
@@ -43,7 +43,7 @@ function createTechItem(tech) {
 function toggleTechSelection(li, techName) {
   li.classList.toggle("checked");
   const techStack = dropdowns.techStack;
-  
+
   if (li.classList.contains("checked")) {
     techStack.getSelectedItems().push(techName);
   } else {
@@ -52,12 +52,12 @@ function toggleTechSelection(li, techName) {
       techStack.getSelectedItems().splice(index, 1);
     }
   }
-  
+
   techStack.updateButtonText();
 }
 
 function loadTechStacks() {
-  techStackContainer = document.querySelector("#techStack .list-items"); 
+  techStackContainer = document.querySelector("#techStack .list-items");
   fetch('https://api.stackexchange.com/2.3/tags?site=stackoverflow&sort=popular&order=desc&pagesize=100&page=1&key=rl_mg7UQxhsVFGxhq7yU5X1447nL')
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
@@ -99,13 +99,13 @@ function setupDropdown(btnSelector, listSelector) {
       item.addEventListener("click", () => {
         item.classList.toggle("checked");
         const itemText = item.textContent.trim();
-        
+
         if (item.classList.contains("checked")) {
           selectedItems.push(itemText);
         } else {
           selectedItems = selectedItems.filter(i => i !== itemText);
         }
-        
+
         updateButtonText();
       });
     });
@@ -159,7 +159,7 @@ document.querySelectorAll(".list-items").forEach(list => {
 });
 
 // Form validation and submission
-form.addEventListener("submit", async function(e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
   let isValid = true;
 
@@ -173,6 +173,8 @@ form.addEventListener("submit", async function(e) {
       document.querySelector(`select[name="${field}"]`) ||
       document.querySelector(`input[name="${field}"]`) ||
       document.getElementById(field === 'projectTypePrefered' ? 'projectsPrefered' : field === 'projectSizePrefered' ? 'projectSize' : field);
+
+    console.log(inputElement, errorMessages[field]);
 
     if (errorElement && inputElement) {
       errorElement.textContent = message;
@@ -212,42 +214,52 @@ form.addEventListener("submit", async function(e) {
   //   isValid = false;
   // };
 
+
+
   // Required field validation
-  if (!formData.phone) showError('phone', 'Phone number is required');
-  else if (!phoneRegex.test(formData.phone)) showError('phone', 'Phone number must be 11-14 digits');
+  if (!formData.phone) {
+    console.log("phone is not valid");
+    showError('phonenumber', 'Phone number is required');
+
+  }
+  else if (!phoneRegex.test(formData.phone)) {
+    showError('phonenumber', 'Phone number must be 11-14 digits');
+    console.log("phone is not valid regex");
+
+  }
 
   if (!formData.title) showError('title', 'Title is required');
   if (!formData.portfolio) showError('portfolio', 'portfolio is required');
-  else if(!urlRegex.test(formData.portfolio)) showError('portfolio', 'portfolio url is not correct');
-  
-  if (!formData.country || formData.country === 'Select Your Country') 
+  else if (!urlRegex.test(formData.portfolio)) showError('portfolio', 'portfolio url is not correct');
+
+  if (!formData.country || formData.country === 'Select Your Country')
     showError('countries', 'Country is required');
-  
-  if (!formData.city || formData.city === 'Select City') 
+
+  if (!formData.city || formData.city === 'Select City')
     showError('cities', 'City is required');
-  
+
   if (!formData.experience) showError('experience', 'Experience is required');
-  else if (isNaN(formData.experience) || formData.experience < 0) 
+  else if (isNaN(formData.experience) || formData.experience < 0)
     showError('experience', 'Experience must be a positive number');
 
   if (!formData.selectedRole) showError('role', 'Please select your service provider role');
-    
+
 
   // Dropdown validations
-  if (formData.techStack.length === 0) 
+  if (formData.techStack.length === 0)
     showError('techStack', 'Please select at least one tech stack');
-  
-  if (formData.payment.length === 0) 
+
+  if (formData.payment.length === 0)
     showError('payment', 'Please select at least one payment preference');
-  
-  if (formData.primaryField.length === 0) 
+
+  if (formData.primaryField.length === 0)
     showError('primaryField', 'Please select at least one primary field');
-  
-  if (formData.industry.length === 0) 
+
+  if (formData.industry.length === 0)
     showError('industry', 'Please select at least one industry');
-  if (formData.projectsPrefered.length === 0) 
+  if (formData.projectsPrefered.length === 0)
     showError('projectTypePrefered', 'Please select at least one choice');
-  if (formData.projectSize.length === 0) 
+  if (formData.projectSize.length === 0)
     showError('projectSizePrefered', 'Please select at least one choice');
 
 
@@ -271,7 +283,7 @@ form.addEventListener("submit", async function(e) {
       const token = localStorage.getItem('authToken');
       const response = await fetch('https://for-developers.vercel.app/api/v1/ServiceProvider/create-profile', {
         method: 'POST',
-        headers: {  
+        headers: {
           'Content-Type': 'application/json',
           'token': token,
         },
@@ -293,7 +305,7 @@ form.addEventListener("submit", async function(e) {
       });
 
       const data = await response.json();
-      
+
       if (!response.ok) {
         console.log(data);
         console.log(formData.primaryField[0]);
@@ -332,9 +344,9 @@ function showSuccessMessage(message) {
 }
 
 // Initialize on DOM load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   loadTechStacks();
-  
+
   // Set default text for dropdown buttons
   document.querySelectorAll('.btn_text').forEach(btn => {
     if (!btn.dataset.defaultText) {

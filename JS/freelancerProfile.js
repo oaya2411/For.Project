@@ -772,7 +772,6 @@
 // //     }
 // // })
 
-
 let message = document.getElementById('messageContainer');
 const token = localStorage.getItem('authToken');
 let ServiceProviderData; 
@@ -940,7 +939,7 @@ function loadEditData() {
   let city = document.getElementById('selectedCity');
   let title = document.getElementById('titleInput');
   let portfolio = document.getElementById('portfolioInput');
-  let experience = document.getElementById('experience');
+  let experience = document.getElementById('experienceInput');
   let role = document.getElementById('role');
   let primaryField = document.getElementById('primaryField');
   let industry = document.getElementById('IndusrtyField');
@@ -1273,8 +1272,10 @@ async function validateData(e) {
       isValid = false;
   };
 
+  
   // Phone validation (only if changed)
   if (phone && phone !== originalPhone) {
+    
       if (!phoneRegex.test(phone)) {
           showError('phone', 'Phone number must be 11-14 digits');
       } else {
