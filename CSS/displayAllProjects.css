@@ -1,0 +1,230 @@
+:root {
+    --main-color: #28be97;
+    /* --main-color: rgb(54, 98, 173); */
+  
+    --main-text-color: black;
+    --text-color: #777;
+    --bg-color: #e7f7f6;
+    /* --bg-color: rgb(220, 238, 255); */
+    --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+    --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
+    --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+    --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    outline: none;
+    font-family: 'Poppins';
+  }
+  
+  body {
+    /* font-family: "Roboto", sans-serif; */
+    background-color: rgb(255, 255, 255);
+    min-height: 100vh;
+   }
+
+
+
+.mainContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.container{
+    display: grid;
+    
+    gap:15px;
+    height:auto;
+    min-height: 300px;
+    width:300px;
+    padding:15px;
+    margin:20px;
+    /* border:2px solid rgba(0, 0, 0, 0.016); */
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.477);
+    align-items: center;
+    position: relative;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    
+    cursor: pointer;
+}
+
+.container:hover {
+    transform: translateY(-5px); 
+    box-shadow: 6px 4px 10px rgba(0, 0, 0, 0.5); /* ظل أقوى */
+  }
+  
+.projectType{
+    background-color: #28be9676;
+    width: fit-content;
+    padding:7px;
+    border-radius: 18px;
+    color:white;
+    font-weight: 500;
+}
+
+.projectName{
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+/* 
+.projectDesc {
+  display: block; 
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow:unset;
+  line-height: 1.7em; Adjust to match your font
+  max-height: calc(3 * 3em); 3 lines tall
+  color: var(--text-color);
+  text-align: left;
+  word-break: break-word; Ensure long words wrap
+} */
+
+/* .decSpan{
+    display: block;
+    margin: 0;
+    color:#77777781;
+    font-size:14px;
+    align-items: start;
+    text-align: left;
+} */
+
+.projectDescContainer {
+  font-size: 14px;
+  color: var(--text-color);
+  gap: 5px;
+  margin-top: 10px; /* Spacing from project name */
+}
+
+.decSpan {
+  display: block;
+  margin: 0;
+  color: #77777781;
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 5px; /* Space between label and description */
+}
+
+.projectDesc {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.7em;
+  max-height: calc(3 * 3em);
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+.salaryContainer{
+    display: flex;
+    gap:30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.statusContainer{
+    display: block;
+    margin-top:30px;
+    margin-right: 5px;
+}
+
+.min-budget, .max-budget{
+    background-color: #28be963d;
+    width: fit-content;
+    padding:10px;
+    border-radius: 22px;
+    color:#777;
+}
+
+.status{
+    position: absolute;
+    padding:10px;
+    right:0;
+    color:white;
+    text-align: center;
+    bottom: 0;
+    margin-right: 0;
+    margin-left:3px;
+    font-size: 14px;
+    width:fit-content;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 18px;
+}
+
+.status.notStarted{
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
+.status.completed{
+    background-color: rgb(16, 138, 0);
+}
+
+.status.onProgress{
+    background-color: rgb(17, 153, 206);
+}
+
+
+  /* Loading overlay */
+  body.loading-active {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  body.loading-active::after {
+    content: '';
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  #loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    border-radius: 50%;
+    border-top-color: #4CAF50;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  .loading-text {
+    color: transparent;
+    font-size: 1.2rem;
+    background-color: transparent;
+    margin: 0;
+  }
+  
+  @keyframes spin {
+    to {
+        background-color: transparent;
+      transform: rotate(360deg);
+    }
+  }
+  

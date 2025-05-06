@@ -12,7 +12,6 @@ const errorMessages = {
   tech: document.getElementById('techStackError'),
 };
 
-
 // AI geenration
 async function useAI(fieldID, question) {
   // get the field we want 
@@ -94,10 +93,10 @@ descAI.addEventListener("click", (e)=>{
 
 let audience = document.getElementById('audienceAI');
 audience.addEventListener("click", (e)=>{
-  useAI('audeince', 'Give me target audience depending on this overview message, please do not ask me for more details give me all the data i may need in about only 3 line or least'); 
+  useAI('audience', 'Give me target audience depending on this overview message, please do not ask me for more details give me all the data i may need in about only 3 line or least'); 
 });
 
-let problemStatement =document.getElementById('problem');
+let problemStatement =document.getElementById('problemAI');
 problemStatement.addEventListener("click", (e)=>{
   useAI('problem', 'Give me an detailed problem statement depending on this overview message, please do not ask me for more details give me all the data i may need in about only 3 line or least');
 });
@@ -199,13 +198,12 @@ techStackContainer.addEventListener("click", (e) => {
 });
 
 // Load tech stacks when page loads
-// loadTechStacks();
+loadTechStacks();
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
   let isValid = true;
   const experienceField = document.getElementById('experience').value;
-
   // Get form values
   const name = document.getElementById('email').value.trim();
   const overview = document.getElementById('pass').value;

@@ -450,19 +450,16 @@
                 </div>
             </div>
         </form>
-        <script src="JS/freelancerProfileSubmit.js"></script>
+        <script src="JS/fProfile.js"></script>
         <script>
             const apiKey = "RVVNT0ZmWDRJVXBKSDJVWnJiWnd6b3NOSVV0NnlhZ0lGS2ZLbEdOcQ==";
-        
             var headers = new Headers();
             headers.append("X-CSCAPI-KEY", apiKey);
-        
             var requestOptions = {
                 method: 'GET',
                 headers: headers,
                 redirect: 'follow'
             };
-    
             fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
                 .then(response => response.json())
                 .then(countries => {
