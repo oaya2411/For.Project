@@ -93,7 +93,7 @@ document.body.classList.add('loading-active');
           showSuccessMessage('Profile Updated Succefully !');
 
           setTimeout(() => {
-              window.location.href = "../landingPage.html";
+              window.location.href = "landingPage.html";
           }, 2000);
         } else {
           console.error('Token not found in response');

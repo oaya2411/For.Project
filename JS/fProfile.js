@@ -317,7 +317,7 @@ form.addEventListener("submit", async function (e) {
       // showSuccessMessage('Profile completed successfully!');
       alert('Profile completed successfully!')
       setTimeout(() => {
-        window.location.href = "../landingPage.html";
+        window.location.href = "landingPage.html";
       }, 4000);
 
     } catch (error) {

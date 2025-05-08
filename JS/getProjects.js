@@ -150,7 +150,7 @@ mainContainer.addEventListener("click", function (e) {
   if (clickedCard) {
     const cardId = clickedCard.id; 
     console.log(cardId);
-    window.location.href = `../projectDetails.html?id=${cardId}`;
+    window.location.href = `projectDetails.html?id=${cardId}`;
   }
 });
 

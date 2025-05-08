@@ -1404,7 +1404,7 @@ async function validateData(e) {
               infoSection.style.display = 'block';
               editSection.style.display = 'none';
               setTimeout(() => {
-                  window.location.href = "../landingPage.html";
+                  window.location.href = "landingPage.html";
               }, 3000);
           } else {
               console.error('API error:', responseData.message || 'Unknown error');

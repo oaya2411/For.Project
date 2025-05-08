@@ -315,7 +315,7 @@ const errorMessages = {
             infoSection.style.display = 'block';
             editSection.style.display = 'none';
             setTimeout(() => {
-                window.location.href = "../landingPage.html";
+                window.location.href = "landingPage.html";
             }, 2000);
 
         } else {

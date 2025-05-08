@@ -124,7 +124,7 @@ const handleFormSubmit = async (e) => {
             throw new Error(data.message || 'Failed to update password');
         }else{
             alert("Password Updated Successfully");
-            window.location.href = 'login.html'
+            window.location.href = '../Authentication/login.html'
         }
     } catch (error) {
         console.error('Error:', error);

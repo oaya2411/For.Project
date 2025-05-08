@@ -70,7 +70,7 @@ document.body.classList.add('loading-active');
             // Successful verification
             alert("OTP verified successfully!");
             // Redirect or perform next action
-            window.location.href = "resetPassword.html";
+            window.location.href = "../Authentication/resetPassword.html";
         } else {
             // Handle API errors
             alert('Wrong OTP, try again');
