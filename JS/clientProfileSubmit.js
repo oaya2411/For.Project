@@ -115,8 +115,9 @@ form.addEventListener("submit", async function(e) {
         console.error('API error:', responseData.message || 'Unknown error');
         alert(responseData.message || 'Failed to update profile');
       }
+
       setTimeout(() => {
-        window.location.href = "../landingPage.html";
+        window.location.href = "landingPage.html";
     }, 2000);
     } catch (error) {
       console.error('Fetch error:', error);
