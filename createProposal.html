@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelanz - Your Profile</title>
+    <link rel="shortcut icon" href="../images/social.png" type="image/x-icon">
+    <!-- Import Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <!-- Import fontawesome for Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- Import our CSS files -->
+      <link rel="stylesheet" href="CSS/proposal.css">
+
+</head>
+<body>
+    <div class="header">
+        <h1 id="logo" class="logo"><a href="adminLanding.html">Freelanz</a></h1>
+        <div>
+            <a target="_blank" id="proposal"><i class="fa-solid fa-arrow-down"></i> Download Proposal</a>
+        </div>
+    </div>
+    <div class="mainContainer">
+            <h2>Arrange proposal</h2>            
+            <!-- form data -->
+                <div id="EditSecondaryInfo">
+                    <span id="AdditionalInfo"></span>
+                    <div class="buttons">
+                        <span id="create"><i class="fa-solid fa-plus" ></i>Create Proposal</span>
+                        <span id="update"><i class="fa-solid fa-pen"></i></i>Update Proposal</span>
+                    </div>
+                    <div id="editData">
+                        <form id="form">
+                            <!-- Description -->
+                            <div class="desc">
+                                <label>Description</label><br>
+                                <textarea class="AIField" required type="text" id="desc1"></textarea>
+                                <span id="descError" class="errormessage"></span>
+                            </div>
+                            <!-- Target Audience -->
+                            <div class="Audience">
+                                <label>Target Audience</label><br>
+                                <textarea class="AIField" required type="text" id="audience"></textarea>
+                                <span id="targetAudienceError" class="errormessage"></span>
+                            </div>
+                            <!-- problem statement -->
+                            <div class="challengeMotivation">
+                                <label>Challenge Overview</label><br>
+                                <textarea class="AIField" required type="text" id="problem1"></textarea>
+                                <span id="problemError" class="errormessage"></span>
+                            </div>
+                        
+
+                            <div class="challengeMotivation">
+                                <label>Duartion and your budget</label><br>
+                                <div class="payment" style="display: flex;">
+                                    <!-- duration -->
+                                    <div > 
+                                        <input id="ex" type="number" placeholder="Duration(in months)">
+                                    </div>
+                                    <!-- min-budget -->
+                                    <div>
+                                        <input id="min-budget" type="number" placeholder="Min-Budget">
+                                    </div>
+                                    <!-- max budget -->
+                                    <div>
+                                        <input id="max-budget" type="number" placeholder="Max-Budget">
+                                    </div>
+                                </div>
+                            <span id="detailsError" class="errormessage"></span>
+                            </div>
+                            <!-- Tech Stack -->
+                            <label for="projectType">TechStack</label>
+                            <div class="techStack">
+                                <div class="select_btn">
+                                    <span class="btn_text">Select TechStacks you want</span>
+                                    <span class="arrow_dwn">
+                                        <i class="fa-solid fa-angle-down" style="background-color: transparent; color:#fff"> </i>
+                                    </span>
+                                </div>
+                                <!-- list of items that coming from the API -->
+                                <ul class="list-items">
+                                
+                                </ul>
+                                <span id="techStackError" class="errormessage"></span>
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+   </div>
+    <script src="JS/proposalPage.js"></script>
+</body>
+</html>

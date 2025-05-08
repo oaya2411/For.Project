@@ -775,9 +775,8 @@
 let message = document.getElementById('messageContainer');
 const token = localStorage.getItem('authToken');
 let ServiceProviderData; 
-const phoneRegex = /^\d{11,14}$/;
+const phoneRegex = /^01[0125]\d{8}$/;
 const form = document.getElementById('form');
-
 async function getDashboardData(){
   const loader = document.createElement('div');
   loader.id = 'loader';
@@ -931,6 +930,7 @@ async function getUserData() {
       alert('fail to get data, Try to Login Please');
     }
   }
+  
 // get User data and display it
 function loadEditData() {
 

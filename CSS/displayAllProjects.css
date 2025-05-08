@@ -207,14 +207,13 @@
     background-color: rgba(255, 0, 0, 0.8);
 }
 
-.status.completed{
+.status.Completed{
     background-color: rgb(16, 138, 0);
 }
 
 .status.onProgress{
     background-color: rgb(17, 153, 206);
 }
-
 
   /* Loading overlay */
   body.loading-active {

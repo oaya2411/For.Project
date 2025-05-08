@@ -79,18 +79,6 @@ function createProjectCard({
     return mainContainer;
   }
   
-  // Example usage:
-// let cardData = {
-//     projectType: 'Web Development',
-//     projectName: 'E-Learning Platform',
-//     projectDesc: 'A comprehensive e-learning platform for students and professionals to access courses and certifications online',
-//     minBudget: 300,
-//     maxBudget: 800,
-//     status: 'completed'
-//   };
-  
-// const projectCard = createProjectCard(cardData);
-// document.body.appendChild(projectCard);
 async function getAllProjects(){
     const url = `https://for-developers.vercel.app/api/v1/project`;
     const loader = document.createElement('div');
@@ -125,7 +113,7 @@ async function getAllProjects(){
             if(status === 'Not Started'){
                 status = 'notStarted'
             }else if(status === 'completed'){
-                status = 'completed';
+                status = 'Completed';
             }else{
                 status = 'onProgress';
             }
@@ -153,3 +141,17 @@ async function getAllProjects(){
 }
 
 getAllProjects();
+
+const mainContainer = document.getElementById('mainContainer');
+
+mainContainer.addEventListener("click", function (e) {
+  console.log('enter');
+  const clickedCard = e.target.closest(".container");
+  if (clickedCard) {
+    const cardId = clickedCard.id; 
+    console.log(cardId);
+    window.location.href = `projectDetails.html?id=${cardId}`;
+  }
+});
+
+document.getElementById('logo')

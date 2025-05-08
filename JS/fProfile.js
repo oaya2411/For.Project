@@ -1,5 +1,5 @@
 // Regex patterns
-const phoneRegex = /^\d{11,14}$/;
+const phoneRegex = /^01[0125]\d{8}$/;
 const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 
 // DOM Elements

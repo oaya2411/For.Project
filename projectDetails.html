@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelanz - Your Profile</title>
+    <link rel="shortcut icon" href="../images/social.png" type="image/x-icon">
+    <!-- Import Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <!-- Import fontawesome for Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- Import our CSS files -->
+      <link rel="stylesheet" href="CSS/projectDetails.css">
+
+</head>
+<body>
+    <div class="header">
+        <h1 id="logo" class="logo"><a>Freelanz</a></h1>
+        <div>
+            <a target="_blank" id="proposal"><i class="fa-solid fa-plus" ></i> Create Proposal</a>
+            <a target="_blank" id="complete"><i class="fa-solid fa-check"></i> Mark As Completed</a>
+        </div>
+    </div>
+    <div class="mainContainer">
+        <div class="projectData">
+            <div id="project" class="project">
+                <div class="section1">
+                    <div id="AdditionalInfo">Project Details</div> 
+                    <span id="edit"><i class="fa-solid fa-pen"></i></span>
+                </div>
+                <div class="projectDetails">
+                    <div id="firstCol">
+                        <div id="">
+                            <span class="title">Name</span>
+                            <span id="name"></span>
+                        </div>
+                        <div id="">
+                            <span class="title">description</span>
+                            <span id="desc"></span>
+                        </div>
+                        <div id="">
+                            <span class="title">Challenge Overview</span>
+                            <span id="problem"></span>
+                        </div>
+                        <div id="">
+                            <span class="title">Indusrty</span>
+                            <span id="industry"></span>
+                        </div>
+                        <div id="">
+                            <span class="title">Project Type</span>
+                            <span id="projectType"></span>
+                        </div>
+                        
+                        <div id="">
+                            <span class="title">tech Stack</span>
+                            <div id="techStack">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div id="secondcol">
+                        <div id="">
+                            <span class="title">Target Audience</span>
+                            <span id="targetAudience"></span>
+                        </div>
+                        <div id="">
+                            <span class="title">Min-Max Budget</span>
+                            <span id="budget">
+                                <span id="min" class="bubble"></span>
+                                <span id="max" class="bubble"></span>
+                            </span>
+                        </div>
+                        <div id="">
+                            <span class="title">Expected Duration (in months)</span>
+                            <span id="duration"></span>
+                        </div>
+                        <div id="">
+                            <span class="title">Level Of Experience (in years)</span>
+                            <span id="experience"></span>
+                        </div>
+                        <div id="">
+                            <span class="title">status</span>
+                            <span id="status"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- form data -->
+            <div id="editSection">
+                <div id="EditSecondaryInfo">
+                    <span id="AdditionalInfo">Edit Form</span>
+                    <span id="submit"><i class="fa-solid fa-check"></i></span>
+                    <span id="cancel"><i class="fa-solid fa-xmark"></i></span>
+                    <div id="editData">
+                        <form id="form">
+                            <!-- Name -->
+                            <div class="Name">
+                                <label>Project Name</label><br>
+                                <input required type="email" id="email">
+                                <span id="nameError" class="errormessage"></span>
+                            </div>
+                            <!-- Description -->
+                            <div class="desc">
+                                <label>Description</label><br>
+                                <textarea class="AIField" required type="text" id="desc1"></textarea>
+                                <span id="descError" class="errormessage"></span>
+                            </div>
+                            <!-- Target Audience -->
+                            <div class="Audience">
+                                <label>Target Audience</label><br>
+                                <textarea class="AIField" required type="text" id="audience"></textarea>
+                                <span id="targetAudienceError" class="errormessage"></span>
+                            </div>
+                            <!-- problem statement -->
+                            <div class="challengeMotivation">
+                                <label>Challenge Overview</label><br>
+                                <textarea class="AIField" required type="text" id="problem1"></textarea>
+                                <span id="problemError" class="errormessage"></span>
+                            </div>
+                            <!-- Industry -->
+                            <div class="Industry">
+                                <label for="industry">Sector/Industry</label>
+                                <select id="industry">
+                                    <option>FinTech</option>
+                                    <option>HealthTech</option>
+                                    <option>E-commerce</option>
+                                    <option>Retail Tech</option>
+                                    <option>AI & Machine Learning</option>
+                                    <option>Cybersecurity Tech</option>
+                                    <option>EdTech</option>
+                                    <option>GamingTech</option>
+                                    <option>CloudTech</option>
+                                    <option>Blockchain & Web3</option>
+                                    <option>Big Data & Analytics</option>
+                                    <option>Mobility & Transport Tech</option>
+                                    <option>Logistics & Supply Chain Tech</option>
+                                    <option>Entertainment & Media Tech</option>
+                                    <option>InsurTech</option>
+                                    <option>PropTech</option>
+                                    <option>AgriTech</option>
+                                    <option>EnergyTech & CleanTech</option>
+                                    <option>SportsTech</option>
+                                    <option>Industry 4.0 & Manufacturing Tech</option>
+                                    <option>GovTech</option>
+                                </select>
+                                <span id="industryError" class="errormessage"></span>
+
+                            </div>  
+                            <!-- level of experience -->
+                            <div class="exper">
+                                <label for="experience">Level Of Experience</label>
+                                <select id="experience">
+                                    <option>Entry Level</option>
+                                    <option>Junior</option>
+                                    <option>Mid Level</option>
+                                    <option>Senior Level</option>
+                                </select>
+                                <span id="experError" class="errormessage"></span>
+                            </div> 
+                            <!-- Project Type -->
+                            <div class="proType">
+                                <label for="projectType">Type of project</label>
+                                <select id="projectType">
+                                    <option>Web Development</option>
+                                    <option>Mobile Development ios</option>
+                                    <option>Mobile Development android</option>
+                                    <option>Mobile Development flutter</option>
+                                    <option>UI/UX Design</option>
+                                </select>
+                                <span id="proType" class="errormessage"></span>
+                            </div> 
+
+                            <div class="challengeMotivation">
+                                <label>Duartion and your budget</label><br>
+                                <div class="payment" style="display: flex;">
+                                    <!-- duration -->
+                                    <div > 
+                                        <input id="ex" type="number" placeholder="Duration(in months)">
+                                    </div>
+                                    <!-- min-budget -->
+                                    <div>
+                                        <input id="min-budget" type="number" placeholder="Min-Budget">
+                                    </div>
+                                    <!-- max budget -->
+                                    <div>
+                                        <input id="max-budget" type="number" placeholder="Max-Budget">
+                                    </div>
+                                </div>
+                            <span id="detailsError" class="errormessage"></span>
+                            </div>
+                            <!-- Tech Stack -->
+                            <label for="projectType">TechStack</label>
+                            <div class="techStack">
+                                <div class="select_btn">
+                                    <span class="btn_text">Select TechStacks you want</span>
+                                    <span class="arrow_dwn">
+                                        <i class="fa-solid fa-angle-down" style="background-color: transparent; color:#fff"> </i>
+                                    </span>
+                                </div>
+                                <!-- list of items that coming from the API -->
+                                <ul class="list-items">
+                                
+                                </ul>
+                                <span id="techStackError" class="errormessage"></span>
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Client Data -->
+            <div class="clientInfo">
+                <span id="AdditionalInfo">Client Info</span>
+                <div id="userData">
+                    <div id="">
+                        <span class="title">Name</span>
+                        <span id="cname"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">E-mail</span>
+                        <span id="cemail"></span>
+                    </div> 
+                    <div id="">
+                        <span class="title">Company Name</span>
+                        <span id="companyName"></span>
+                    </div>
+                    <!-- <div id="">
+                        <span class="title">Indusrty</span>
+                        <span id="IndusrtyField"></span>
+                    </div> -->
+                    <div id="">
+                        <span class="title">Phone</span>
+                        <span id="phoneNumber"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">Country</span>
+                        <span id="Country"></span>
+                    </div>
+                    <div id="">
+                        <span class="title">City</span>
+                        <span id="City"></span>
+                    </div>
+                </div>
+            </div>
+            <a id="create"></a>
+            <!-- freelancer  -->
+        </div>
+        <div class="freelancers">
+            <div id="freelancersContainer" class="freelancersContainer">
+
+                <div class="freelancerCard">
+                    <div id="type">Freelancer</div>
+                    <div id="title">SOftware Engineer</div>
+                    <div id="phone">01151897171</div>
+                    <div class="dataRow">
+                        <div class="rowItem">
+                            <span class="subTitle">industry</span>
+                            <span id="industry">tech , fdkj, fdkjgf , fvf</span>
+                        </div>
+                        <div class="rowItem">
+                            <span class="subTitle">Exp</span>
+                            <span id="experience">5</span>
+                        </div>
+                    </div>
+
+                    <div class="techStack">
+                        
+                    </div>
+                    <div class="dataRow">
+                        <div class="rowItem">
+                            <span class="assignBtn">Assign Project</span>
+                        </div>
+                        <div class="rowItem">
+                            <span class="subTitle">matchingTect</span>
+                            <span id="matchingTech">10</span>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            <!--  -->
+        </div>
+    </div>
+
+
+    <script src="JS/projectDetails.js"></script>
+</body>
+</html>

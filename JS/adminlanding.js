@@ -191,14 +191,6 @@ function serviceProviderCard(provider) {
       `);
     }
   }
-// Full example
-// serviceProviderCard({
-//   title: "Plumbing Expert",
-//   name: "John Doe",
-//   phone: "01015556666",
-//   location: "Giza, Egypt"
-// });
-
 async function getServiceProviders(){
     const url = `https://for-developers.vercel.app/api/v1/ServiceProvider/ServiceProviders`;
     const loader = document.createElement('div');
