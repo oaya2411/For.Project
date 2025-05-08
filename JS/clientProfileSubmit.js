@@ -116,7 +116,7 @@ form.addEventListener("submit", async function(e) {
         alert(responseData.message || 'Failed to update profile');
       }
       setTimeout(() => {
-        window.location.href = "landingPage.html";
+        window.location.href = "../For.Project/landingPage.html";
     }, 2000);
     } catch (error) {
       console.error('Fetch error:', error);
