@@ -10,9 +10,9 @@ radios.forEach(radio => {
 
     document.getElementById("submitBtn").addEventListener("click", function () {
         if (selected && selected.value === "freelancer") {
-        window.location.href = "landingPage.html";
+        window.location.href = "../Authentication/freelancerRegister.html";
         } else if (selected && selected.value === "client") {
-        window.location.href = "landingPage.html";
+        window.location.href = "../Authentication/clientRegister.html";
         }
     });
 });
