@@ -172,7 +172,7 @@ function initializeLandingPage() {
         }
 
         projectsLink.addEventListener("click", (e)=>{
-            window.location.href = '../displayAllProjects.html';
+            window.location.href = './displayAllProjects.html';
         })
 
         // Initial UI update

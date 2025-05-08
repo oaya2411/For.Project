@@ -139,7 +139,7 @@ async function initApp() {
     
     if (!token) {
         displayMessage('warning', 'You are not logged in. Redirecting to login...');
-        setTimeout(() => window.location.href = '/login', 2000);
+        setTimeout(() => window.location.href = '../login', 2000);
         return;
     }
 
