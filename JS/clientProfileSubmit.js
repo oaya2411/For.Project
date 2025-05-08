@@ -111,14 +111,13 @@ form.addEventListener("submit", async function(e) {
           showSuccessMessage('Profile updated successfully!');
           alert("Profile updated successfully!");
           localStorage.setItem('status', true);
-          setTimeout(() => {
-              window.location.href = "../landingPage.html";
-          }, 5000);
-
       } else {
         console.error('API error:', responseData.message || 'Unknown error');
         alert(responseData.message || 'Failed to update profile');
       }
+      setTimeout(() => {
+        window.location.href = "../landingPage.html";
+    }, 2000);
     } catch (error) {
       console.error('Fetch error:', error);
       alert('Something went wrong. Please try again!');
