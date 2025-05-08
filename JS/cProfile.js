@@ -212,53 +212,53 @@ const errorMessages = {
     industry: document.getElementById('industryError'),
   };
 
-//   function validateData(e) {
-//     e.preventDefault();
-//     let isValid = true;
-//     const DEFAULT_SELECT_VALUE = 'firstItem';
+  function validateData(e) {
+    e.preventDefault();
+    let isValid = true;
+    const DEFAULT_SELECT_VALUE = 'firstItem';
 
-//     // Get form values
-//     const phone = document.getElementById('phonenumber').value.trim();
-//     const company = document.getElementById('company').value.trim();
-//     const country = document.getElementById('countries').value;
-//     const city = document.getElementById('cities').value;
-//     const industry = document.getElementById('industry').value;
+    // Get form values
+    const phone = document.getElementById('phonenumber').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const country = document.getElementById('countries').value;
+    const city = document.getElementById('cities').value;
+    const industry = document.getElementById('industry').value;
 
-//     // Reset all error messages
-//     Object.values(errorMessages).forEach(el => {
-//         if (el) el.style.display = 'none';
-//     });
+    // Reset all error messages
+    Object.values(errorMessages).forEach(el => {
+        if (el) el.style.display = 'none';
+    });
 
-//     // Validation functions
-//     const showError = (field, message, duration = 5000) => {
-//         if (errorMessages[field]) {
-//             errorMessages[field].textContent = message;
-//             errorMessages[field].style.display = 'block';
-//             if (duration) setTimeout(() => {
-//                 if (errorMessages[field]) errorMessages[field].style.display = 'none';
-//             }, duration);
-//         }
-//         isValid = false;
-//     };
+    // Validation functions
+    const showError = (field, message, duration = 5000) => {
+        if (errorMessages[field]) {
+            errorMessages[field].textContent = message;
+            errorMessages[field].style.display = 'block';
+            if (duration) setTimeout(() => {
+                if (errorMessages[field]) errorMessages[field].style.display = 'none';
+            }, duration);
+        }
+        isValid = false;
+    };
 
-//     // Field validations
-//     if (!phone) {
-//         showError('phone', 'Phone number is required');
-//     } else if (!phoneRegex.test(phone)) {
-//         showError('phone', 'Phone number must contain exactly 14 digits', 6000);
-//     }
+    // Field validations
+    if (!phone) {
+        showError('phone', 'Phone number is required');
+    } else if (!phoneRegex.test(phone)) {
+        showError('phone', 'Phone number must contain exactly 14 digits', 6000);
+    }
 
-//     if (!company) showError('company', 'Your company name is required');
-//     if (!country  country === DEFAULT_SELECT_VALUE) showError('countries', 'Country field is required');
-//     if (!city  city === DEFAULT_SELECT_VALUE) showError('cities', 'City is required');
-//     if (!industry  industry === DEFAULT_SELECT_VALUE) showError('industry', 'This field is required');
+    if (!company) showError('company', 'Your company name is required');
+    if (!country ||  country === DEFAULT_SELECT_VALUE) showError('countries', 'Country field is required');
+    if (!city || city === DEFAULT_SELECT_VALUE) showError('cities', 'City is required');
+    if (!industry || industry === DEFAULT_SELECT_VALUE) showError('industry', 'This field is required');
     
-//     // Submit if valid
-//     if (isValid) {
-//         return true; // or your form submission logic
-//     }
-//     return;
-// }
+    // Submit if valid
+    if (isValid) {
+        return true; // or your form submission logic
+    }
+    return;
+}
   async function submitData(){
     let url = "https://for-developers.vercel.app/api/v1/client/edit-profile";
     // Get form values
@@ -321,7 +321,7 @@ const errorMessages = {
     `;
     document.body.appendChild(loader);
     document.body.classList.add('loading-active');
-
+    console.log(payload);
     try {
         const response = await fetch(url, {
           method: 'PUT',

@@ -179,7 +179,7 @@ SelectCountry.addEventListener("click", (e)=>{
 
 
 const errorMessages = {
-    phone: document.getElementById('phoneError'),
+    phone: document.getElementById('phoneError1'),
     company: document.getElementById('companyNameError'),
     countries: document.getElementById('countriesError'),
     cities: document.getElementById('citiesError'),
@@ -233,110 +233,147 @@ const errorMessages = {
 //     }
 //     return;
 // }
-  async function submitData(){
-    let url = "https://for-developers.vercel.app/api/v1/client/edit-profile";
-    // Get form values
-    const phone = document.getElementById('phonenumber').value.trim();
-    const company = document.getElementById('company').value.trim();
-    const country = document.getElementById('countries').value;
-    const city = document.getElementById('cities').value;
-    const industry = document.getElementById('industry').value;
-    
-    // Get original values for comparison
-    const originalPhone = document.getElementById('phoneNumber').textContent.trim();
-    const originalCompany = document.getElementById('companyName').textContent.trim();
-    const originalCountry = document.getElementById('Country').textContent.trim();
-    const originalCity = document.getElementById('City').textContent.trim();
-    const originalIndustry = document.getElementById('IndusrtyField').textContent.trim();
-    
-    // Prepare payload with only changed fields
-    const payload = {};
-    
-    if (phone && phone !== originalPhone) {
-        if (!phoneRegex.test(phone)) {
-            errorMessages.phone.textContent = 'Phone number must contain exactly 11-14 digits';
-            errorMessages.phone.style.display = 'block';
-            return false;
-        }
-        payload.phoneNumber = phone;
-    }
-    
-    if (company && company !== originalCompany) {
-        payload.companyName = company;
-    }
-    
-    if (country && country !== 'firstItem' && country !== originalCountry) {
-        payload.country = country;
-    }
-    
-    if (city && city !== 'firstItem' && city !== originalCity) {
-        payload.city = city;
-    }
-    
-    if (industry && industry !== 'firstItem' && industry !== originalIndustry) {
-        payload.industry = industry;
-    }
-    
-    // If nothing was changed, just return
-    if (Object.keys(payload).length === 0) {
-        alert("No changes were made.");
-        infoSection.style.display = 'block';
-        editSection.style.display = 'none';
-        return;
-    }
-    
-    // get token and loader
-    const token = localStorage.getItem('authToken');
-    const loader = document.createElement('div');
-    loader.id = 'loader';
-    loader.innerHTML = `
-        <div class="spinner"></div>
-        <p class="loading-text">Loading...</p>
-    `;
-    document.body.appendChild(loader);
-    document.body.classList.add('loading-active');
+async function submitData() {
+  // Clear all previous error messages
+  Object.values(errorMessages).forEach(errorElement => {
+      errorElement.textContent = '';
+      errorElement.style.display = 'none';
+  });
 
-    try {
-        const response = await fetch(url, {
-          method: 'PUT',
-          headers: {  
-            'Content-Type': 'application/json',
-            'token': token,
-          },
-          body: JSON.stringify(payload)
-        });
-    
-        const responseData = await response.json();
-        console.log('Full API response:', responseData); 
-        
-        if (response.ok) { 
-            alert("Profile updated successfully!");
-            localStorage.setItem('status', true);
-            infoSection.style.display = 'block';
-            editSection.style.display = 'none';
-            setTimeout(() => {
-                window.location.href = "landingPage.html";
-            }, 2000);
-
-        } else {
-          console.error('API error:', responseData.message || 'Unknown error');
-          alert(responseData.message || 'Failed to update profile');
-        }
-      } catch (error) {
-        console.error('Fetch error:', error);
-        alert('Something went wrong. Please try again!');
-      } finally {
-        document.body.removeChild(loader);
-        document.body.classList.remove('loading-active');
+  let url = "https://for-developers.vercel.app/api/v1/client/edit-profile";
+  // Get form values
+  const phone = document.getElementById('phonenumber1').value.trim();
+  const company = document.getElementById('company').value.trim();
+  const country = document.getElementById('countries').value;
+  const city = document.getElementById('cities').value;
+  const industry = document.getElementById('industry').value;
+  console.log(phone);
+  // Get original values for comparison
+  const originalPhone = document.getElementById('phoneNumber').textContent.trim();
+  const originalCompany = document.getElementById('companyName').textContent.trim();
+  const originalCountry = document.getElementById('Country').textContent.trim();
+  const originalCity = document.getElementById('City').textContent.trim();
+  const originalIndustry = document.getElementById('IndusrtyField').textContent.trim();
+  
+  // Prepare payload with only changed fields
+  const payload = {};
+  let hasErrors = false;
+  console.log(phone);
+  if (!phone) {
+    document.getElementById('phoneError1').textContent = 'Error';
+  }
+  console.log(payload);
+  
+  if (company ) {
+      if (company.length < 2) { // Example validation
+          errorMessages.company.textContent = 'Company name must be at least 2 characters';
+          errorMessages.company.style.display = 'block';
+          hasErrors = true;
+      } else {
+          payload.companyName = company;
       }
   }
+  
+  if (country !== 'firstItem' && country !== 'firstItem' && country !== originalCountry) {
+      payload.country = country;
+  }
+  
+  if (city && city !== 'firstItem' && city !== originalCity) {
+      payload.city = city;
+  }
+  
+  if (industry && industry !== 'firstItem' && industry !== originalIndustry) {
+      payload.industry = industry;
+  }
+  
+  // If there were validation errors, stop here
+  if (hasErrors) {
+      return false;
+  }
+  
+  // If nothing was changed, just return
+  // if (Object.keys(payload).length === 0 || hasErrors) {
+  //     alert("No changes were made");
+  //     infoSection.style.display = 'block';
+  //     editSection.style.display = 'none';
+  //     return;
+  // }
+  
+  // get token and loader
+  const token = localStorage.getItem('authToken');
+  const loader = document.createElement('div');
+  loader.id = 'loader';
+  loader.innerHTML = `
+      <div class="spinner"></div>
+      <p class="loading-text">Loading...</p>
+  `;
+  document.body.appendChild(loader);
+  document.body.classList.add('loading-active');
 
-  // Modify the submit button event listener to just call submitData
-  const submitButton = document.getElementById('submit');
-  submitButton.addEventListener("click", (e)=>{
-    e.preventDefault();
-    submitData();
-  });
+  try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {  
+          'Content-Type': 'application/json',
+          'token': token,
+        },
+        body: JSON.stringify(payload)
+      });
+  
+      const responseData = await response.json();
+      console.log('Full API response:', responseData); 
+      
+      if (response.ok) { 
+          alert("Profile updated successfully!");
+          localStorage.setItem('status', true);
+          infoSection.style.display = 'block';
+          editSection.style.display = 'none';
+          setTimeout(() => {
+              window.location.href = "landingPage.html";
+          }, 2000);
+      } else {
+          console.error('API error:', responseData.message || 'Unknown error');
+          
+          // Display server-side validation errors if they exist
+          if (responseData.errors) {
+              for (const [field, message] of Object.entries(responseData.errors)) {
+                  if (errorMessages[field]) {
+                      errorMessages[field].textContent = message;
+                      errorMessages[field].style.display = 'block';
+                  }
+              }
+          } else {
+              // Display general error message
+              const errorContainer = document.getElementById('general-error');
+              if (errorContainer) {
+                  errorContainer.textContent = responseData.message || 'Failed to update profile';
+                  errorContainer.style.display = 'block';
+              } else {
+                  alert(responseData.message || 'Failed to update profile');
+              }
+          }
+      }
+  } catch (error) {
+      console.error('Fetch error:', error);
+      const errorContainer = document.getElementById('general-error');
+      if (errorContainer) {
+          errorContainer.textContent = 'Something went wrong. Please try again!';
+          errorContainer.style.display = 'block';
+      } else {
+          alert('Something went wrong. Please try again!');
+      }
+  } finally {
+      document.body.removeChild(loader);
+      document.body.classList.remove('loading-active');
+  }
+}
+
+// Modify the submit button event listener to just call submitData
+const submitButton = document.getElementById('submit');
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  submitData();
+});
 
 
 function initializeDropdown() {

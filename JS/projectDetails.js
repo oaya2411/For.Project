@@ -1,6 +1,14 @@
 const params = new URLSearchParams(window.location.search);
 const cardId = params.get("id");
+const role = localStorage.getItem('role');
+// console.log(role);
 
+if(role === 'client'){
+    document.getElementById('clientContainer').style.display = 'none';
+    document.querySelector('.freelancerCard').style.display = 'none';
+    document.getElementById('complete').style.display = 'none';
+    document.getElementById('proposal').style.display = 'none';
+}
 
 function createBubble(text, container) {
     // Validate inputs
@@ -73,7 +81,6 @@ async function getProjectByID(cardID){
         let experience = document.getElementById('experience');
         let status = document.getElementById('status');
         let length;
-        console.log('here');
         console.log(data);
         if(response.ok){
             projectName.textContent = data.data.project.name ?? ' ';
@@ -253,6 +260,14 @@ getProjectByID(cardId);
 //   const card2 = createFreelancerCard(freelancerData);
 //   container.appendChild(card);
 async function getMatchedFreelancers(projectID){
+    const loader = document.createElement('div');
+    loader.id = 'loader';
+    loader.innerHTML = `
+                        <div class="spinner"></div>
+                        <p class="loading-text">Loading...</p>
+                        `;
+    document.body.appendChild(loader);
+    document.body.classList.add('loading-active');
     try{
         const url = `https://for-developers.vercel.app/api/v1/project/match-service-provider/${projectID}`;
         const token = localStorage.getItem('authToken');
@@ -292,8 +307,11 @@ async function getMatchedFreelancers(projectID){
           }
         } catch (error) {
           console.error('Error handle data: ', error.message);
-          alert('fail to get data, Try to Login Please');
         }
+
+         // When loading is complete
+     document.body.removeChild(loader);
+     document.body.classList.remove('loading-active');
 }
 getMatchedFreelancers(cardId);
 
@@ -341,6 +359,7 @@ function updateButtonText() {
 }
 
 function loadTechStacks() {
+    
     fetch('https://api.stackexchange.com/2.3/tags?site=stackoverflow&sort=popular&order=desc&pagesize=100&page=1')
         .then(response => {
             if (!response.ok) {
@@ -522,7 +541,15 @@ const submitButton = document.getElementById('submit');
 submitButton.addEventListener('click', async function (e) {
     e.preventDefault();
     let isValid = true;
-
+    const loader = document.createElement('div');
+    loader.id = 'loader';
+    loader.innerHTML = `
+                        <div class="spinner"></div>
+                        <p class="loading-text">Loading...</p>
+                        `;
+    document.body.appendChild(loader);
+    document.body.classList.add('loading-active');
+  
     // Reset all error messages
     Object.values(errorMessages).forEach(el => el.style.display = 'none');
 
@@ -532,7 +559,8 @@ submitButton.addEventListener('click', async function (e) {
         if (duration) setTimeout(() => errorMessages[field].style.display = 'none', duration);
         isValid = false;
     };
-
+    selectedTechs = [...new Set(selectedTechs)];
+    console.log(selectedTechs);
     // Get form values
     const formData = {
         name: document.getElementById('email').value.trim(),
@@ -547,7 +575,6 @@ submitButton.addEventListener('click', async function (e) {
         maxBudget: document.getElementById('max-budget').value.trim(),
         techStack: selectedTechs
     };
-
     // Validation checks for each field
     if (!formData.name) {
         showError('email', 'Project name is required');
@@ -658,8 +685,9 @@ submitButton.addEventListener('click', async function (e) {
         }
 
         // Success handling - refresh the displayed data
-        getProjectByID(cardId);
+        // getProjectByID(cardId);
         // Switch back to view mode
+        location.reload();
         infoSection.style.display = 'block';
         editSection.style.display = 'none';
 
@@ -667,6 +695,10 @@ submitButton.addEventListener('click', async function (e) {
         console.error('Submission error:', error);
         alert(`Update failed: ${error.message}`);
     }
+     // When loading is complete
+     document.body.removeChild(loader);
+     document.body.classList.remove('loading-active');
+       
 });
 
 
@@ -742,6 +774,14 @@ proposal.addEventListener("click", function (e) {
 
 
 async function completeProject(){
+    const loader = document.createElement('div');
+    loader.id = 'loader';
+    loader.innerHTML = `
+                        <div class="spinner"></div>
+                        <p class="loading-text">Loading...</p>
+                        `;
+    document.body.appendChild(loader);
+    document.body.classList.add('loading-active');
     try {
         const token = localStorage.getItem('authToken');
         const response = await fetch(`https://for-developers.vercel.app/api/v1/project/${cardId}/complete`, {
@@ -774,7 +814,9 @@ async function completeProject(){
         console.error('Submission error:', error);
         alert(`Update failed: ${error.message}`);
     }
-
+     // When loading is complete
+     document.body.removeChild(loader);
+     document.body.classList.remove('loading-active');
 }
 
 

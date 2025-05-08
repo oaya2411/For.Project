@@ -78,8 +78,8 @@ function initializeLandingPage() {
             const token = localStorage.getItem('authToken');
             const userData = token ? decodeJWT(token) : null;
             const status = localStorage.getItem('status');
-            // let role = '';
-            console.log(userData);
+            localStorage.setItem('role' ,userData.role);
+            console.log(userData.role);
             console.log("Auth token:", token);
             console.log("Userdata:", userData);
 

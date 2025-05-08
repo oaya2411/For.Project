@@ -217,10 +217,9 @@ form.addEventListener("submit", async function(e) {
   const experience = experienceField !== "" ? experienceField : 'Not Selected any one';
   const projectType = document.getElementById('projectType').value;
   const techStacks = document.getElementsByClassName('item checked').value;
-
+  console.log(techStacks);
   // Reset all error messages
   Object.values(errorMessages).forEach(el => el.style.display = 'none');
-
   // Validation functions
   const showError = (field, message, duration = 20000) => {
     errorMessages[field].textContent = message;
@@ -246,7 +245,7 @@ form.addEventListener("submit", async function(e) {
   // if (!expected) showError('detaitls', 'Expected duration is required');
   // if (!experience) showError('audience', 'Audience is required');
   if (!projectType) showError('proType', 'Project Type is required');
-  // if (!techStacks) showError('tech', 'TechStacks are required');
+  if (selectedTechs.length === 0) showError('tech', 'TechStacks are required');
 
   function showSuccessMessage(messageText) {
     const container = document.getElementById('messageContainer');

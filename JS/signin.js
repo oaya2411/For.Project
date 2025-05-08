@@ -125,6 +125,8 @@ document.body.classList.add('loading-active');
           }, 2000);
           }
         }
+      }else{
+        alert("Something went wrong... Incorrect mail or password");
       }
     } catch (error) {
       document.body.removeChild(loader);
