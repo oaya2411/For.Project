@@ -117,11 +117,11 @@ document.body.classList.add('loading-active');
           // path to the correct Admin screen
           if (decoded?.role !== 'admin') {
             setTimeout(() => {
-              window.location.href = "./landingPage.html";
+              window.location.href = "landingPage.html";
           }, 2000);
           } else {
             setTimeout(() => {
-              window.location.href = "./adminLanding.html";
+              window.location.href = "adminLanding.html";
           }, 2000);
           }
         }
