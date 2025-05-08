@@ -213,7 +213,7 @@ const handleFormSubmit = async (e) => {
         }else{
             localStorage.clear();
             alert("Account Deleted Successfully");
-            window.location.href = 'landingPage.html';
+            window.location.href = '../landingPage.html';
         }
     } catch (error) {
         console.error('Error:', error);

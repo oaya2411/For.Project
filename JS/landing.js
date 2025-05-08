@@ -163,7 +163,7 @@ function initializeLandingPage() {
                 
                 // Redirect after a brief delay
                 setTimeout(() => {
-                    window.location.href = 'landingPage.html';
+                    window.location.href = '../landingPage.html';
                 }, 100);
             }
             
@@ -172,7 +172,7 @@ function initializeLandingPage() {
         }
 
         projectsLink.addEventListener("click", (e)=>{
-            window.location.href = 'displayAllProjects.html';
+            window.location.href = '../displayAllProjects.html';
         })
 
         // Initial UI update
