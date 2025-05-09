@@ -1,130 +1,192 @@
-*{
-    margin: 50;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-color: #FFFFFF;
     color: black;
-    font-family:'Bricolage Grotesque';
+    font-family: 'Bricolage Grotesque', sans-serif;
     font-size: large;
 }
 
-.mainContainer{
-    margin: 70px 370px;
-    display: grid;
-    padding: 20px; 
-    box-shadow: 2px 6px 10px 0px rgb(0 0 0 / 20%);
+
+.mainContainer {
+    margin: 5rem auto;
+    padding: 2rem;
+    box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    align-content: center;
-    grid-template-columns: repeat(1, 1fr);
-    place-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 1rem;
     border: 1px solid rgb(164, 158, 158);
     border-radius: 30px;
-
+    width: 80%;
 }
 
-@media (max-width:1172px) {
-    .mainContainer{
-        border-style: none;
+@media (max-width: 1172px) {
+    .mainContainer {
+        border: none;
         box-shadow: none;
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        margin: 1rem auto;
+        padding: 1rem;
     }
 }
 
-.mainContainer p{
-    grid-column-start: 1;
-    grid-column-end: -1;
-    font-size: xx-large;
-    font-weight:500;
+.mainContainer p {
+    grid-column: 1 / -1;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
 }
 
-.name{
+@media (max-width: 768px) {
+    .mainContainer p {
+        font-size: 1.5rem;
+    }
+}
+
+.name {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.i1{
-    margin-top: 5px;
-    border-radius: 8px;
-    height: 33px;
-    width: 280px;
-    border: 1px solid ;
-}
-
-.email,.password, .Country, .company, .Industry, .phone{
-    margin-top: 2px;
-    place-items: left;
-    width: 600px;
-}
-
-#countries, #industry{
-    position: relative;
-    width: 615px;
-    height: 38px;
-    border-style: 2px solid;
-    border-radius: 8px;
-    font-size: 18px;
-    padding-left: 10px;
-    margin-top: 5px; 
-}
-
-input{
+    gap: 1rem;
     width: 100%;
-    height: 33px;
-    border: 1px solid ;
-    border-radius: 8px;
-    font-size: 18px;
-    padding-left: 10px;
-    margin-top: 5px;
 }
 
-.pass{
+@media (max-width: 600px) {
+    .name {
+        grid-template-columns: 1fr;
+    }
+}
+
+.i1 {
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    height: 2.5rem;
     width: 100%;
-    height: 33px;
-    border: 1px solid;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    padding-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.email,
+.password,
+.Country,
+.company,
+.Industry,
+.phone {
+    margin-top: 0.5rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+#countries,
+#industry {
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+input {
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.pass {
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid #ccc;
     border-radius: 8px;
 }
 
-.password{
+.password {
     position: relative;
+    width: 100%;
+    max-width: 600px;
 }
 
-.eyeicon{
+.eyeicon {
     cursor: pointer;
-    /* padding-left: 822px; */
     position: absolute;
-    transform: translate(570px, -35px);
+    right: 0.5rem;
+    top: 70%;
+    transform: translateY(-50%);
     background-color: transparent;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
-button{
+@media (max-width: 600px) {
+    .eyeicon {
+        right: 0.5rem;
+        height: 1.2rem;
+        width: 1.2rem;
+    }
+}
+
+button {
     cursor: pointer;
-    width: 300px;
-    padding: 10px 0;
-    border-style: none;
-    /* width: ; */
-    display: block;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.75rem 0;
+    border: none;
     border-radius: 10px;
     color: white;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 0.5rem;
     background-color: #28be97;
-    /* background:linear-gradient(to right, #512B81, #3b2458);; */
+    padding: 10px ;
 }
 
-.google-signin-btn{
+@media (max-width: 600px) {
+    button {
+        max-width: 100%;
+    }
+}
+
+.google-signin-btn {
     background-color: white;
     color: grey;
     font-size: medium;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 10px;
     border: 2px solid #28be97;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-.errormessage{
+@media (max-width: 600px) {
+    .google-signin-btn {
+        max-width: 100%;
+    }
+}
+
+.errormessage {
     color: red;
     text-align: left;
-    font-size: 15px;
-    padding-left: 3px;
-    margin-top:20px;
+    font-size: 0.9rem;
+    padding-left: 0.2rem;
+    margin-top: 0.5rem;
     transition: opacity 0.5s ease, visibility 0.5s ease;
     display: none;
     text-transform: capitalize;
@@ -133,28 +195,26 @@ button{
 .error-message.hidden {
     opacity: 0;
     visibility: hidden;
-
 }
 
 /* Loading overlay */
 body.loading-active {
     position: relative;
     overflow: hidden;
-  }
-  
-  body.loading-active::after {
+}
+
+body.loading-active::after {
     content: '';
     position: fixed;
-    background-color: transparent;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
-  }
-  
-  #loader {
+}
+
+#loader {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -166,35 +226,44 @@ body.loading-active {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-  }
-  
-  .spinner {
-    width: 50px;
-    height: 50px;
+}
+
+.spinner {
+    width: 3rem;
+    height: 3rem;
     border: 5px solid rgba(255, 255, 255, 0.3);
     background-color: transparent;
     border-radius: 50%;
     border-top-color: #4CAF50;
     animation: spin 1s ease-in-out infinite;
-  }
-  
-  .loading-text {
-    color: transparent;
-    font-size: 1.2rem;
+}
+
+.loading-text {
+    color: white;
+    font-size: 1rem;
     background-color: transparent;
     margin: 0;
-  }
-  
-  @keyframes spin {
-    to {
-        background-color: transparent;
-      transform: rotate(360deg);
-    }
-  }
+}
 
-.messageContainer{
-    color: white; 
-    text-align: center; 
-    background-color: #9acb93;
-     border-radius: 30px;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#messageContainer {
+    color: white;
+    text-align: center;
+    border-radius: 30px;
+    padding: 0.5rem;
+    margin: 0 auto 1rem auto;
+    width: 90%;
+    max-width: 600px;
+}
+
+@media (max-width: 600px) {
+    #messageContainer {
+        font-size: 0.9rem;
+        padding: 0.3rem;
+    }
 }

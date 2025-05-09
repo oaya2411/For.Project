@@ -1,7 +1,3 @@
-
-const token1 = localStorage.getItem('authToken');
-const userData1 = token1 ? decodeJWT(token1) : null;
-
 document.addEventListener('DOMContentLoaded', function() {
     if(userData1.role === 'admin'){
         window.location.href= 'adminLanding.html'
@@ -188,21 +184,31 @@ function initializeLandingPage() {
 
     function setupTimelineAnimation() {
         const timelineItems = document.querySelectorAll('.timeline-item');
-        if (timelineItems.length === 0) return;
-
+        console.log(`Found ${timelineItems.length} timeline items`); // Debug
+        
+        if (timelineItems.length === 0) {
+            console.error('No timeline items found!');
+            return;
+        }
+    
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                console.log(`Item ${entry.target.textContent.substring(0,20)}... is intersecting: ${entry.isIntersecting}`);
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
-
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+    
         timelineItems.forEach(item => {
+            console.log('Observing item:', item);
             observer.observe(item);
         });
     }
-
+    setupTimelineAnimation();
     function decodeJWT(token) {
         try {
             if (!token) return null;
@@ -251,5 +257,6 @@ function initializeDropdown() {
     profileIcon.addEventListener('click', toggleDropdown);
     
     dropdownContent.addEventListener('click', e => e.stopPropagation());
-    window.addEventListener('click', closeDropdown);
+    window.addEventListener('click', cqloseDropdown);
 }
+
