@@ -14,7 +14,7 @@
   
   * {
     box-sizing: border-box;
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
     outline: none;
     font-family: 'Poppins';
@@ -589,3 +589,27 @@ textarea{
 .item-text{
   background-color: transparent;
 } 
+
+@media (max-width: 768px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: to center cards */
+    gap: 15px;
+    width:100%;
+    justify-content: start;
+  }
+  .header{
+    margin:0;
+    display: block;
+    flex-direction: column;
+    /* justify-content: space-around; */
+  }
+  .EditSecondaryInfo{
+    width:100%;
+    position: relative;
+    left: 0;
+    justify-content: start;
+    
+  }
+}

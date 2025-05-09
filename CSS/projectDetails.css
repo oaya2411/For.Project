@@ -183,7 +183,7 @@
     font-weight:600;
     color:white;
     cursor: pointer;
-    display: none;
+    display: inline-block;
     align-items: center;
     justify-content: space-between;
     gap:10px;
@@ -590,18 +590,25 @@ textarea{
 
 
 @media (max-width: 768px) {
-  .mainContainer{
+  .mainContainer {
     display: flex;
     flex-direction: column;
-    
   }
+  
   .projectDetails {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Optional: to center cards */
+    align-items: start;
     gap: 15px;
-    width:100%;
+    width: 100%;
+    margin: 0; /* Ensure no margins are inherited */
+    padding: 0; /* Ensure no padding is causing offset */
   }
 
+  /* You might also need to reset margins on individual elements */
+  .project, .clientInfo, .formData {
+    margin-left: 0;
+    width: 100%;
+  }
   
 }

@@ -103,12 +103,16 @@ async function getProjectByID(cardID){
                 console.log('Tech list:', techList);
                 displayNumberOfSpan(techStackContainer, techList);
             }
-            if(data.data.project.status !== 'Not Started'){
+            console.log(data.data.project.status);
+            if(data.data.project.status === 'Completed'){
+                document.getElementById('freelancersContainer').style.display = 'none';
+                document.getElementById('complete').style.display = 'none';
+            }else if(data.data.project.status === 'In Progress'){
                 document.getElementById('freelancersContainer').style.display = 'none';
                 document.getElementById('complete').style.display = 'inline-block';
             }else{
-                document.getElementById('freelancersContainer').style.display = 'grid';
-                document.getElementById('complete').style.display = 'none';
+                document.getElementById('freelancersContainer').style.display = 'inline-block';
+                document.getElementById('complete').style.display = 'inline-block';
             }
             // client data
             let cName = document.getElementById('cname');
