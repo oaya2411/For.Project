@@ -443,3 +443,87 @@ button {
     background-color: rgb(185, 184, 184);
     color: white
 }
+
+/* Hamburger menu styles */
+.hamburger-btn {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--main-text-color);
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu styles */
+@media (max-width: 991px) {
+    .hamburger-btn {
+        display: flex;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .navbar.active {
+        left: 0;
+    }
+    
+    .navbar li {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .navbar li a {
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    .navbar li a:hover {
+        background-color: rgba(0,0,0,0.05);
+    }
+    
+    /* Hide profile icon in dropdown */
+    .navbar .dropdown {
+        display: none;
+    }
+    
+    /* Show register/login buttons in mobile menu */
+    .navbar #registerButton,
+    .navbar #LogInButton {
+        display: block;
+    }
+    
+    /* Close button for mobile menu */
+    .close-navBar {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        display: block !important;
+    }
+}

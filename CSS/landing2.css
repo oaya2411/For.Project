@@ -1,0 +1,50 @@
+/* إخفاء navbar افتراضياً */
+.navbar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    font-size: 18px; /* حجم الخط المناسب للموبايل */
+  }
+  
+  /* إظهارها فقط في الشاشات الصغيرة */
+  @media (max-width: 768px) {
+    .navbar.active {
+      display: flex;
+    }
+
+    .close-navBar {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 24px;
+      align-self: flex-end;
+      cursor: pointer;
+    }
+
+  }
+  
+  /* في الشاشات الكبيرة */
+  @media (min-width: 769px) {
+    
+    .navbar {
+      display: flex;
+      flex-direction: row;
+      position: static;
+      height: auto;
+      width: 100%;
+      background: none;
+      font-size: 16px;
+    }
+    .close-navBar {
+      display: none;
+    }
+
+  }
+  
