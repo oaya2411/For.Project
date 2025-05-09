@@ -1,4 +1,12 @@
+
+const token1 = localStorage.getItem('authToken');
+const userData1 = token1 ? decodeJWT(token1) : null;
+
 document.addEventListener('DOMContentLoaded', function() {
+    if(userData1.role === 'admin'){
+        window.location.href= 'adminLanding.html'
+    }
+    
     // Only run on landing page if data-page attribute matches
     if (document.body.getAttribute('data-page') === 'landing') {
         initializeLandingPage();
