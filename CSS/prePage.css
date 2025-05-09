@@ -85,3 +85,20 @@ button:hover {
     /* transform: translateY(-5px); تحريك الزر للأعلى */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);  /* إضافة ظل */
 }
+
+@media (max-width: 768px) {
+    .mainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: 1.5rem auto;
+        padding: 1rem;
+        width: 90%;
+    }
+    .mainContainer p {
+        font-size: x-large;
+        text-align: center;
+    }
+
+}

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     if(localStorage.getItem('role') === 'admin'){
         window.location.href= 'adminLanding.html';
     }
@@ -297,6 +297,7 @@ document.getElementById("menuToggle").addEventListener("click", (e) => {
             }
         })
     }
+    
     if (token && userData) {
         localStorage.setItem('role', userData.role);
         

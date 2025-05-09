@@ -251,3 +251,126 @@ async function getServiceProviders(){
 }
 
 getServiceProviders();
+
+
+
+
+// document.getElementById("menuToggle").addEventListener("click", (e) => {
+//   const elements = {
+//       registerButton: document.getElementById('registerButton1'),
+//       logInButton: document.getElementById('LogInButton1'),
+//       postProject: document.getElementById('postProject1'),
+//       projectsLink: document.getElementById('projectsLink1'),
+//       profileIcon: document.getElementById('profileIcon1'),
+//       createProfile: document.getElementById('createProfile1'),
+//       profileLink: document.getElementById('profileLink1'),
+//       logoutButton: document.getElementById('logout1') // Make sure this exists
+//   };
+
+//   const token = localStorage.getItem('authToken'); 
+//   const userData = token ? decodeJWT(token) : null;
+//   const status = localStorage.getItem('status');
+//   function pathToProfile(role, ButtonClass){
+//       ButtonClass.addEventListener("click", (e)=>{
+//           if(role === 'client'){
+//               window.location.href = 'clientProfile.html';
+//           }else{
+//               window.location.href = 'freelancerProfile.html';
+//           }
+//       })
+//   }
+  
+//   if (token && userData) {
+//       localStorage.setItem('role', userData.role);
+      
+//       elements.registerButton.style.display = 'none';
+//       elements.registerButton.style.color = 'black';
+//       elements.logInButton.style.display = 'none';
+//       elements.logInButton.style.color = 'black';
+      
+//       const isServiceProvider = userData.role === 'ServiceProvider';
+//       const profileCompleted = status === 'true' || userData.profileCompleted === true;
+
+//       // Projects link visibility
+      
+//       if (profileCompleted) {
+//           // create
+//           elements.createProfile.style.display = 'none';
+//           // elements.createProfile.style.color = 'black';
+//           // profile
+//           elements.profileIcon.style.display = 'flex';
+//           elements.profileIcon.style.color = 'black';
+//           // elements on it
+//           elements.profileLink.style.display = 'flex';
+//           elements.profileLink.style.color = 'black';
+          
+          
+//           // Ensure pathToProfile is defined
+//           if (typeof pathToProfile === 'function') {
+//               pathToProfile(isServiceProvider ? 'freelancer' : 'client', elements.profileLink);
+//           }
+//           if( isServiceProvider){
+//                   // elements on it
+//               elements.projectsLink.style.display = 'none';
+//               elements.postProject.style.display = 'none';
+//           }else{
+//               elements.projectsLink.style.display = 'flex';
+
+//               elements.postProject.style.display = 'flex';
+//               elements.postProject.style.color = 'black';
+//           }
+//       } else {
+//           // create
+//           elements.createProfile.style.display = 'flex';
+//           elements.createProfile.style.color = 'black';
+//           elements.profileIcon.style.display = 'flex';
+//           elements.profileIcon.style.color = 'black';
+//           // elements on it
+//           elements.profileLink.style.display = 'none';
+//           elements.postProject.style.display = 'none';
+          
+//       }
+//   } else {
+//       // User is not logged in
+//       Object.values(elements).forEach(el => {
+//           if (el) el.style.display = 'none';
+//       });
+//       elements.logInButton.style.display = 'none';
+//       elements.registerButton.style.display = 'inline-block';
+//       elements.registerButton.style.color = 'black';
+//       elements.logInButton.style.display = 'inline-block';
+//       elements.logInButton.style.color = 'black';
+//   }
+
+//   // Event delegation might be better than adding listeners here
+//   if (elements.createProfile && !elements.createProfile.hasListener) {
+//       elements.createProfile.addEventListener('click', function(e) {
+//           e.preventDefault();
+//           document.body.classList.add('loading-active');
+//           setTimeout(() => {
+//               window.location.href = userData?.role === "client" 
+//                   ? 'createClientAccount.html' 
+//                   : 'createFreelancerAccount.html';
+//           }, 100);
+//       });
+//       elements.createProfile.hasListener = true;
+//   }
+
+//   const logoutButton = document.getElementById('logout1');
+//   if (logoutButton && !logoutButton.hasListener) {
+//       logoutButton.addEventListener('click', function(e) {
+//           e.preventDefault();
+//           localStorage.clear();
+//           document.body.classList.add('loading-active');
+//           setTimeout(() => window.location.href = 'landingPage.html', 100);
+//       });
+//       logoutButton.hasListener = true;
+//   }
+
+//   if (elements.projectsLink && !elements.projectsLink.hasListener) {
+//       elements.projectsLink.addEventListener("click", (e) => {
+//           window.location.href = 'displayAllProjects.html';
+//       });
+//       elements.projectsLink.hasListener = true;
+//   }
+// });
