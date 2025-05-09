@@ -416,7 +416,11 @@ input, select{
   padding-left: 10px;
   margin-top: 5px;
 }
-
+input::placeholder {
+  font-size: 10px; 
+  color: gray;     
+  font-weight: bold; 
+}
 .payment{
   display: flex;
   gap:20px;

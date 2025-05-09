@@ -246,7 +246,7 @@ form.addEventListener("submit", async function(e) {
   // if (!expected) showError('detaitls', 'Expected duration is required');
   // if (!experience) showError('audience', 'Audience is required');
   if (!projectType) showError('proType', 'Project Type is required');
-  if (selectedTechs.length === 0) showError('tech', 'TechStacks are required');
+  // if (selectedTechs.length === 0) showError('tech', 'TechStacks are required');
 
   function showSuccessMessage(messageText) {
     const container = document.getElementById('messageContainer');
@@ -297,7 +297,7 @@ document.body.classList.add('loading-active');
             "maxBudget": max,
             "levelOfExperience": experience , // Optional, but included here
             "projectType": projectType,
-            "techStack": selectedTechs,
+            "techStack": selectedTechs || [],
             "targetAudience":audience,
             "problemStatement": problem,
         })
