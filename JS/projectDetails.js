@@ -545,14 +545,7 @@ const submitButton = document.getElementById('submit');
 submitButton.addEventListener('click', async function (e) {
     e.preventDefault();
     let isValid = true;
-    const loader = document.createElement('div');
-    loader.id = 'loader';
-    loader.innerHTML = `
-                        <div class="spinner"></div>
-                        <p class="loading-text">Loading...</p>
-                        `;
-    document.body.appendChild(loader);
-    document.body.classList.add('loading-active');
+    
   
     // Reset all error messages
     Object.values(errorMessages).forEach(el => el.style.display = 'none');
@@ -670,6 +663,15 @@ submitButton.addEventListener('click', async function (e) {
         scrollToFirstError();
         return;
     };
+
+    const loader = document.createElement('div');
+    loader.id = 'loader';
+    loader.innerHTML = `
+                        <div class="spinner"></div>
+                        <p class="loading-text">Loading...</p>
+                        `;
+    document.body.appendChild(loader);
+    document.body.classList.add('loading-active');
 
     try {
         const token = localStorage.getItem('authToken');

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    
     if(localStorage.getItem('role') === 'admin'){
         window.location.href= 'adminLanding.html';
     }
