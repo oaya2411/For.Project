@@ -82,7 +82,8 @@
 .Country,
 .company,
 .Industry,
-.phone {
+.phone,
+.name-f {
     margin-top: 0.5rem;
     width: 100%;
     max-width: 600px;

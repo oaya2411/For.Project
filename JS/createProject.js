@@ -93,7 +93,7 @@ descAI.addEventListener("click", (e)=>{
 
 let audience = document.getElementById('audienceAI');
 audience.addEventListener("click", (e)=>{
-  useAI('audience', 'Give me target audience depending on this overview message, please do not ask me for more details give me all the data i may need in about only 2 line at most'); 
+  useAI('audience', 'Give me who will use this app,please do not ask me for more details give me all the data i may need in about only 2 line at most'); 
 });
 
 let problemStatement =document.getElementById('problemAI');

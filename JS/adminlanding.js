@@ -252,9 +252,6 @@ async function getServiceProviders(){
 
 getServiceProviders();
 
-
-
-
 // document.getElementById("menuToggle").addEventListener("click", (e) => {
 //   const elements = {
 //       registerButton: document.getElementById('registerButton1'),
