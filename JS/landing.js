@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // if(userData1.role === 'admin'){
-    //     window.location.href= 'adminLanding.html'
-    // }
+    if(localStorage.getItem('role') === 'admin'){
+        window.location.href= 'adminLanding.html';
+    }
     
     // Only run on landing page if data-page attribute matches
     if (document.body.getAttribute('data-page') === 'landing') {
