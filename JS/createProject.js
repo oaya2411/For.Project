@@ -98,15 +98,16 @@ audience.addEventListener("click", (e)=>{
 
 let problemStatement =document.getElementById('problemAI');
 problemStatement.addEventListener("click", (e)=>{
-  useAI('problem', 'Give me an detailed problem statement depending on this overview message, please do not ask me for more details give me all the data i may need in about only 3 line or least');
+  useAI('problem', 'Provide the challenges faced by this target audience(which my app can solve), please do not ask me for more details give me all the data I may need in about only 3 line or least');
 });
+
 
 const textareas = document.querySelectorAll('textarea');
 
 textareas.forEach(textarea => {
   textarea.addEventListener('input', () => {
-    textarea.style.height = 'auto'; // ترجع الارتفاع للوضع الطبيعي
-    textarea.style.height = textarea.scrollHeight + 'px'; // تعدّله حسب المحتوى
+    textarea.style.height = 'auto'; 
+    textarea.style.height = textarea.scrollHeight + 'px'; 
   });
 });
 
@@ -114,7 +115,7 @@ textareas.forEach(textarea => {
 // variables
 const selectBtn = document.querySelector(".select_btn"),
       btnText = document.querySelector(".btn_text"),
-      techStackContainer = document.querySelector(".list-items"); // Fixed selector (was .list_items)
+      techStackContainer = document.querySelector(".list-items");
 
 let selectedTechs = [];
 
