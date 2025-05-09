@@ -106,8 +106,7 @@ button {
     margin-left: auto;
     margin-right: auto;
     /* margin-bottom:10px; */
-    height: 285vh;
-    
+    height: auto;
 }
 
 .outer-shadow {
@@ -381,6 +380,17 @@ button {
     .home-section .navbar .close-navBar::after{
         border-radius: 50%;
     }
+    #challengesSection{
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+    }
+    .c1{
+        overflow: hidden;
+    }
+    .challenges{
+        font-size: 15px;;
+    }
 }
 
 @media (max-width: 767px) {
@@ -399,6 +409,11 @@ button {
         z-index: 1000;
         flex-direction: column;
         border-radius: 15px;        /* باقي التنسيقات زي ما هي */
+    }
+    #challengesSection{
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -466,8 +481,16 @@ button {
     transition: all 0.3s ease;
 }
 
+.nav2{
+    display: none;
+}
+
 /* Mobile menu styles */
 @media (max-width: 991px) {
+    
+    .nav2{
+        display: block;
+    }
     .hamburger-btn {
         display: flex;
     }
@@ -526,4 +549,86 @@ button {
         cursor: pointer;
         display: block !important;
     }
+    #challengesSection{
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+    }
 }
+
+@media only screen and (max-width: 767px) {
+    .nav2{
+        display: block;
+    }
+    /* Toggle button (hamburger) */
+    #menuToggle {
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  
+    .main-nav {
+      position: relative;
+    }
+  
+    /* Mobile dropdown container */
+    .mobile-dropdown-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+    }
+    #challengesSection{
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+    }
+    .c1{
+        overflow: hidden;
+    }
+    .mobile-dropdown-container.active {
+      display: block;
+    }
+  
+    .mobile-dropdown {
+      list-style: none;
+      padding: 20px;
+      background: #fff;
+      width: 250px;
+      height: 100%;
+      overflow-y: auto;
+    }
+  
+    .mobile-dropdown li {
+      margin: 15px 0;
+    }
+  
+    .mobile-dropdown li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+    }
+  
+    .close-btn {
+      text-align: right;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  
+    .profile-submenu {
+      list-style: none;
+      padding-left: 20px;
+    }
+  
+    .mobile-dropdown-overlay {
+      position: fixed;
+      top: 0;
+      left: 250px;
+      width: calc(100% - 250px);
+      height: 100vh;
+    }
+  }

@@ -1,162 +1,24 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>FreelanZ - Complete your profile</title>
-        <link rel="shortcut icon" href="../images/social.png" type="image/x-icon">
-        <link rel="stylesheet" href="../CSS/createProfile.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    </head>
-    <body>
-        <header>
-            <p style="font-size: x-large; font-weight: bold;">FreelanZ</p>
-        </header>
-        <div id="messageContainer"></div>
-        <form id="form" novalidate>
-            <div class="mainContainer">
-                <p id="role">
-                    <i style="display: block; text-align: center; margin:10px; font-size: 100px; color:rgba(0, 0, 0, 0.766)" class="fa-solid fa-circle-user"></i>
-                </p>     
-                <!-- title -->
-                <div class="title">
-                    <label>Your Title</label><br>
-                    <input required type="text" id="title">
-                    <span id="titleError" class="errormessage"></span>
-                </div>
-                <!-- portfolio -->
-                <div class="portfolio">
-                    <label>Portfolio</label><br>
-                    <input id="portfolio" type="text">
-                    <span id="portfolioError" class="errormessage"></span>
-                </div>                
-                <!-- phone number -->
-                <div class="phonenumber">
-                    <label>Phone Number</label><br>
-                    <input required type="number" id="phonenumber">
-                    <span id="phoneError" class="errormessage"></span>
-                </div>
-                
-                <!-- Experience -->
-                <div class="experience">
-                    <label>Experience (in months)</label><br>
-                    <input required type="number" id="experience">
-                    <span id="experienceError" class="errormessage"></span>
-                </div>
-                
-                <!-- role -->
-                <div class="role">
-                    <label>Service Provider Role</label>
-                    <div class="radios">
-                        <div class="radio-group">
-                            <input id="freelancer" type="radio" name="role" value="freelancer">
-                            <label for="freelancer">Freelancer</label>
-                        </div>
-                        <div class="radio-group">
-                            <input id="swHouse" type="radio" name="role" value="softwareHouse">
-                            <label for="swHouse">Software House</label>
-                        </div>
-                    </div>
-                    <span id="roleError" class="errormessage"></span>
-                </div>
-                
-                <!-- Country -->
-                <div class="country">
-                    <label for="countries">Select Country</label>
-                    <select id="countries">
-                        <option value="">Select Your Country</option>
-                    </select>
-                    <span id="countriesError" class="errormessage"></span>
-                </div>
-                
-                <!-- Cities -->
-                <div class="city">
-                    <label for="cities">Select City</label>
-                    <select id="cities">
-                        <option value="">Select City</option>
-                    </select>
-                    <span id="citiesError" class="errormessage"></span>
-                </div>
-                
-                <!-- Sector Dropdown -->
-                <div class="dropdown-container">
-                    <label>Sector</label>
-                    <div class="dropdown">
-                        <div class="select-btn" id="sectorBtn">
-                            <span class="btn-text">Select Sectors</span>
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                        <ul class="list-items" id="sectorList">
-                            <!-- Options will be added by JavaScript -->
-                        </ul>
-                    </div>
-                    <span id="sectorError" class="errormessage"></span>
-                </div>
-                
-                <!-- Payment Preferences Dropdown -->
-                <div class="dropdown-container">
-                    <label>Payment Preference</label>
-                    <div class="dropdown">
-                        <div class="select-btn" id="paymentBtn">
-                            <span class="btn-text">Select Payment Preferences</span>
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                        <ul class="list-items" id="paymentList">
-                            <li class="item">hourly payment</li>
-                            <li class="item">milestone-based payment</li>
-                            <li class="item">upon project delivery payment</li>
-                        </ul>
-                    </div>
-                    <span id="paymentError" class="errormessage"></span>
-                </div>
-                
-                <!-- Primary Field Dropdown -->
-                <div class="dropdown-container">
-                    <label>Primary Field</label>
-                    <div class="dropdown">
-                        <div class="select-btn" id="primaryFieldBtn">
-                            <span class="btn-text">Select Primary Fields</span>
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                        <ul class="list-items" id="primaryFieldList">
-                            <li class="item">Web Development</li>
-                            <li class="item">Mobile Development ios</li>
-                            <li class="item">Mobile Development android</li>
-                            <li class="item">Mobile Development flutter</li>
-                            <li class="item">UI/UX Design</li>
-                            <li><span class="checkbox">
-                                <i class="fa-solid fa-check check-icon"></i>
-                              </span>
-                              <span class="item-text">UI/UX Design</span>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                    <span id="primaryFieldError" class="errormessage"></span>
-                </div>
-                
-                <!-- Tech Stack Dropdown -->
-                <div class="dropdown-container">
-                    <label>Key Skills</label>
-                    <div class="dropdown">
-                        <div class="select-btn" id="techStackBtn">
-                            <span class="btn-text">Select Tech Stacks</span>
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                        <ul class="list-items" id="techStackList">
-                            <!-- Options will be added by JavaScript -->
-                        </ul>
-                    </div>
-                    <span id="techStackError" class="errormessage"></span>
-                </div>
-                
-                <div class="button">
-                    <button id="submitBtn" type="submit">Get Started ^^</button>
-                </div>
-            </div>
-        </form>
-        
-        <script src="../JS/freelancerProfileSubmit.js"></script>
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Nav Dropdown</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  
+
+  <!-- JavaScript -->
+  
+</body>
 </html>

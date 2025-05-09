@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreelanZ - landing page</title>
     <link rel="shortcut icon" href="images\social.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Import Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,9 +14,9 @@
     <!-- Import fontawesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Import our CSS files -->
-    <link rel="stylesheet" href="CSS\landing2.css">
-    <link rel="stylesheet" href="CSS\landingPage.css">
-    <link rel="stylesheet" href="CSS\header.css">
+     <link rel="stylesheet" href="CSS\landingPage.css">
+     <link rel="stylesheet" href="CSS\header.css">
+
 </head>
 <body data-page="landing">
     <div class="home-section">
@@ -24,10 +24,38 @@
         <div id="data"></div>
         <div id="data2"></div>
         <div class="container">
+            <div class="nav2">
+                <!-- Hamburger Menu Icon -->
+                <i class="fa-solid fa-bars" id="menuToggle"></i>
+                <!-- Navigation -->
+                <nav class="main-nav" >
+                    <div class="mobile-dropdown-container" id="mobileDropdownContainer">
+                    <div class="mobile-dropdown-overlay"></div>
+                    <ul class="mobile-dropdown">
+                        <li class="close-btn"><i class="fa-solid fa-times"></i></li>
+                        <li><a id="projectsLink1">Projects</a></li>
+                        <li><a href="projectScreen.html" target="_blank" class="postProject" id="postProject1"> Post project</a></li>
+                        <li><a class="register" target="_blank" id="createProfile1">Complete Profile</a></li>
+                        <li><a id="registerButton1" class="register" href="Authentication/PrePage.html">Register</a></li>
+                        <li><a id="LogInButton1" class="register" href="Authentication/login.html">LogIn</a></li>
+                        <li class="profile-dropdown">
+                        <a href="#" id="profileIcon1"><i class="fa-solid fa-circle-user"></i> Profile</a>
+                        <ul class="profile-submenu">
+                            <li><a class="profileItem" id="profileLink1">Profile</a></li>
+                            <li><a href="#" class="profileItem" id="logout1">Logout</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+            </div>
+            
             <!-- Header -->
             <div class="header">
                 <a href="landingPage.html" class="logo" style="font-weight: bold; font-size: 22px; color: black">FreelanZ</a>
                 <diV class="links">
+                    <!-- <div class="hamburger-btn outer-shadow hover-in-shadow"> -->
+                    <!-- </div> -->
                     <ul class="navbar">
                         <li>
                             <a href="landingPage.html">About us</a>
@@ -67,9 +95,12 @@
                                 </a>
                             </div>
                         </li>
+                       
                     </ul>
                 </diV>
+                
             </div>
+            
             <!-- Section 1(About us) -->
             <div class="aboutus">
                 <div class="aboutusText">
@@ -241,6 +272,27 @@
             </div>
         </div>
     <script src="JS/landing.js"></script>
-    
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const closeBtn = document.querySelector('.close-btn');
+        const dropdownContainer = document.getElementById('mobileDropdownContainer');
+        const overlay = document.querySelector('.mobile-dropdown-overlay');
+
+        // Open menu
+        menuToggle.addEventListener('click', () => {
+        dropdownContainer.classList.add('active');
+        });
+
+        // Close menu
+        closeBtn.addEventListener('click', () => {
+        dropdownContainer.classList.remove('active');
+        });
+
+        // Close on overlay click
+        overlay.addEventListener('click', () => {
+        dropdownContainer.classList.remove('active');
+        });
+  </script>
+      
 </body>
 </html>

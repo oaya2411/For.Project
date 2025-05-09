@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    if(userData1.role === 'admin'){
-        window.location.href= 'adminLanding.html'
-    }
+    // if(userData1.role === 'admin'){
+    //     window.location.href= 'adminLanding.html'
+    // }
     
     // Only run on landing page if data-page attribute matches
     if (document.body.getAttribute('data-page') === 'landing') {
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize dropdown functionality everywhere it exists
     initializeDropdown();
 });
+
 
 function initializeLandingPage() {
     // Configuration
@@ -27,6 +28,22 @@ function initializeLandingPage() {
         'profileLink',
         'projectsLink'
     ];
+
+    function decodeJWT(token) {
+        try {
+            if (!token) return null;
+            const parts = token.split('.');
+            if (parts.length !== 3) return null;
+    
+            const payload = parts[1];
+            const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+            return JSON.parse(decoded);
+        } catch (error) {
+            console.error('JWT decoding failed:', error);
+            return null;
+        }
+    }
+    
 
     function checkElements() {
         attempts++;
@@ -86,7 +103,7 @@ function initializeLandingPage() {
             console.log("Auth token:", token);
             console.log("Userdata:", userData);
 
-            if (token && userData) {
+            if (token || userData) {
                 localStorage.setItem('role' ,userData.role);
                 // User is logged in
                 safeDisplay(registerButton, 'none');
@@ -105,7 +122,7 @@ function initializeLandingPage() {
                 if (status === true || status === 'true' || userData.profileCompleted == true) {
                     safeDisplay(createProfile, 'none');
                     safeDisplay(profileLink, 'flex');
-                    safeDisplay(profileLink, 'flex');
+                    safeDisplay(profileIcon, 'flex');
                     safeDisplay(postProject, shouldShowPostProject ? 'flex' : 'none');
                     if(shouldShowPostProject){
                         pathToProfile('client', profileLink);
@@ -209,26 +226,11 @@ function initializeLandingPage() {
         });
     }
     setupTimelineAnimation();
-    function decodeJWT(token) {
-        try {
-            if (!token) return null;
-            const parts = token.split('.');
-            if (parts.length !== 3) return null;
-
-            const payload = parts[1];
-            const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
-            return JSON.parse(decoded);
-        } catch (error) {
-            console.error('JWT decoding failed:', error);
-            return null;
-        }
-    }
+    
 
     // Start the initialization process
     checkElements();
 }
-
-
 
 function initializeDropdown() {
     const dropdown = document.querySelector('.dropdown');
@@ -257,6 +259,134 @@ function initializeDropdown() {
     profileIcon.addEventListener('click', toggleDropdown);
     
     dropdownContent.addEventListener('click', e => e.stopPropagation());
-    window.addEventListener('click', cqloseDropdown);
+    window.addEventListener('click', closeDropdown);
 }
 
+// Add at the top (or import)
+function decodeJWT(token) {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+        console.error("Invalid token", e);
+        return null;
+    }
+}
+
+document.getElementById("menuToggle").addEventListener("click", (e) => {
+    const elements = {
+        registerButton: document.getElementById('registerButton1'),
+        logInButton: document.getElementById('LogInButton1'),
+        postProject: document.getElementById('postProject1'),
+        projectsLink: document.getElementById('projectsLink1'),
+        profileIcon: document.getElementById('profileIcon1'),
+        createProfile: document.getElementById('createProfile1'),
+        profileLink: document.getElementById('profileLink1'),
+        logoutButton: document.getElementById('logout1') // Make sure this exists
+    };
+
+    const token = localStorage.getItem('authToken'); 
+    const userData = token ? decodeJWT(token) : null;
+    const status = localStorage.getItem('status');
+    function pathToProfile(role, ButtonClass){
+        ButtonClass.addEventListener("click", (e)=>{
+            if(role === 'client'){
+                window.location.href = 'clientProfile.html';
+            }else{
+                window.location.href = 'freelancerProfile.html';
+            }
+        })
+    }
+    if (token && userData) {
+        localStorage.setItem('role', userData.role);
+        
+        elements.registerButton.style.display = 'none';
+        elements.registerButton.style.color = 'black';
+        elements.logInButton.style.display = 'none';
+        elements.logInButton.style.color = 'black';
+        
+        const isServiceProvider = userData.role === 'ServiceProvider';
+        const profileCompleted = status === 'true' || userData.profileCompleted === true;
+
+        // Projects link visibility
+        
+        if (profileCompleted) {
+            // create
+            elements.createProfile.style.display = 'none';
+            // elements.createProfile.style.color = 'black';
+            // profile
+            elements.profileIcon.style.display = 'flex';
+            elements.profileIcon.style.color = 'black';
+            // elements on it
+            elements.profileLink.style.display = 'flex';
+            elements.profileLink.style.color = 'black';
+            
+            
+            // Ensure pathToProfile is defined
+            if (typeof pathToProfile === 'function') {
+                pathToProfile(isServiceProvider ? 'freelancer' : 'client', elements.profileLink);
+            }
+            if( isServiceProvider){
+                    // elements on it
+                elements.projectsLink.style.display = 'none';
+                elements.postProject.style.display = 'none';
+            }else{
+                elements.projectsLink.style.display = 'flex';
+
+                elements.postProject.style.display = 'flex';
+                elements.postProject.style.color = 'black';
+            }
+        } else {
+            // create
+            elements.createProfile.style.display = 'flex';
+            elements.createProfile.style.color = 'black';
+            elements.profileIcon.style.display = 'flex';
+            elements.profileIcon.style.color = 'black';
+            // elements on it
+            elements.profileLink.style.display = 'none';
+            elements.postProject.style.display = 'none';
+            
+        }
+    } else {
+        // User is not logged in
+        Object.values(elements).forEach(el => {
+            if (el) el.style.display = 'none';
+        });
+        elements.logInButton.style.display = 'none';
+        elements.registerButton.style.display = 'inline-block';
+        elements.registerButton.style.color = 'black';
+        elements.logInButton.style.display = 'inline-block';
+        elements.logInButton.style.color = 'black';
+    }
+
+    // Event delegation might be better than adding listeners here
+    if (elements.createProfile && !elements.createProfile.hasListener) {
+        elements.createProfile.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.add('loading-active');
+            setTimeout(() => {
+                window.location.href = userData?.role === "client" 
+                    ? 'createClientAccount.html' 
+                    : 'createFreelancerAccount.html';
+            }, 100);
+        });
+        elements.createProfile.hasListener = true;
+    }
+
+    const logoutButton = document.getElementById('logout1');
+    if (logoutButton && !logoutButton.hasListener) {
+        logoutButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.clear();
+            document.body.classList.add('loading-active');
+            setTimeout(() => window.location.href = 'landingPage.html', 100);
+        });
+        logoutButton.hasListener = true;
+    }
+
+    if (elements.projectsLink && !elements.projectsLink.hasListener) {
+        elements.projectsLink.addEventListener("click", (e) => {
+            window.location.href = 'displayAllProjects.html';
+        });
+        elements.projectsLink.hasListener = true;
+    }
+});

@@ -94,6 +94,8 @@
     grid-template-columns: 1fr 1fr;
   }
 
+
+  
   #firstCol, #secondcol{
     display: grid;
     gap:10px;
@@ -181,7 +183,7 @@
     font-weight:600;
     color:white;
     cursor: pointer;
-    display: inline-block;
+    display: none;
     align-items: center;
     justify-content: space-between;
     gap:10px;
@@ -584,3 +586,22 @@ textarea{
 .item-text{
   background-color: transparent;
 } 
+
+
+
+@media (max-width: 768px) {
+  .mainContainer{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .projectDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: to center cards */
+    gap: 15px;
+    width:100%;
+  }
+
+  
+}

@@ -3,10 +3,10 @@ const cardId = params.get("id");
 const role = localStorage.getItem('role');
 // console.log(role);
 
-if(role === 'client'){
+if(role === 'client' ){
     document.getElementById('clientContainer').style.display = 'none';
-    document.querySelector('.freelancerCard').style.display = 'none';
-    document.getElementById('complete').style.display = 'none';
+    document.querySelector('.freelancers').style.display = 'none';
+    document.getElementById('options').style.display = 'none';
     document.getElementById('proposal').style.display = 'none';
 }
 

@@ -1,65 +1,75 @@
-*{
+* {
     margin: 50;
     background-color: #FFFFFF;
     color: black;
-    font-family:'Bricolage Grotesque';
+    font-family: 'Bricolage Grotesque';
     font-size: large;
 }
 
-.mainContainer{
-    margin: 70px 370px;
-    /* display: grid; */
-    padding: 20px; 
-    box-shadow: 2px 6px 10px 10px rgba(0, 0, 0, 0.342);
+.mainContainer {
+    margin: 4rem auto;
+    padding: 1.25rem;
+    box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    align-content: center;
-    /* grid-template-columns: repeat(1, 1fr); */
-    place-items: center;
-    gap: 10px;
-    border: 1px none rgb(164, 158, 158);
+    gap: 1.5rem;
+    border: 1px solid rgb(164, 158, 158);
     border-radius: 30px;
-
+    max-width: 800px;
+    width: 90%;
 }
 
-@media (max-width:1172px) {
-    .mainContainer{
+@media (max-width: 1172px) {
+    .mainContainer {
+        width: 600px;
         border-style: none;
         box-shadow: none;
     }
 }
 
-.mainContainer p{
-    /* grid-column-start: 1;
-    grid-column-end: -1; */
+.mainContainer p {
     font-size: xx-large;
-    font-weight:500;
+    font-weight: 500;
 }
 
-.name{
-    /* display: grid; */
-    /* grid-template-columns: repeat(2, 1fr); */
+.name {
     gap: 20px;
 }
 
-.i1{
+.i1 {
     margin-top: 5px;
     border-radius: 8px;
     height: 33px;
     width: 280px;
-    border: 1px solid ;
+    border: 1px solid;
 }
 
-label{
+label {
     font-weight: 500;
 }
 
-.Name,.desc, .overview ,.Country, .company, .Industry,.exper, .proType, .Audience,.techStack, .challengeMotivation{
+.Name,
+.desc,
+.overview,
+.Country,
+.company,
+.Industry,
+.exper,
+.proType,
+.Audience,
+.techStack,
+.challengeMotivation {
     margin-top: 20px;
     place-items: left;
     width: 600px;
 }
 
-#countries, #industry, #experience, #projectType, #tech_stack{
+#countries,
+#industry,
+#experience,
+#projectType,
+#tech_stack {
     position: relative;
     width: 615px;
     height: 38px;
@@ -67,133 +77,117 @@ label{
     border-radius: 8px;
     font-size: 18px;
     padding-left: 10px;
-    /* margin-top: 20px;  */
 }
 
-
-input{
+input {
     width: 100%;
     height: 33px;
-    border: 1px solid ;
-    border-radius: 8px;
-    font-size: 18px;
-    padding-left: 10px;
-    margin-top: 5px;
-}
-
-textarea{
-    width: 100%;
-    height: auto; 
     border: 1px solid;
     border-radius: 8px;
     font-size: 18px;
     padding-left: 10px;
     margin-top: 5px;
-    overflow:auto;
+}
+
+textarea {
+    width: 100%;
+    height: auto;
+    border: 1px solid;
+    border-radius: 8px;
+    font-size: 18px;
+    padding-left: 10px;
+    margin-top: 5px;
+    overflow: auto;
 }
 
 .payment div {
-    min-width:50px;
+    min-width: 50px;
     justify-content: center;
     align-items: center;
     align-content: center;
     position: relative;
-    gap:5px;
-    /* margin: 0 50%; */
+    gap: 5px;
     display: flex;
     transform: translate(0, -2px);
-
 }
 
-.payment div input{
-    width:120px;
-    margin:15px;
+.payment div input {
+    width: 120px;
+    margin: 15px;
 }
 
-.payment div #ex{
-    width:300px;
+.payment div #ex {
+    width: 300px;
     font-size: 14px;
 }
 
-/* .AIField{
-    width: 100%;
-    height: 40px;
-    border: 1px solid;
-    border-radius: 8px;
-} */
-
-.password{
+.password {
     position: relative;
-    margin-top:10px;
-
+    margin-top: 10px;
 }
 
-.eyeicon{
+.eyeicon {
     cursor: pointer;
     display: flex;
     transform: translate(580px, -35px);
     position: absolute;
     background-color: transparent;
-    margin:0;
-    
+    margin: 0;
 }
 
-button{
+button {
     cursor: pointer;
     width: 300px;
     padding: 10px 0;
     border-style: none;
-    /* width: ; */
     display: block;
     border-radius: 10px;
     color: white;
     font-weight: bold;
     margin-top: 5px;
     background-color: #28be97;
-    /* background:linear-gradient(to right, #512B81, #3b2458);; */
 }
 
-.errormessage{
+.errormessage {
     color: red;
     text-align: left;
     font-size: 16px;
     padding-left: 3px;
-    margin-top:10px;
+    margin-top: 10px;
     transition: opacity 0.5s ease, visibility 0.5s ease;
     display: none;
     text-transform: capitalize;
 }
 
-.overview.strong{
-    display: block; /* Hidden by default */
-    color: #ff000042; /* Red text */
-    background-color: #ffebee; /* Light red/pink background */
-    padding: 8px 20px; /* Spacing inside the container */
-    border-radius: 4px; /* Rounded corners */
-    border-left: 4px solid #f44336; /* Red left border for emphasis */
-    margin-top: 20px; /* Space between input and error */
-    font-size: 14px; /* Adjust font size */
-    width: 80%;/* Only take necessary width */
+.overview.strong {
+    display: block;
+    color: #ff000042;
+    background-color: #ffebee;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border-left: 4px solid #f44336;
+    margin-top: 20px;
+    font-size: 14px;
+    width: 80%;
     margin-left: 25px;
-  }
-  
-  .overview label, .overview #overviewError{
+}
+
+.overview label,
+.overview #overviewError {
     background-color: transparent;
-  }
+}
 
 .error-message.hidden {
     opacity: 0;
     visibility: hidden;
-
 }
 
-/* Loading overlay */
 body.loading-active {
     position: relative;
     overflow: hidden;
-  }
-  
-  body.loading-active::after {
+}
+
+body.loading-active::after {
     content: '';
     position: fixed;
     background-color: transparent;
@@ -203,9 +197,9 @@ body.loading-active {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
-  }
-  
-  #loader {
+}
+
+#loader {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -217,9 +211,9 @@ body.loading-active {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-  }
-  
-  .spinner {
+}
+
+.spinner {
     width: 50px;
     height: 50px;
     border: 5px solid rgba(255, 255, 255, 0.3);
@@ -227,75 +221,77 @@ body.loading-active {
     border-radius: 50%;
     border-top-color: #4CAF50;
     animation: spin 1s ease-in-out infinite;
-  }
-  
-  .loading-text {
+}
+
+.loading-text {
     color: transparent;
     font-size: 1.2rem;
     background-color: transparent;
     margin: 0;
-  }
-  
-  @keyframes spin {
-    to {
-        background-color: transparent;
-      transform: rotate(360deg);
-    }
-  }
-
-.messageContainer{
-    color: white; 
-    text-align: center; 
-    background-color: #9acb93;
-     border-radius: 30px;
 }
 
-.select_btn{
+@keyframes spin {
+    to {
+        background-color: transparent;
+        transform: rotate(360deg);
+    }
+}
+
+.messageContainer {
+    color: white;
+    text-align: center;
+    background-color: #9acb93;
+    border-radius: 30px;
+}
+
+.select_btn {
     display: flex;
     height: 30px;
     width: 95%;
     align-items: center;
-    padding: 16px ;
-    /* border: 2px solid rgba(0, 0, 0, 0.577); */
+    padding: 16px;
     border-radius: 8px;
     cursor: pointer;
-    background-color:#fff;
+    background-color: #fff;
     box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.304);
     margin: 10px 30px 30px 0px;
     justify-content: space-between;
 }
 
-.select_btn .btn_text{
+.select_btn .btn_text {
     font-size: 17px;
     font-weight: 400;
     color: grey;
 }
-.select_btn .arrow_dwn{
+
+.select_btn .arrow_dwn {
     display: flex;
     height: 21px;
-    width:21px;
-    color:#fff;
+    width: 21px;
+    color: #fff;
     font-size: 14px;
     border-radius: 50%;
     background-color: #28be97;
     align-items: center;
     justify-content: center;
-    transition: 0.3s;	
+    transition: 0.3s;
 }
-.list-items i{
-    color:red;
+
+.list-items i {
+    color: red;
     background-color: blue;
 }
-.select_btn.open .arrow_dwn i{
-    color:white;
+
+.select_btn.open .arrow_dwn i {
+    color: white;
     transform: rotate(-180deg);
 }
 
-.list-items{
+.list-items {
     position: relative;
-    margin-left:30px;
-    margin-top:15px;
-    width:90%;
+    margin-left: 30px;
+    margin-top: 15px;
+    width: 90%;
     border-radius: 8px;
     padding: 16px;
     background-color: #fff;
@@ -303,25 +299,27 @@ body.loading-active {
     display: none;
 }
 
-.select_btn.open ~ .list-items{
+.select_btn.open~.list-items {
     display: block;
 }
 
-.list-items .item{
+.list-items .item {
     display: flex;
     align-items: center;
     list-style: none;
     height: 50px;
-    cursor:pointer;
+    cursor: pointer;
     transition: 0.3s;
     padding: 0 15px;
     border-radius: 8px;
 }
-.list-items .item:hover{
+
+.list-items .item:hover {
     background-color: #28be9620;
 }
-.item .checkbox{
-   display: flex;
+
+.item .checkbox {
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 16px;
@@ -330,23 +328,185 @@ body.loading-active {
     margin-right: 12px;
     border: 1.5px solid #c0c0c0;
     transition: all 0.3s ease-in-out;
-    
 }
-.item.checked .checkbox{
+
+.item.checked .checkbox {
     background-color: #28be968b;
     border-color: #28be9675;
 }
-.checkbox .check-icon{
+
+.checkbox .check-icon {
     color: #fff;
     background-color: transparent;
     font-size: 11px;
     transform: scale(0);
     transition: all 0.2s ease-in-out;
 }
-.item.checked .check-icon{
+
+.item.checked .check-icon {
     transform: scale(1);
+
+    AGC .item-text {
+        background-color: transparent;
+    }
 }
 
-.item-text{
-    background-color: transparent;
-}
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 768px) {
+
+    .mainContainer {
+        width: 350px;
+            margin: 1.5rem auto;
+            padding: 1rem;
+        }
+        .name {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .i1 {
+            width: 100%;
+            max-width: none;
+        }
+
+        .Name,
+        .desc,
+        .overview,
+        .Country,
+        .company,
+        .Industry,
+        .exper,
+        .proType,
+        .Audience,
+        .techStack,
+        .challengeMotivation {
+            width: 100%;
+        }
+        .Audience{
+            position: relative;
+        }
+        .Audience img {
+            position: absolute;
+            top: 100%;
+            left: 95%;
+        }
+        .challengeMotivation{
+            position: relative;
+        }
+        .challengeMotivation img {
+            position: absolute;
+            top: 100%;
+            left: 95%;
+        }
+        .desc{
+            position: relative;
+        }
+        .desc img {
+            position: absolute;
+            top: 100%;
+            left: 95%;
+        }
+
+        #countries,
+        #industry,
+        #experience,
+        #projectType,
+        #tech_stack {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        input,
+        textarea {
+            font-size: 16px;
+        }
+        
+
+        .payment {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .payment div input {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .payment div #ex {
+            width: 100%;
+        }
+
+        .eyeicon {
+            transform: translate(calc(100% - 30px), -35px);
+        }
+
+        button {
+            width: 100%;
+            max-width: none;
+        }
+
+        .mainContainer p {
+            font-size: x-large;
+        }
+
+        .errormessage {
+            font-size: 14px;
+        }
+
+        .overview.strong {
+            width: 95%;
+            margin-left: 10px;
+            font-size: 13px;
+        }
+
+        .select_btn {
+            width: 90%;
+            margin: 10px 0;
+        }
+
+        .list-items {
+            width: 85%;
+            margin-left: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .mainContainer {
+        margin: 1.5rem auto;
+            padding: 1rem;
+        }
+            
+
+        input,
+        textarea,
+        #countries,
+        #industry,
+        #experience,
+        #projectType,
+        #tech_stack {
+            font-size: 14px;
+        }
+
+        .mainContainer p {
+            font-size: large;
+        }
+
+        .errormessage {
+            font-size: 12px;
+        }
+
+        .overview.strong {
+            font-size: 12px;
+        }
+
+        .select_btn .btn_text {
+            font-size: 15px;
+        }
+
+        .list-items .item {
+            height: 40px;
+        }
+    }
+    

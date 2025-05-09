@@ -79,7 +79,6 @@
 
 .container{
     display: grid;
-    
     gap:15px;
     height:auto;
     min-height: 300px;
@@ -268,6 +267,19 @@
     to {
         background-color: transparent;
       transform: rotate(360deg);
+    }
+  }
+  @media (max-width: 768px) {
+    .mainContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Optional: to center cards */
+      gap: 15px;
+    }
+  
+    .container {
+      width: 90%; /* Optional: to make cards fit smaller screens */
+      max-width: 400px; /* Optional: control max width */
     }
   }
   
