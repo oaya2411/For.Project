@@ -516,7 +516,7 @@ h1{
 }
 
 #createProfile{
-    display: flex;
+    display: none;
     align-items: center;
     align-content: center;
     justify-content: space-between;

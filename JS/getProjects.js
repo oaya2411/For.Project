@@ -112,7 +112,7 @@ async function getAllProjects(){
 
             if(status === 'Not Started'){
                 status = 'notStarted'
-            }else if(status === 'completed'){
+            }else if(status === 'Completed'){
                 status = 'Completed';
             }else{
                 status = 'onProgress';

@@ -13,13 +13,15 @@ const errorMessages = {
   countries: document.getElementById('countriesError'),
   cities: document.getElementById('citiesError'),
   techStack: document.getElementById('techStackError'),
-  payment: document.getElementById('paymentError'),
+  Payment: document.getElementById('paymentError'),
   primaryField: document.getElementById('primaryFieldError'),
-  industry: document.getElementById('industryError'),
+  Industry: document.getElementById('industryError'),
   projectTypePrefered: document.getElementById('projectsPreferedError'),
   projectSizePrefered: document.getElementById('projectSizeError'),
 
 };
+
+console.log(errorMessages.payment);
 
 // Global variables
 let techStackContainer;
@@ -162,7 +164,6 @@ document.querySelectorAll(".list-items").forEach(list => {
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
   let isValid = true;
-
   let firstErrorElement = null;
 
   // Validation functions
@@ -205,28 +206,20 @@ form.addEventListener("submit", async function (e) {
     projectsPrefered: dropdowns.projectsPrefered.getSelectedItems(),
     projectSize: dropdowns.projectSize.getSelectedItems()
   };
-
+  console.log('here');
+  console.log(formData.payment);
   console.log(formData);
-  // Validation functions
-  // const showError = (field, message) => {
-  //   errorMessages[field].textContent = message;
-  //   errorMessages[field].style.display = 'block';
-  //   isValid = false;
-  // };
-
-
-
   // Required field validation
   if (!formData.phone) {
     console.log("phone is not valid");
     showError('phonenumber', 'Phone number is required');
-
   }
   else if (!phoneRegex.test(formData.phone)) {
     showError('phonenumber', 'Phone number must be 11-14 digits');
     console.log("phone is not valid regex");
 
   }
+
 
   if (!formData.title) showError('title', 'Title is required');
   if (!formData.portfolio) showError('portfolio', 'portfolio is required');
@@ -250,13 +243,13 @@ form.addEventListener("submit", async function (e) {
     showError('techStack', 'Please select at least one tech stack');
 
   if (formData.payment.length === 0)
-    showError('payment', 'Please select at least one payment preference');
+    showError('Payment', 'Please select at least one payment preference');
 
   if (formData.primaryField.length === 0)
     showError('primaryField', 'Please select at least one primary field');
 
   if (formData.industry.length === 0)
-    showError('industry', 'Please select at least one industry');
+    showError('Industry', 'Please select at least one industry');
   if (formData.projectsPrefered.length === 0)
     showError('projectTypePrefered', 'Please select at least one choice');
   if (formData.projectSize.length === 0)
@@ -316,9 +309,9 @@ form.addEventListener("submit", async function (e) {
       localStorage.setItem('status', true);
       // showSuccessMessage('Profile completed successfully!');
       alert('Profile completed successfully!')
-      setTimeout(() => {
-        window.location.href = "landingPage.html";
-      }, 4000);
+      // setTimeout(() => {
+      //   window.location.href = "landingPage.html";
+      // }, 4000);
 
     } catch (error) {
       console.error('Submission error:', error);

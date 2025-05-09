@@ -118,9 +118,20 @@ async function getProjectData(cId) {
         
         if (response.ok) {
             document.getElementById('AdditionalInfo').textContent = data.data.project.name;
-            document.getElementById('desc1').textContent = data.data.project.description;
-            document.getElementById('audience').textContent = data.data.project.targetAudience;
-            document.getElementById('problem1').textContent = data.data.project.problemStatement;
+            let desc = document.getElementById('desc1');
+            desc.textContent =  data.data.project.description;
+            desc.style.height = 'auto';
+            desc.style.height = desc.scrollHeight + 'px';
+
+            let audience = document.getElementById('audience');
+            audience.textContent = data.data.project.targetAudience;
+            audience.style.height = 'auto';
+            audience.style.height = audience.scrollHeight + 'px';
+
+            let problem = document.getElementById('problem1');
+            problem.textContent = data.data.project.problemStatement;
+            problem.style.height = 'auto';
+            problem.style.height = problem.scrollHeight + 'px';
             document.getElementById('ex').value = data.data.project.duration;
             document.getElementById('min-budget').value = data.data.project.minBudget;
             document.getElementById('max-budget').value = data.data.project.maxBudget;
@@ -141,14 +152,6 @@ async function getProjectData(cId) {
 }
 
 async function getProposal(cId) {
-    const loader = document.createElement('div');
-    loader.id = 'loader';
-    loader.innerHTML = `
-                        <div class="spinner"></div>
-                        <p class="loading-text">Loading...</p>
-                        `;
-    document.body.appendChild(loader);
-    document.body.classList.add('loading-active');
 
     try {
         const url = `https://for-developers.vercel.app/api/v1/proposal/${cId}`;
@@ -196,18 +199,17 @@ async function getProposal(cId) {
             // Update button text immediately
             selectedTechs = [...techList];
             updateButtonText();
-
         } else {
             create.style.display = 'flex';
             update.style.display = 'none';
             await getProjectData(cId);
         }
+
+
     } catch (e) {
         console.error('Error handling data: ', e.message);
     }
-     // When loading is complete
-     document.body.removeChild(loader);
-     document.body.classList.remove('loading-active');
+    
 }
 
 // Initialize
@@ -215,14 +217,6 @@ getProposal(clientId);
 
 
 async function updateProposal(proposalId){
-    const loader = document.createElement('div');
-    loader.id = 'loader';
-    loader.innerHTML = `
-        <div class="spinner"></div>
-        <p class="loading-text">Loading...</p>
-    `;
-    document.body.appendChild(loader);
-    document.body.classList.add('loading-active');
 
     try {
         const proposalData = {
@@ -261,6 +255,7 @@ async function updateProposal(proposalId){
         // Check if response has content before parsing
         if (response.ok) {
             alert('Proposal created successfully!');
+            location.reload();
 
         }else {
             throw new Error(data.message || 'Failed to create proposal');
@@ -268,10 +263,6 @@ async function updateProposal(proposalId){
     } catch (e) {
         console.error('Error creating proposal:', e);
         alert(`Error: ${e.message}`);
-    } finally {
-        // Always remove loader
-        document.body.removeChild(loader);
-        document.body.classList.remove('loading-active');
     }
 }
 
@@ -280,15 +271,7 @@ document.getElementById('update').addEventListener("click", (e)=>{
 })
 
 async function downloadProposal(proposalId){
-    const loader = document.createElement('div');
-    loader.id = 'loader';
-    loader.innerHTML = `
-                        <div class="spinner"></div>
-                        <p class="loading-text">Loading...</p>
-                        `;
-    document.body.appendChild(loader);
-    document.body.classList.add('loading-active');
-
+    
     try {
         const url = `https://for-developers.vercel.app/api/v1/proposal/${proposalId}/download`;
         const token = localStorage.getItem('authToken');
@@ -313,9 +296,7 @@ async function downloadProposal(proposalId){
     } catch (e) {
         console.error('Error handling data: ', e.message);
     }
-     // When loading is complete
-     document.body.removeChild(loader);
-     document.body.classList.remove('loading-active');
+    
 }
 
 document.getElementById("proposal").addEventListener("click", (e)=>{
@@ -326,15 +307,6 @@ document.getElementById("proposal").addEventListener("click", (e)=>{
 
 
 async function createProposal(cId) {
-    const loader = document.createElement('div');
-    loader.id = 'loader';
-    loader.innerHTML = `
-        <div class="spinner"></div>
-        <p class="loading-text">Loading...</p>
-    `;
-    document.body.appendChild(loader);
-    document.body.classList.add('loading-active');
-
     try {
         // Get form values - including tech stack
         const proposalData = {
@@ -373,6 +345,7 @@ async function createProposal(cId) {
         // Check if response has content before parsing
         if (response.ok) {
             alert('Proposal created successfully!');
+            location.reload();
 
         }else {
             throw new Error(data.message || 'Failed to create proposal');
@@ -380,11 +353,7 @@ async function createProposal(cId) {
     } catch (e) {
         console.error('Error creating proposal:', e);
         alert(`Error: ${e.message}`);
-    } finally {
-        // Always remove loader
-        document.body.removeChild(loader);
-        document.body.classList.remove('loading-active');
-    }
+    } 
 }
 
 document.getElementById('create').addEventListener("click", (e)=>{

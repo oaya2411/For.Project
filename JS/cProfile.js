@@ -305,7 +305,6 @@ const errorMessages = {
     
     // If nothing was changed, just return
     if (Object.keys(payload).length === 0) {
-        alert("No changes were");
         infoSection.style.display = 'block';
         editSection.style.display = 'none';
         return;

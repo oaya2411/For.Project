@@ -78,12 +78,12 @@ function initializeLandingPage() {
             const token = localStorage.getItem('authToken');
             const userData = token ? decodeJWT(token) : null;
             const status = localStorage.getItem('status');
-            localStorage.setItem('role' ,userData.role);
             console.log(userData.role);
             console.log("Auth token:", token);
             console.log("Userdata:", userData);
 
             if (token && userData) {
+                localStorage.setItem('role' ,userData.role);
                 // User is logged in
                 safeDisplay(registerButton, 'none');
                 safeDisplay(LogInButton, 'none');
@@ -94,7 +94,6 @@ function initializeLandingPage() {
                 // projects page nav
                 if(shouldShowPostProject){
                     safeDisplay(projectsLink, 'flex');
-                    
                 }else{
                     safeDisplay(projectsLink, 'none');
                 }
