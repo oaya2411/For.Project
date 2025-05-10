@@ -31,18 +31,37 @@
     <div class="home-section">
         <!-- Effects -->
         <div id="data"></div>
-        <div id="data2"></div>
+       
         <div class="container">
+            <div class="nav2">
+                <!-- Hamburger Menu Icon -->
+                <i class="fa-solid fa-bars" id="menuToggle"></i>
+                <!-- Navigation -->
+                <nav class="main-nav" >
+                    <div class="mobile-dropdown-container" id="mobileDropdownContainer_1">
+                    <div class="mobile-dropdown-overlay"></div>
+                    <ul class="mobile-dropdown">
+                        <li>
+                            <a href="displayAllProjects.html">Projects</a>
+                        </li>
+                       <li>
+                        <a class="profileItem" id="logout">
+                           Logout
+                        </a>
+                       </li>
+                    </ul>
+                    </div>
+                </nav>
+            </div>
             <!-- Header -->
-            
             <div class="header">
-                <a href="landingPage.html" class="logo"
-                    style="font-weight: bold; font-size: 22px; color: black">FreelanZ</a>
+                 <a href="adminLanding.html" class="logo" style="margin-top:30px">
+                    <img src="images/logo1.jpeg" height="200px" width="250px">
+                </a>
                 <diV class="links">
-
                     <ul class="navbar">
                         <li>
-                            <a href="landing-admin.html">Dashboard</a>
+                            <a href="adminLanding.html">Dashboard</a>
                         </li>
                         <li>
                             <a href="#clientsBegin">Clients</a>
@@ -54,33 +73,14 @@
                             <a href="displayAllProjects.html">Projects</a>
                         </li>
                        <li>
-                        <a href="#" class="profileItem" id="logout">
+                        <a class="profileItem" id="logout1">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
                         </a>
                        </li>
                     </ul>
                 </diV>
             </div>
-            <!-- <div class="nav2">
-                Hamburger Menu Icon
-                <i class="fa-solid fa-bars" id="menuToggle"></i>
-                Navigation
-                <nav class="main-nav" >
-                    <div class="mobile-dropdown-container" id="mobileDropdownContainer">
-                    <div class="mobile-dropdown-overlay"></div>
-                    <ul class="mobile-dropdown">
-                        <li>
-                            <a href="displayAllProjects.html">Projects</a>
-                        </li>
-                       <li>
-                        <a href="#" class="profileItem" id="logout">
-                           Logout
-                        </a>
-                       </li>
-                    </ul>
-                    </div>
-                </nav>
-            </div> -->
+            
             <!-- Section 1 dashboardAbout us) -->
              <div id="dashboardSection">
                 <div id="projectsStats" class="rawDashboard">
@@ -165,7 +165,28 @@
     </div>
     <!-- container end -->
     <script src="JS/adminlanding.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+        const menuToggle = document.getElementById('menuToggle');
+        const dropdownContainer = document.getElementById('mobileDropdownContainer_1');
 
+        menuToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            dropdownContainer.classList.toggle('active');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', function (e) {
+            const isClickInsideMenu = dropdownContainer.contains(e.target);
+            const isClickOnToggle = e.target === menuToggle;
+            
+            if (!isClickInsideMenu && !isClickOnToggle) {
+            dropdownContainer.classList.remove('active');
+            }
+        });
+        });
+      </script>
+      
 </body>
 
 </html>

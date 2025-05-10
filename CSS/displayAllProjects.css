@@ -1,9 +1,7 @@
 :root {
-    --main-color: #28be97;
-    /* --main-color: rgb(54, 98, 173); */
-  
-    --main-text-color: black;
-    --text-color: #777;
+     --main-color: #0CC2A8;
+    --main-text-color: #1E2A38;
+    --text-color: #4B5563;
     --bg-color: #e7f7f6;
     /* --bg-color: rgb(220, 238, 255); */
     --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
@@ -17,6 +15,7 @@
     padding: 0;
     outline: none;
     font-family: 'Poppins';
+    
   }
   
   body {
@@ -66,7 +65,7 @@
     position: relative;
     left:-8px;
     color: white;
-    background-color: #28be96a7;
+    background-color: #0CC2A8;
   }
   
 
@@ -102,7 +101,7 @@
   }
   
 .projectType{
-    background-color: #28be9676;
+    background-color: #0CC2A8;
     width: fit-content;
     padding:7px;
     border-radius: 18px;
@@ -116,6 +115,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    color:#1E2A38;
 }
 /* 
 .projectDesc {
@@ -145,12 +145,13 @@
   color: var(--text-color);
   gap: 5px;
   margin-top: 10px; /* Spacing from project name */
+  color:#4B5563;
 }
 
 .decSpan {
   display: block;
   margin: 0;
-  color: #77777781;
+  color: #4B5563;
   font-size: 14px;
   text-align: left;
   margin-bottom: 5px; /* Space between label and description */
@@ -180,11 +181,11 @@
 }
 
 .min-budget, .max-budget{
-    background-color: #28be963d;
+    background-color: #0cc2a7aa;
     width: fit-content;
     padding:10px;
     border-radius: 22px;
-    color:#777;
+    color:white;
 }
 
 .status{

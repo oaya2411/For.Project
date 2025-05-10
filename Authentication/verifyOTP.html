@@ -14,7 +14,7 @@
         .mainContainer_2{
             margin: 150px 530px;
             display: grid;
-            padding: 0 10px;
+            padding: 5px 10px;
             padding-bottom: 30px; 
             box-shadow: 2px 6px 10px 0px rgb(0 0 0 / 20%);
             align-items: center;
@@ -61,6 +61,43 @@
             transition: opacity 0.5s ease;
             box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.626);
         }
+
+        
+
+        @media (max-width: 768px) {
+            body{
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                margin:30px 20px;
+            }
+            .mainContainer_2 p {
+                font-size: 16px;
+            }
+            .mainContainer_2 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+                width: 100%;
+                margin: 0; 
+                padding: 0; 
+            }
+
+            .title{
+                font-size: 10px;
+            }
+        /* You might also need to reset margins on individual elements */
+            .gridOTP {
+                margin-left: 0;
+                /* width: 100%; */
+
+            }
+        
+}
     </style>
 </head>
 <body>
@@ -69,7 +106,7 @@
     </header>
     <form id="form" novalidate>
         <div class="mainContainer_2">
-            <p style="font-weight: 600; font-size: 25px; " >Check your mail and enter OTP</p>
+            <p id="title" style="font-weight: 600;">Check your mail and enter OTP</p>
             <div class="gridOTP">
                 <input class="otp" type="number" />
                 <input class="otp" type="number" disabled>

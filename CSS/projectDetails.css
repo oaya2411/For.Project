@@ -1,23 +1,28 @@
 :root {
-    --main-color: #28be97;
-    /* --main-color: rgb(54, 98, 173); */
-  
-    --main-text-color: black;
-    --text-color: #777;
+    --main-color: #0CC2A8;
+    --main-text-color: #1E2A38;
+    --text-color: #4B5563;
     --bg-color: #e7f7f6;
-    /* --bg-color: rgb(220, 238, 255); */
     --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
     --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
     --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
     --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
   }
-  
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     outline: none;
     font-family: 'Poppins';
+    color: #1E2A38;
+  }
+
+  span i{
+    color:#1e2a389c;
+  }
+
+  i{
+    color:white;
   }
   
   body {
@@ -34,7 +39,7 @@
   }
 
   a{
-    color: black;
+    color: #1E2A38;
     text-decoration: none;
   }
 
@@ -49,11 +54,13 @@
   .projectData{
     display: grid;
     gap:20px;
+    color:#1E2A38;
   }
 
   .section1{
     font-size: 30px;
     font-weight: 900px;
+    color: #1E2A38;
   }
   
   .project, .clientInfo, .formData{
@@ -106,15 +113,22 @@
   .title{
     display: block;
     font-size: 14px;
-    color:rgba(128, 128, 128, 0.804);
+    color:#4B5563;
   }
 
+  #name_1{
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+  }
 
 
   .bubble{
     /* background-color: rgba(211, 211, 211, 0.512); */
-    background-color:#28be9637;
+    background-color:#0CC2A8;
     border-radius:8px;
+    color:white;
     padding:5px;
     margin-top:5px;
     margin-right: 5px;
@@ -176,7 +190,7 @@
   }
 
   #proposal{
-    background-color: #28be96a8;
+    background-color: #0CC2A8;
     margin:10px;
     padding:10px;
     border-radius: 18px;
@@ -190,7 +204,7 @@
   }
 
   #complete{
-    background-color: #28be96a8;
+    background-color: #0CC2A8;
     margin:10px;
     padding:10px;
     border-radius: 18px;
@@ -215,6 +229,7 @@
     border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.126);
     padding:20px 20px;
+    margin:20px;
     display: grid;
     gap:15px;
     width:100%;
@@ -227,7 +242,7 @@
 }
 
 #type{
-    background-color: #28be9698;
+    background-color: #0CC2A8;
     width: fit-content;
     padding:7px;
     color:white;
@@ -240,6 +255,7 @@
     font-size: 20px;
     align-items: center;
     text-align: center;
+    color:#1E2A38;
     font-weight: 600;
 }
 
@@ -264,12 +280,12 @@
 }
 
 .subTitle{
-    color:rgba(128, 128, 128, 0.71);
     font-size:14px;
+    color:#4B5563;
 }
 
 .assignBtn{
-    background-color: #28be96c2;
+    background-color: #0CC2A8;
     color:white;
     font-weight: 500;
     font-size:18px;
@@ -415,6 +431,7 @@ input, select{
   font-size: 15px;
   padding-left: 10px;
   margin-top: 5px;
+  color:#1E2A38;
 }
 input::placeholder {
   font-size: 10px; 
@@ -480,6 +497,7 @@ textarea{
   font-size: 18px;
   padding-left: 10px;
   margin-top: 5px;
+  color:#4B5563;
   overflow:auto;
 }
 

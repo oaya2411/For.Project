@@ -1,4 +1,13 @@
-
+:root {
+    --main-color: #0CC2A8;
+    --main-text-color: #1E2A38;
+    --text-color: #4B5563;
+    --bg-color: #e7f7f6;
+    --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+    --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
+    --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+    --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
+  }
 .rawDashboard {
     display: flex;
     gap: 0px;
@@ -19,6 +28,7 @@
     justify-items: center;
     align-items: center;
     gap: 10px;
+    color:#4B5563;
 
 }
 
@@ -29,7 +39,7 @@
     font-size: 16px;
     align-items: center;
     justify-items: center;
-    color: rgba(0, 0, 0, 0.493);
+    color: #1E2A38;
     /* font-weight:800; */
 }
 
@@ -48,7 +58,7 @@
 
 #totalProjects {
     font-size: 20px;
-    color: black;
+    color: #1E2A38;
     font-weight: 700;
 }
 
@@ -115,7 +125,7 @@
 
 .clientDescContainer {
     font-size: 14px;
-    color: var(--text-color);
+    color: #4B5563;
 }
 
 .additionalInfo {
@@ -134,11 +144,11 @@
 
 .location p {
 
-    background-color: #28be963d;
+    background-color: #0cc2a786;
     width: fit-content;
     padding: 10px;
     border-radius: 22px;
-    color: #777;
+    color: white;
 }
 
 .serviceProvidersSection{
@@ -173,7 +183,7 @@
 
 
 .ServiceProvider {
-    background-color: #28be9676;
+    background-color: #0CC2A8;
     width: fit-content;
     padding: 7px;
     border-radius: 18px;
@@ -238,5 +248,23 @@
       transform: rotate(360deg);
     }
   }
+
+  
+@media (max-width: 767px) {
+    #ServiceProvidersStats span{
+        font-size: 14px;
+        gap:0;
+        display: flex; 
+    }
+    img{
+        height: 20px;
+        width: 20px;
+    }
+    #ServiceProvidersStats img{
+        height: 20px;
+        width: 20px;
+    }
+}
+
  
   

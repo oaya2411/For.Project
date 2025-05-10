@@ -1,9 +1,10 @@
 :root {
-    --main-color: #28be97;
+    --main-color: #00C2A8;
     /* --main-color: rgb(54, 98, 173); */
 
-    --main-text-color: black;
-    --text-color: #777;
+    --main-text-color: #1E2A38;
+    /* --main-text-color: RED; */
+    --text-color: #4B5563;
     --bg-color: #e7f7f6;
     /* --bg-color: rgb(220, 238, 255); */
     --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
@@ -415,6 +416,12 @@ button {
         display: flex;
         flex-direction: column;
     }
+    .data2{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        
+    }
 }
 
 
@@ -631,4 +638,16 @@ button {
       width: calc(100% - 250px);
       height: 100vh;
     }
+
+
+    .mobile-dropdown-container {
+        display: none;
+        position: absolute;
+        /* Add your positioning, z-index, etc */
+      }
+      
+      .mobile-dropdown-container.active {
+        display: block;
+      }
+      
   }

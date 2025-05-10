@@ -1,12 +1,12 @@
 :root {
-  --main-color: #28be97;
-  --main-text-color: black;
-  --text-color: #777;
-  --bg-color: #e7f7f6;
-  --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-  --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
-  --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
-  --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
+   --main-color: #28be97;
+    --main-text-color: #1E2A38;
+    --text-color: #4B5563;
+    --bg-color: #e7f7f6;
+    --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+    --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
+    --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+    --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
 }
 
 * {
@@ -71,7 +71,7 @@ a:hover {
 
 ul li,
 a {
-  color: rgba(0, 0, 0, 0.836);
+  color: #1E2A38;
   text-decoration: none;
   font-weight: 500;
 }
@@ -129,6 +129,7 @@ a {
   justify-content: space-between;
   padding: 1.25rem;
   width: 12.5rem;
+  background-color:red;
 }
 
 @media (max-width: 768px) {
@@ -154,11 +155,13 @@ a {
 }
 
 .section1 {
+  color:#1E2A38;
   font-size: 1.875rem;
   font-weight: 900;
 }
 
 .section1 p {
+  color:#4B5563;
   font-size: 0.875rem;
 }
 
@@ -173,6 +176,7 @@ a {
   border: 2px solid rgba(0, 0, 0, 0.384);
   padding: 1.875rem;
   height: 13.75rem;
+  color:#1E2A38
 }
 
 @media (max-width: 768px) {
@@ -192,6 +196,7 @@ a {
 #secondaryInfo {
   height: 21.25rem;
   position: relative;
+  color:#1E2A38;
 }
 
 #EditSecondaryInfo {
@@ -211,6 +216,7 @@ a {
   font-size: 1.25rem;
   font-weight: 500;
   transform: translate(-1.25rem, -5rem);
+  color:#1E2A38;
 }
 
 #AdditionalInfo {
@@ -225,6 +231,7 @@ a {
   top: 1.25rem;
   font-size: 1.25rem;
   font-weight: 500;
+
 }
 
 #edit {
@@ -309,10 +316,11 @@ a {
 #email,
 #phoneNumber {
   font-weight: 500;
+  color:#4B5563;
 }
 
 .title {
-  color: grey;
+  color: #4B5563;
   display: block;
   font-size: 0.875rem;
 }
@@ -321,6 +329,7 @@ a {
   display: grid;
   gap: 0.625rem;
   padding-top: 1.875rem;
+  color:#1E2A38;
 }
 
 input {
@@ -331,6 +340,7 @@ input {
   font-size: 1.125rem;
   padding-left: 0.625rem;
   margin-top: 0.3125rem;
+  color:#1E2A38;
 }
 
 #form label {
@@ -349,6 +359,7 @@ select {
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   padding-right: 2rem;
+  color:#1E2A38;
 }
 
 .errormessage {
@@ -430,6 +441,7 @@ body.loading-active::after {
   margin: 1rem auto;
   width: 90%;
   max-width: 600px;
+
 }
 
 @media (max-width: 600px) {
@@ -476,7 +488,9 @@ body.loading-active::after {
   justify-items: center;
   align-items: center;
   gap: 0.625rem;
+  color:#1E2A38;
 }
+
 
 @media (max-width: 768px) {
   .dashboardItem {

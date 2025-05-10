@@ -1,16 +1,13 @@
 :root {
-  --main-color: #28be97;
-  /* --main-color: rgb(54, 98, 173); */
-
-  --main-text-color: black;
-  --text-color: #777;
-  --bg-color: #e7f7f6;
-  /* --bg-color: rgb(220, 238, 255); */
-  --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-  --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
-  --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
-  --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
-}
+    --main-color: #0CC2A8;
+    --main-text-color: #1E2A38;
+    --text-color: #4B5563;
+    --bg-color: #e7f7f6;
+    --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+    --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
+    --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+    --inner-shadow-0: inset 0 0 0 #d0d0d0, inset 0 0 0 #f8f8f8;
+  }
 
 * {
   box-sizing: border-box;
@@ -18,6 +15,7 @@
   padding: 0;
   outline: none;
   font-family: 'Poppins';
+  color:#1E2A38;
 }
 
 body {
@@ -144,11 +142,13 @@ a {
   border: 2px solid rgba(0, 0, 0, 0.384);
   padding: 30px;
   height: 220px;
+  color:#1E2A38;
 }
 
 #secondaryInfo {
   height: auto;
   position: relative;
+  color:#1E2A38;
 }
 
 #EditSecondaryInfo {
@@ -390,7 +390,7 @@ body.loading-active::after {
 
 .bubble {
   /* background-color: rgba(211, 211, 211, 0.512); */
-  background-color: #28be9637;
+  background-color: #0cc2a794;
   border-radius: 8px;
   padding: 5px;
   margin-top: 5px;
@@ -583,7 +583,7 @@ input[type="radio"] {
   font-size: 16px;
   align-items: center;
   justify-items: center;
-  color: rgba(0, 0, 0, 0.493);
+  color: #1E2A38;
   /* font-weight:800; */
 }
 
@@ -597,7 +597,7 @@ input[type="radio"] {
 
 #totalProjects {
   font-size: 20px;
-  color: black;
+  color: #4B5563;
   font-weight: 700;
 }
 

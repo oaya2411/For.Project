@@ -8,6 +8,7 @@ if(role === 'client' ){
     document.querySelector('.freelancers').style.display = 'none';
     document.getElementById('options').style.display = 'none';
     document.getElementById('proposal').style.display = 'none';
+    
 }
 
 function createBubble(text, container) {
@@ -107,12 +108,18 @@ async function getProjectByID(cardID){
             if(data.data.project.status === 'Completed'){
                 document.getElementById('freelancersContainer').style.display = 'none';
                 document.getElementById('complete').style.display = 'none';
+                document.getElementById('proposal').style.display = 'none';
+                document.getElementById('edit').style.display = 'none';
             }else if(data.data.project.status === 'In Progress'){
                 document.getElementById('freelancersContainer').style.display = 'none';
                 document.getElementById('complete').style.display = 'inline-block';
+                document.getElementById('proposal').style.display = 'inline-block';
+                document.getElementById('edit').style.display = 'inline-block';
             }else{
                 document.getElementById('freelancersContainer').style.display = 'inline-block';
                 document.getElementById('complete').style.display = 'inline-block';
+                document.getElementById('proposal').style.display = 'inline-block';
+                document.getElementById('edit').style.display = 'inline-block';
             }
             // client data
             let cName = document.getElementById('cname');
@@ -156,6 +163,11 @@ getProjectByID(cardId);
     type.id = 'type';
     type.textContent = data.type;
     card.appendChild(type);
+
+    const name = document.createElement('div');
+    name.id = 'name_1';
+    name.textContent = data.name;
+    card.appendChild(name);
     
     // Add title
     const title = document.createElement('div');
@@ -169,6 +181,9 @@ getProjectByID(cardId);
     phone.textContent = data.phone;
     card.appendChild(phone);
     
+   
+    
+
     // Create first data row (industry and experience)
     const dataRow1 = document.createElement('div');
     dataRow1.className = 'dataRow';
@@ -287,6 +302,7 @@ async function getMatchedFreelancers(projectID){
             let length = data.data.totalMatches;
             for(let i = 0; i< length; i++){
                 let type = data.data.matchedServiceProviders[i].typeOfServiceProvider;
+                let name = data.data.matchedServiceProviders[i].user.fullName;
                 let title =data.data.matchedServiceProviders[i].title;
                 let __id =data.data.matchedServiceProviders[i]._id;
                 let phone = data.data.matchedServiceProviders[i].phoneNumber;
@@ -296,6 +312,7 @@ async function getMatchedFreelancers(projectID){
                 let matchingTech = data.data.matchedServiceProviders[i].matchingTech;
                 let freelancerData = {
                     type: type,
+                    name: name,
                     title: title,
                     phone: phone,
                     industry:industryList,
@@ -442,7 +459,7 @@ function loadEditData() {
     problem1.value = problem;
     problem1.style.height = 'auto';
     problem1.style.height = problem1.scrollHeight + 'px';
-    let aud = document.getElementById('audience')
+    let aud = document.getElementById('audience1')
     aud.value = audience;
     aud.style.height = 'auto';
     aud.style.height = aud.scrollHeight + 'px';
@@ -451,9 +468,9 @@ function loadEditData() {
     document.getElementById('max-budget').value = maxBudget;
     
     // Set dropdown values
-    document.getElementById('industry').value = industry;
-    document.getElementById('projectType').value = projectType;
-    document.getElementById('experience').value = experience;
+    document.getElementById('industry1').value = industry;
+    document.getElementById('projectType1').value = projectType;
+    document.getElementById('experience1').value = experience;
     // Store selected tech stack for later use
     selectedTechs = techStack;
     updateButtonText();
@@ -562,11 +579,11 @@ submitButton.addEventListener('click', async function (e) {
     const formData = {
         name: document.getElementById('email').value.trim(),
         description: document.getElementById('desc1').value.trim(),
-        targetAudience: document.getElementById('audience').value.trim(),
+        targetAudience: document.getElementById('audience1').value.trim(),
         problemStatement: document.getElementById('problem1').value.trim(),
-        industry: document.getElementById('industry').value.trim(),
-        levelOfExperience: document.getElementById('experience').value.trim(),
-        projectType: document.getElementById('projectType').value.trim(),
+        industry: document.getElementById('industry1').value.trim(),
+        levelOfExperience: document.getElementById('experience1').value.trim(),
+        projectType: document.getElementById('projectType1').value.trim(),
         duration: document.getElementById('ex').value.trim(),
         minBudget: document.getElementById('min-budget').value.trim(),
         maxBudget: document.getElementById('max-budget').value.trim(),

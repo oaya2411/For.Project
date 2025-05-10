@@ -63,6 +63,14 @@ async function getDashboardData(){
     setTimeout(() => window.location.href = 'landingPage.html', 100);
 });
 
+
+  document.getElementById('logout1')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    document.body.classList.add('loading-active');
+    setTimeout(() => window.location.href = 'landingPage.html', 100);
+});
+
 // Client Section
 
 function createClientCard(clientData) {
@@ -212,18 +220,20 @@ async function getServiceProviders(){
             }
           });
           const data = await response.json();
-          const serviceProvidersNumber = data.data.ServiceProviders.length;
+          console.log(data);
+          const serviceProvidersNumber = data.data.serviceProviders.length;
+          console.log(serviceProvidersNumber);
           for(let i = 0; i < serviceProvidersNumber; i++){
            // Safely extract client data with default values
-            let _id = data?.data?.ServiceProviders[i]?._id ?? 'no-id';
-            let title = data?.data?.ServiceProviders[i]?.title ?? 'No Company';
-            let phone = data?.data?.ServiceProviders[i]?.phoneNumber ?? 'No Phone';
-            let name = data?.data?.ServiceProviders[i]?.user?.fullName ?? 'No Name';
-            let email = data?.data?.ServiceProviders[i]?.user?.email ?? 'no-email@example.com';
-            let availableOrNot = data?.data?.ServiceProviders[i]?.available ?? 'No availabel';
-            let industry = data?.data?.ServiceProviders[i]?.industry ?? 'No Industry';
-            let country = data?.data?.ServiceProviders[i]?.country ?? '';
-            let city = data?.data?.ServiceProviders[i]?.city ?? '';
+            let _id = data?.data?.serviceProviders[i]?._id ?? 'no-id';
+            let title = data?.data?.serviceProviders[i]?.title ?? 'No Company';
+            let phone = data?.data?.serviceProviders[i]?.phoneNumber ?? 'No Phone';
+            let name = data?.data?.serviceProviders[i]?.user?.fullName ?? 'No Name';
+            let email = data?.data?.serviceProviders[i]?.user?.email ?? 'no-email@example.com';
+            let availableOrNot = data?.data?.serviceProviders[i]?.available ?? 'No availabel';
+            let industry = data?.data?.serviceProviders[i]?.industry ?? 'No Industry';
+            let country = data?.data?.serviceProviders[i]?.country ?? '';
+            let city = data?.data?.serviceProviders[i]?.city ?? '';
         let location = (country && city) 
                         ? `${country}, ${city}`
                         : country || city || 'No Location';

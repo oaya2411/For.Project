@@ -27,7 +27,7 @@ function initializeLandingPage() {
         'postProject',
         'createProfile',
         'profileLink',
-        'projectsLink'
+        'projectsLink',
     ];
 
     function decodeJWT(token) {
@@ -145,7 +145,7 @@ function initializeLandingPage() {
                 safeDisplay(createProfile, 'none');
                 safeDisplay(profileLink, 'none');
                 safeDisplay(projectsLink, 'none');
-
+                document.getElementById('projectsLink').display = 'none';
             }
         }
 
