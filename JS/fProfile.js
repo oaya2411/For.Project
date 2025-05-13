@@ -308,10 +308,10 @@ form.addEventListener("submit", async function (e) {
       // Success handling
       localStorage.setItem('status', true);
       // showSuccessMessage('Profile completed successfully!');
-      alert('Profile completed successfully!')
-      // setTimeout(() => {
-      //   window.location.href = "landingPage.html";
-      // }, 4000);
+      alert('Profile completed successfully!');
+      setTimeout(() => {
+        window.location.href = "landingPage.html";
+      }, 2000);
 
     } catch (error) {
       console.error('Submission error:', error);
